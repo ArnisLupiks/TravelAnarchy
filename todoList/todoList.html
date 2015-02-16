@@ -1,0 +1,40 @@
+<div>
+  <h1>Things you need to do</h1>
+  <ul>
+    <li ng-repeat="todo in todos">
+      <a ui-sref="auth.todoItem({id: todo.id})">
+      {{todo.name}}
+      </a>
+    </li>
+  </ul>
+  <form name="form">
+    <div class="col-lg-3">
+      <div class="input-group">
+        <input type="text" class="form-control" ng-model="newTodo">
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-default" ng-disabled="!newTodo" type="button" ng-click="add()" value="Add!" />
+        </span>
+      </div>
+      <span>User Name : {{auth.profile.name}}</span><br />
+      <span>User Verified email : {{auth.profile.email_verified}}</span><br />
+      <span>User Email : {{auth.profile.email}}</span><br />
+
+      <span>User UserID : {{auth.profile.user_id}}</span><br />
+      <span>User Nickname : {{auth.profile.nickname}}</span><br />
+      <span>User Gender : {{auth.profile.gender}}</span><br />
+      <span>User Given Name : {{auth.profile.given_name}}</span><br />
+      <span>User Connection : {{auth.profile.connection}}</span><br />
+      <span>User isSocial : {{auth.profile.isSocial}}</span><br />
+      <span>User Connection : {{auth.profile.password}}</span><br />
+
+
+
+
+
+
+
+
+    </div>
+  </form>
+
+</div>
