@@ -10,18 +10,19 @@
   <form name="form">
     <div class="col-lg-3">
       <div class="input-group">
-        <input type="text" class="form-control" ng-model="newTodo">
+        <input type="text" class="form-control" ng-model="newTodo" />
         <span class="input-group-btn">
           <input type="submit" class="btn btn-default" ng-disabled="!newTodo" type="button" ng-click="add()" value="Add!" />
-        </span>
-      </div>
+	</span>
+	<input type = "hidden" name = "user_name" ng-value="auth.profile.name" ng-model = "form.name" />
+      	<input type = "hidden" name = "user_email" ng-value="auth.profile.email" ng-model ="form.email" />
+	<input type = "hidden" name = "user_id" ng-value="auth.profile.user_id" ng-model = "form.user_id" />
+	<input type = "hidden" name = "user_gender" ng-value = "auth.profile.gender" ng-model = "form.gender" />
+	</div>
       <span>User Name : {{auth.profile.name}}</span><br />
       <span>User Verified email : {{auth.profile.email_verified}}</span><br />
-      <span>User Email : {{auth.profile.email}}</span><br />
-
-      <span>User UserID : {{auth.profile.user_id}}</span><br />
+      
       <span>User Nickname : {{auth.profile.nickname}}</span><br />
-      <span>User Gender : {{auth.profile.gender}}</span><br />
       <span>User Given Name : {{auth.profile.given_name}}</span><br />
       <span>User Connection : {{auth.profile.connection}}</span><br />
       <span>User isSocial : {{auth.profile.isSocial}}</span><br />
