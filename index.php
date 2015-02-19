@@ -25,7 +25,8 @@
 
 
     <!-- App Javascripts -->
-    <script type="text/javascript" src="app.js"></script>
+   <script type="text/javascript" src="controllers/postCtrl.js"></script>
+	 <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="login/login.js"></script>
     <script type="text/javascript" src="authenticated/authenticated.js"></script>
     <script type="text/javascript" src="todoList/todoList.js"></script>

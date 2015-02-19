@@ -19,6 +19,33 @@
 	<input type = "hidden" name = "user_id" ng-value="auth.profile.user_id" ng-model = "form.user_id" />
 	<input type = "hidden" name = "user_gender" ng-value = "auth.profile.gender" ng-model = "form.gender" />
 	</div>
+
+	<div ng-controller="postCtrl">
+		<table class = "table table-hover">
+			<tbody>
+				<ul class = "list-group">
+					<li ng-repeat="post in posts.slice().reverse() | filter:{$: objProppostHeadingFilter}">
+						<a class = "list-group-item" ng-click= "openPopup(post)">
+							<div class = "panel panel-default">
+								<div class = "panel-heading">
+									<h3><span ng-bind = "post.postHeading"></span></h3>
+								</div>
+								<div class = "panel-body">
+									<h5><span nd-bind = "post.postContent"></span></h5>
+								</div>
+								<div class = "panel-footer">
+									<div class = "row">
+										<div class ="col-sm-6">By: <span ng-bind = "post.uid"></span></div>
+										<div class = "col-sm-6"><span style = "position: relative; left:-20px;" am-time-ago="post.postDate"></span></div>
+									</div>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</tbody>
+		</table>
+	</div>
       <span>User Name : {{auth.profile.name}}</span><br />
       <span>User Verified email : {{auth.profile.email_verified}}</span><br />
       

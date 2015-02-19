@@ -1,4 +1,4 @@
-angular.module( 'sample', [
+var app = angular.module( 'sample', [
   'ui.router',
   'restangular',
   'sample.auth',
