@@ -1,27 +1,18 @@
-<?php	
+<?php
+	error_reporting(0);
 
-	include_once 'config.php';
-	include_once 'opendb.php';
+	require_once ("php_includes/db_conn.php");
 
-	if(mysqli_connect_errno()){
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
 
-	$status = '%';
-	if(isset($_GET['status'])){
-		$status = $_GET['status'];
-	}
+		
 	
-	$query = "SELECT * FROM posts";
-	$results = $mysqli->query($query) or die ($mysqli->conn->error._LINE_);
-	$arr = array();
+	if($result = $db_conn->query("SELECT * FROM posts")){
+		if($result->num_rows){
+			$rows = $result->fetch_assoc();
 
-	if($result->num_rows >0){
-		while($row = $result->fetch_assoc()){
-			$arr[] = $row;
+			echo '<pre>' , print_r($rows), '</pre>';
 		}
 	}
 
-	echo $json_response = json_encode($arr);
 
 ?>

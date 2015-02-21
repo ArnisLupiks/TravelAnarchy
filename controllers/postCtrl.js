@@ -1,4 +1,5 @@
-app.controller('postCtrl', ['$scope','$http','$filter','$location','FileUploader','ngDialog', function($scope, $http, $filter, $location, Fileuploader, ngDialog){
+
+app.controller('postCtrl', ['$scope','$http','$filter','$location','FileUploader', function($scope, $http, $filter, $location, Fileuploader,){
 
 	getPosts(); //Load all available tasks
 		function getPosts(){
@@ -73,7 +74,7 @@ app.controller('postCtrl', ['$scope','$http','$filter','$location','FileUploader
 		console.log("OK", data);
 		//redirect to main page
 		$location.path("/");
-	}).error(function(err)("ERR", console.log(err)})
+	}).error(function(err){"ERR", console.log(err)})
 	};
 	//reset form ********************************************
 	$scope.master = {};
@@ -86,15 +87,15 @@ app.controller('postCtrl', ['$scope','$http','$filter','$location','FileUploader
 
 	// popup dialog for post page ***************************
 	$scope.openPopup = function(post){
-		var newScope = £scope.$new();
+		var newScope = $scope.$new();
 		newScope.post = post;
 		ngDialog.open({ template: 'posts/individualPosts.html', className: 'ngdialog-theme-default', controller: 'postCtrl', scope: newScope});
 		var lat = post.latitude;
 		var long = post.longitude;
 		var mid = post.postID;
-		$scope.map = {center: latitude: lat, longitude: long}, zoom:15};
+		$scope.map = {center:{ latitude: lat, longitude: long}, zoom:15};
 
-	$scope.markers = {key: mid, coords:{latitude: lat, longitude:long},icon:'bower_components/angular-maps/example/assets/images.blue_marker.png',
+	$scope.markers = { key: mid, coords: {latitude :lat, longitude: long },icon: 'bower_components/angular-maps/example/assets/images.blue_marker.png',
 		optimized:false,labelClass:"label"};
 	};
 
