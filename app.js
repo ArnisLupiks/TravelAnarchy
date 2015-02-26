@@ -3,7 +3,6 @@ var app = angular.module( 'sample', [
   'restangular',
   'sample.auth',
   'sample.allPosts',
-  'sample.todoItem',
   'sample.login',
   'auth0'
 ])
