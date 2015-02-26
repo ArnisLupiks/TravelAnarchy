@@ -2,7 +2,7 @@ var app = angular.module( 'sample', [
   'ui.router',
   'restangular',
   'sample.auth',
-  'sample.todoList',
+  'sample.allPosts',
   'sample.todoItem',
   'sample.login',
   'auth0'
@@ -23,7 +23,7 @@ var app = angular.module( 'sample', [
   $urlRouterProvider.otherwise('/');
 
   authProvider.on('loginSuccess', function($state) {
-    $state.go('auth.todoList');
+    $state.go('auth.allPosts');
   })
 })
 .run(function(auth) {

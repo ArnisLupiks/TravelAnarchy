@@ -1,4 +1,4 @@
-angular.module('sample.todoList', [
+angular.module('sample.allPosts', [
   'ui.router',
   'restangular',
 	'uiGmapgoogle-maps',
@@ -6,10 +6,10 @@ angular.module('sample.todoList', [
 ])
 .config(function($stateProvider) {
   $stateProvider
-    .state('auth.todoList', {
+    .state('auth.allPosts', {
       url: '/',
       controller: 'postCtrl',
-      templateUrl: 'todoList/todoList.html'
+      templateUrl: 'partials/allPosts/allPosts.html'
     });
 })
 
@@ -24,7 +24,7 @@ angular.module('sample.todoList', [
                         });
                 }
 
-        //optional -- order by date 
+        //optional -- order by date
         var orderBy = $filter('orderBy');
         $scope.order = function(predicate, reverse){
                 $scope.posts = orderBy($scope.posts, predicate, reverse);
@@ -54,7 +54,7 @@ angular.module('sample.todoList', [
         $scope.format = $scope.formats[0];
 
 
-       
+
         //reset form ********************************************
         $scope.master = {};
         $scope.maste = "";
@@ -85,10 +85,9 @@ angular.module('sample.todoList', [
                 timezone: 'Europe/London' //optional
         });
 
-     
-    
-  
+
+
+
 
 
 }]);
-      

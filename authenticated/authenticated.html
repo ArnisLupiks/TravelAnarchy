@@ -9,12 +9,18 @@
 				</button>
 				<div class = "collapse navbar-collapse navHeaderCollapse">
 					<ul class = "nav navbar-nav navbar-right">
-							<li ng-class="{ active: isActive('/posts')}"><a href = "#posts">Posts</a></li>
-              <li ng-class="{ active: isActive('/friends')}"><a href ="#friends">Friends</a></li>
+            <li class="dropdown">
+              <a class ="dropdown-toggle" data-toggle = "dropdown"><i class="fa fa-bullhorn"></i> Posts <b class = "caret"></b></a>
+                <ul class = "dropdown-menu">
+                  <li ng-class="{ active: isActive('/posts')}"><a href = "#newPosts"><i class="fa fa-bullhorn"></i> NewPosts</a></li>
+                  <li ng-class="{ active: isActive('/posts')}"><a href = "#allPosts"><i class="fa fa-bullhorn"></i> AllPosts</a></li>
+                </ul>
+            </li>
+              <li ng-class="{ active: isActive('/friends')}"><a href ="#friends"><i class="fa fa-users"></i> Friends</a></li>
               <li class="dropdown">
-                  <a class ="dropdown-toggle" data-toggle = "dropdown">Messages <b class = "caret"></b></a>
+                  <a class ="dropdown-toggle" data-toggle = "dropdown"><i class="fa fa-inbox"></i> Messages <b class = "caret"></b></a>
                   <ul class = "dropdown-menu">
-                    <li  ng-class="{ active: isActive('/newMessage')}"><a href="#message">New Message</a></li>
+                    <li ng-class="{ active: isActive('/newMessage')}"><a href="#message">New Message</a></li>
                     <li ng-class="{ active: isActive('/messages')}"><a href="#message">Messages</a></li>
                   </ul>
               </li>
@@ -24,10 +30,10 @@
 
                   </a>
                   <ul class = "dropdown-menu dropdown-menu-inverse">
-                    <li ng-class="{ active: isActive('/about')}"><a href="#about">About</a></li>
-                    <li ng-class="{ active: isActive('/contact')}"><a href="#contact">Contact</a></li>
-                    <li ng-class="{ active: isActive('/profile')}"><a href="#profile">{{auth.profile.given_name}} Profile</a></li>
-                    <li><a ng-click="logout()">Logout</a></li>
+                    <li ng-class="{ active: isActive('/about')}"><a href="#about"><i class="fa fa-info"></i> About</a></li>
+                    <li ng-class="{ active: isActive('/contact')}"><a href="#contact"><i class="fa fa-envelope"></i> Contact</a></li>
+                    <li ng-class="{ active: isActive('/profile')}"><a href="#profile"><i class="fa fa-user"></i> Profile</a></li>
+                    <li><a ng-click="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
                   </ul>
               </li>
 

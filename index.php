@@ -14,8 +14,7 @@
 
     <!-- font awesome from BootstrapCDN -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.js"></script>
 
     <script src="//cdn.auth0.com/w2/auth0-widget-5.js"></script>
@@ -39,7 +38,7 @@
 	 <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="login/login.js"></script>
     <script type="text/javascript" src="authenticated/authenticated.js"></script>
-    <script type="text/javascript" src="todoList/todoList.js"></script>
+    <script type="text/javascript" src="partials/allPosts/allPosts.js"></script>
     <script type="text/javascript" src="todoItem/todoItem.js"></script>
 
     <!-- App CSSs -->
