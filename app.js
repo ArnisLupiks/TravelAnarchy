@@ -3,7 +3,9 @@ var app = angular.module( 'sample', [
   'restangular',
   'sample.auth',
   'sample.allPosts',
+  'sample.addPosts',
   'sample.login',
+  'uiGmapgoogle-maps',
   'auth0'
 ])
 .config( function ( RestangularProvider, $urlRouterProvider, authProvider, $httpProvider) {
@@ -15,7 +17,7 @@ var app = angular.module( 'sample', [
     loginState: 'login'
   });
 
-  RestangularProvider.setBaseUrl('http://localhost/TravelAnarchy/auth0/');
+  RestangularProvider.setBaseUrl('http://localhost/TravelAnarchy/y');
 
   $httpProvider.interceptors.push('authInterceptor');
 

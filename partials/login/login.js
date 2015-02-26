@@ -7,11 +7,11 @@ angular.module('sample.login', [
     .state('login', {
       url: '/login',
       controller: 'LoginCtrl',
-      templateUrl: 'login/login.html'
+      templateUrl: 'partials/login/login.html'
     });
 
     authProvider.on('loginSuccess', function($state){
-      $state.go('auth.todoList');
+      $state.go('auth.allPosts');
     });
 
     authProvider.on('loginFailure', function(error){

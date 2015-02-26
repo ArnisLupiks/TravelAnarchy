@@ -13,6 +13,7 @@
     box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
     margin: 0 0 0 0;
     padding: 0;
+    z-index: 1;
 }
 .navbarColor{
   background-color: #332f1b;
@@ -20,9 +21,16 @@
 .mainPage{
   padding-top:55px;
 }
+.navbar-inner {
+    min-height: 0px;
+}
+
 .navbar-brand,
 .navbar-nav li a {
     line-height: 50px;
     height: 50px;
     padding-top: 0;
+}
+.angular-google-map-container{
+  height:200px;
 }

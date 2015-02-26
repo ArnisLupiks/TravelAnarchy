@@ -1,7 +1,8 @@
 angular.module('sample.allPosts', [
   'ui.router',
   'restangular',
-	'uiGmapgoogle-maps',
+
+
 
 ])
 .config(function($stateProvider) {
@@ -16,6 +17,9 @@ angular.module('sample.allPosts', [
 .controller('postCtrl', ['$scope','$http','$filter','Restangular','auth', function($scope, $http, $filter, $location, Restangular, auth){
 
 	$scope.auth = auth;
+        // google map scope
+        $scope.map = { center :{latitude:45,longitude:-73},zoom:8};
+
 
         getPosts(); //Load all available tasks
                 function getPosts(){
