@@ -1,6 +1,6 @@
 angular.module('sample.allPosts', [
   'ui.router',
-  'restangular',
+  'restangular'
 
 
 
@@ -89,9 +89,6 @@ angular.module('sample.allPosts', [
                 timezone: 'Europe/London' //optional
         });
 
-
-
-
-
+  
 
 }]);

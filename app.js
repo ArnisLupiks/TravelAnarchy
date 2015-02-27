@@ -6,7 +6,7 @@ var app = angular.module( 'sample', [
   'sample.addPosts',
   'sample.login',
   'uiGmapgoogle-maps',
-  'auth0'
+  'auth0',
 ])
 .config( function ( RestangularProvider, $urlRouterProvider, authProvider, $httpProvider) {
 
