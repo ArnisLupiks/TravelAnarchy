@@ -32,9 +32,8 @@
 	<script type = "text/javacript" src = "bower_components/ng-file-upload/angular-file-upload.js"></script>
   <script type = "text/javacript" src = "bower_components\auth0-lock\build\auth0-lock.min.js"></script>
   <script type = "text/javacript" src = "bower_components\auth0-angular\build\auth0-angular.min.js"></script>
-  <script type = "text/javacript" src = "bower_components\a0-angular-storage\dist\angular-storage.min.js"></script>
-  <script type = "text/javacript" src = "bower_components\angular-jwt\dist\angular-jwt.min.js"></script>
-
+  <script type = "text/javacript" src = "bower_components\angular-file-upload\angular-file-upload.min.js"></script>
+  
     <!-- App Javascripts -->
 
 	 <script type="text/javascript" src="app.js"></script>

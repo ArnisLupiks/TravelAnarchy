@@ -14,7 +14,7 @@ angular.module('sample.allPosts', [
     });
 })
 
-.controller('postCtrl', ['$scope','$http','$filter','Restangular','auth', function($scope, $http, $filter, $location, Restangular, auth){
+.controller('postCtrl', function($scope, $http, $filter, $location, Restangular, auth){
 
 	$scope.auth = auth;
         // google map scope
@@ -89,6 +89,6 @@ angular.module('sample.allPosts', [
                 timezone: 'Europe/London' //optional
         });
 
-  
 
-}]);
+
+});
