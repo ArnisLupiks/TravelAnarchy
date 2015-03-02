@@ -7,13 +7,22 @@ angular.module('sample.addPosts', [
 .config(function($stateProvider) {
   $stateProvider
     .state('auth.addPosts', {
+
       url: '/addPosts',
       controller: 'addPostCtrl',
-      templateUrl: 'partials/addPosts/addPosts.html'
+      templateUrl: 'partials/addPosts/addPosts.html',
+      data: {
+        requiresLogin: true
+      }
+
     });
 })
-.controller('addPostCtrl', ['$scope','$http','$location','auth',
-                function($scope, $http, $filter, $location, auth){
+.controller('addPostCtrl',
+            function($scope, $http, $filter, $location, auth){
+
+
+
+        $scope.auth = auth;
           // date pick option
           $scope.today = function() {
             $scope.dt = new Date();
@@ -35,31 +44,31 @@ angular.module('sample.addPosts', [
       $scope.format = $scope.formats[0];
 
       //location scope is empty
-      $scope.location = '';
+      //$scope.location = '';
 
         // on submit button do post and collect data
        $scope.submitForm = function() {
 
               // check if location is set or not
-              if($scope.location === ''){
+            /**  if($scope.location === ''){
                  alert('Directive did not update the location property in parent controller.');
               } else {
                  //alert('Yay. Location: ' + $scope.location);
-              }
-
+              }*/
               var formData = {
               uid: $('input[name=uid]').val(),
               heading: $('input[name=heading]').val(),
               content: $('textarea[name=content]').val(),
-              location: $scope.location,
+              //location: $scope.location,
+
               date: $scope.dt
             };
+            console.log(formData);
             $http({
-                url: "api/posts/addPost.php",
+                url: "api/addPosts.php",
                 data: formData,
                 method: 'POST',
                 headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
-
             }).success(function(data){
                 //if added information, it will log OK and redirect.
                 console.log("OK", data);
@@ -68,7 +77,6 @@ angular.module('sample.addPosts', [
 
             }).error(function(err){"ERR", console.log(err)})
         };
-
         //reset form
          $scope.master = {};
          $scope.maste = "";
@@ -77,5 +85,4 @@ angular.module('sample.addPosts', [
              $scope.dt = angular.copy($scope.master);
              console.log("reset has been pressed");
         };
-
-}]);
+});

@@ -30,6 +30,10 @@
 	<script type ="text/javascript" src ="bower_components/angular-google-maps/dist/angular-google-maps.min.js" type = "text/javascript"></script>
 	<script type ="text/javascript" src = "bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
 	<script type = "text/javacript" src = "bower_components/ng-file-upload/angular-file-upload.js"></script>
+  <script type = "text/javacript" src = "bower_components\auth0-lock\build\auth0-lock.min.js"></script>
+  <script type = "text/javacript" src = "bower_components\auth0-angular\build\auth0-angular.min.js"></script>
+  <script type = "text/javacript" src = "bower_components\a0-angular-storage\dist\angular-storage.min.js"></script>
+  <script type = "text/javacript" src = "bower_components\angular-jwt\dist\angular-jwt.min.js"></script>
 
     <!-- App Javascripts -->
 

@@ -17,7 +17,7 @@ var app = angular.module( 'sample', [
     loginState: 'login'
   });
 
-  RestangularProvider.setBaseUrl('http://localhost/TravelAnarchy/y');
+  RestangularProvider.setBaseUrl('http://localhost/TravelAnarchy/');
 
   $httpProvider.interceptors.push('authInterceptor');
 

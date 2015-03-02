@@ -11,7 +11,7 @@
 				<div class = "collapse navbar-collapse navHeaderCollapse">
 					<ul class = "nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a class ="dropdown-toggle" data-toggle = "dropdown"><i class="fa fa-bullhorn"></i> Posts <b class = "caret"></b></a>
+              <a class ="dropdown-toggle" data-toggle = "dropdown"><i class="fa fa-bullhorn"></i> Posts {{auth.profile.user_id}} <b class = "caret"></b></a>
                 <ul class = "dropdown-menu">
                   <li ng-class="{ active: isActive('/posts')}"><a href = "#addPosts"><i class="fa fa-bullhorn"></i> AddPosts</a></li>
                   <li ng-class="{ active: isActive('/posts')}"><a href = "#"><i class="fa fa-bullhorn"></i> AllPosts</a></li>

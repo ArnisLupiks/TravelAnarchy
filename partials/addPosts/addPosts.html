@@ -1,53 +1,43 @@
 <div class="mainPage">
-<div class = "container at-view-flip-in-vertical
-     at-view-flip-out-vertical">
-
-
-
-
-
+<div class = "container at-view-flip-in-vertical  at-view-flip-out-vertical">
 <div class = "row">
-
-
   <form name = "post"  ng-controller="addPostCtrl" ng-submit="submitForm()"  class="addPost" nv-file-drop="" uploader="uploader">
+    <div class="col-md-6">
+      <!-- ************************* Use ID ************************************************* -->
+        <input type="hidden" name="uid" ng-value ="auth.profile.user_id"/>
+        <!-- *************************** Post heading **************************************-->
+          <h4>Name of the post:</h4>
+          <input type="text" class= "form-control" name="heading" ng-model="form.heading" ng-trim = "false" maxlength="30" />
+        <!-- ************************** Post content ****************************************** -->
+          <h4>Post Content:</h4>
+          <textarea type="text" class="form-control" rows="3" name="content" ng-model="form.content" ng-trim = "false" maxlength="350" ></textarea></p>
+          <span>{{350 - form.content.length}} left</span>
+        <!-- **************************** Selects location ****************************************** -->
+        <!--  <h4>Lookup location:</h4>
+          <google-places location=location class="form-control" ng-model="form.location" ></google-places> -->
+        <!-- ***************************** Date visited ******************************************** -->
+          <h4>Date visited</h4>
+                    <p class="input-group">
+                      <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                    </p>
+            <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button> <br />
 
+        <!-- ****************************** picture select ************************************************-->
+        <h4>Select files</h4>
 
-<div class="col-md-6">
-  <!-- ************************* Use ID ************************************************* -->
-    <input type="hidden" name="uid" ng-value="uid" ng-model="form.uid"/>
-    <!-- *************************** Post heading **************************************-->
-      <h4>Name of the post:</h4>
-      <input type="text" class= "form-control" name="heading" ng-model="form.heading" ng-trim = "false" maxlength="30" ng-required="true" required />
-    <!-- ************************** Post content ****************************************** -->
-      <h4>Post Content:</h4>
-      <textarea type="text" class="form-control" rows="3" name="content" ng-model="form.content" ng-trim = "false" maxlength="350" ng-required="true"></textarea></p>
-      <span>{{350 - form.content.length}} left</span>
-    <!-- **************************** Selects location ****************************************** -->
-      <h4>Lookup location:</h4>
-      <google-places location=location class="form-control" ng-model="form.location" ng-required="true"></google-places>
-    <!-- ***************************** Date visited ******************************************** -->
-      <h4>Date visited</h4>
-                <p class="input-group">
-                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                  <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                  </span>
-                </p>
-        <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button> <br />
-
-    <!-- ****************************** picture select ************************************************-->
-    <h4>Select files</h4>
-
-    <div ng-show="uploader.isHTML5">
-        <!-- 3. nv-file-over uploader="link" over-class="className" -->
-        <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
-            Drag and drop picture here
+        <div ng-show="uploader.isHTML5">
+            <!-- 3. nv-file-over uploader="link" over-class="className" -->
+            <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
+                Drag and drop picture here
+            </div>
         </div>
+        <h5>Or</h5>
+        <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+        <input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
     </div>
-    <h5>Or</h5>
-    <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
-    <input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
-</div>
 <div class="row">
     <div class="col-md-6" style="margin-bottom: 40px">
         <!--<h3>Choose which Images you want to save</h3>
@@ -96,7 +86,7 @@
 <div class="row">
   <div class ="col-md-6">
 
-    <button type="button" class="btn btn-success btn-s" ng-click="submitForm() ; uploader.uploadAll()" ng-disabled ="!(!!form.heading && !!form.content && !!form.location && !!dt)">
+    <button type="button" class="btn btn-success btn-s" ng-click="submitForm() ; uploader.uploadAll()">
         <span class="glyphicon glyphicon-upload"></span> Upload all
     </button>
 
