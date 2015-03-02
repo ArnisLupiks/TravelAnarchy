@@ -1,6 +1,4 @@
-<div class="mainPage">
-<div class = "container at-view-flip-in-vertical  at-view-flip-out-vertical">
-<div class = "row">
+<div class = "postContainer">
   <form name = "post"  ng-controller="addPostCtrl" ng-submit="submitForm()"  class="addPost" nv-file-drop="" uploader="uploader">
     <div class="col-md-6">
       <!-- ************************* Use ID ************************************************* -->
@@ -38,8 +36,8 @@
         <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
         <input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
     </div>
-<div class="row">
-    <div class="col-md-6" style="margin-bottom: 40px">
+
+    <div class="col-md-6">
         <!--<h3>Choose which Images you want to save</h3>
         <p>Queue length: {{ uploader.queue.length }}</p> -->
         <table class="table">
@@ -82,23 +80,16 @@
             </tbody>
         </table>
     </div>
-</div>
-<div class="row">
-  <div class ="col-md-6">
-
-    <button type="button" class="btn btn-success btn-s" ng-click="submitForm() ; uploader.uploadAll()">
-        <span class="glyphicon glyphicon-upload"></span> Upload all
-    </button>
-
-    <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue();reset()">
-        <span class="glyphicon glyphicon-trash"></span> Clear all
-    </button>
-  </div>
-</div>
 
 
+        <div class = "buttonClassic">
+          <button type="button" class="btn btn-success btn-s" ng-click="submitForm() ; uploader.uploadAll()">
+              <span class="glyphicon glyphicon-upload"></span> Upload all
+          </button>
+          <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue();reset()">
+              <span class="glyphicon glyphicon-trash"></span> Clear all
+          </button>
+        </div>
 
   </form>
-</div>
-</div>
 </div>

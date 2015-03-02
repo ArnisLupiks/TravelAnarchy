@@ -96,6 +96,14 @@
     margin-top:5px;
     margin-bottom:5px;
   }
+  .postContainer{
+    padding-top:55px;
+    padding-right:10px;
+    padding-left:10px;
+  }
+  .buttonClassic{
+    padding-bottom:20px;
+  }
   }
 
 /* Landscape phones and down */
@@ -112,4 +120,13 @@
     padding-right:5px;
     padding-left:5px;
   }
+  .postContainer{
+    padding-top:55px;
+    padding-right:5px;
+    padding-left:5px;
+  }
+  .buttonClassic{
+    padding-bottom:20px;
+  }
+
   }
