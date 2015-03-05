@@ -7,12 +7,13 @@ var app = angular.module( 'sample', [
   'sample.login',
   'uiGmapgoogle-maps',
   'auth0',
+  'angular-storage'
 ])
 .config( function ( RestangularProvider, $urlRouterProvider, authProvider, $httpProvider) {
 
   authProvider.init({
-    domain: 'anarchy.auth0.com',
-    clientID: '7X4K9ubayD4zqas8amBegd7kZzar683k',
+    domain: AUTH0_DOMAIN,
+    clientID: AUTH0_CLIENT_ID,
     callbackURL: location.href,
     loginState: 'login'
   });
@@ -30,8 +31,13 @@ var app = angular.module( 'sample', [
 .run(function(auth) {
   auth.hookEvents();
 })
-.controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
+.controller( 'AppCtrl', function AppCtrl ( $scope, $location, auth, $state ) {
+  $scope.auth = auth;
 
+  $scope.logout = function(){
+    auth.singout();
+    $state.go('auth.login');
+  }
 })
 
 ;

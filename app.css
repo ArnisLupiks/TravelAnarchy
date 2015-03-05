@@ -38,9 +38,26 @@
   min-width: 200px;
 }
 
-/* Large desktop */
-@media (min-width: 1200px) {
+/* XLarge Desktop */
 
+@media (min-width:1200px){
+  .postContainer{
+    padding-top:55px;
+
+  }
+  .poster{
+    position:absolute;
+  }
+}
+
+/* Large desktop */
+
+@media (min-width: 980px) and (max-width: 1199px){
+  .postContainer{
+    padding-top:55px;
+    padding-right:50px;
+    padding-left:50px;
+  }
 }
 
 /* Portrait tablet to landscape and desktop */
@@ -58,7 +75,11 @@
   margin-top:10px;
   margin-bottom: 0px;
 }
-
+.postContainer{
+  padding-top:55px;
+  padding-right:20px;
+  padding-left:20px;
+}
 /*.panel-body{
   padding-right:0px;
   padding-left:0px;

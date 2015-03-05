@@ -11,6 +11,7 @@ angular.module('sample.allPosts', [
       url: '/',
       controller: 'postCtrl',
       templateUrl: 'partials/allPosts/allPosts.html'
+    
     });
 })
 

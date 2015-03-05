@@ -18,10 +18,13 @@ angular.module('sample.login', [
       console.log('there was an error', error);
     });
 })
-.controller('LoginCtrl', function($scope, auth, $state) {
+.controller('LoginCtrl', function($scope, auth, $state, store) {
   auth.signin({
     standalone: true,
     chrome: true
+
+  }, function(profile){
+    store.set('profile', profile);
   });
 
 });

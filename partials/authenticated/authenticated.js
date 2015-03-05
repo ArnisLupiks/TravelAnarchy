@@ -11,13 +11,25 @@ angular.module('sample.auth', [
         requiresLogin: true
       }
     });
+
 })
-.controller('AuthCtrl', function($scope, auth, $state) {
+.controller('AuthCtrl', function($scope, auth, $state, store) {
   $scope.auth = auth;
 
   $scope.logout = function() {
     auth.signout();
+    store.remove('profile');
     $state.go('login');
   };
 
+  var profile = store.get('profile');
+//getting users
+     getUsers();
+        function getUsers(){
+              var userData = {
+                uid : profile.user_id,
+                name : profile.name
+              };
+              console.log(userData);
+        }
 });

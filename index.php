@@ -26,14 +26,20 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/restangular/1.4.0/restangular.js"></script>
     <!-- bower components -->
-	<script type ="text/javascript" src = "bower_components/lodash/dist/lodash.min.js" type = "text/javascript"></script>
-	<script type ="text/javascript" src ="bower_components/angular-google-maps/dist/angular-google-maps.min.js" type = "text/javascript"></script>
-	<script type ="text/javascript" src = "bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
-	<script type = "text/javacript" src = "bower_components/ng-file-upload/angular-file-upload.js"></script>
-  <script type = "text/javacript" src = "bower_components\auth0-lock\build\auth0-lock.min.js"></script>
-  <script type = "text/javacript" src = "bower_components\auth0-angular\build\auth0-angular.min.js"></script>
-  <script type = "text/javacript" src = "bower_components\angular-file-upload\angular-file-upload.min.js"></script>
-  
+  	<script type ="text/javascript" src = "bower_components/lodash/dist/lodash.min.js" type = "text/javascript"></script>
+  	<script type ="text/javascript" src = "bower_components/angular-google-maps/dist/angular-google-maps.min.js" type = "text/javascript"></script>
+  	<script type ="text/javascript" src = "bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
+  	<script type = "text/javacript" src = "bower_components/ng-file-upload/angular-file-upload.js"></script>
+    <script type = "text/javacript" src = "bower_components\auth0-lock\build\auth0-lock.min.js"></script>
+    <script type = "text/javacript" src = "bower_components\auth0-angular\build\auth0-angular.min.js"></script>
+    <script type = "text/javacript" src = "bower_components\angular-file-upload\angular-file-upload.min.js"></script>
+    <script type = "text/javacript" src = "bower_components\bootstrap\js\collapse.js"></script>
+    <script type = "text/javacript" src = "bower_components\bootstrap\js\transition.js"></script>
+
+    <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+
+    <script type="text/javascript" src="auth0-variables.js"></script>
+
     <!-- App Javascripts -->
 
 	 <script type="text/javascript" src="app.js"></script>

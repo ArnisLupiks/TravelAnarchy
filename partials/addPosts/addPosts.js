@@ -8,9 +8,6 @@ angular.module('sample.addPosts', [
       url: '/addPosts',
       controller: 'addPostCtrl',
       templateUrl: 'partials/addPosts/addPosts.html',
-      data: {
-        requiresLogin: true
-      }
     });
 })
 .controller('addPostCtrl',
