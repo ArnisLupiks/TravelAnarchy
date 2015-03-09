@@ -1,17 +1,14 @@
-
-<div>
+<div ng-controller ='NavCtrl'>
   <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation" >
 			<div class="container">
         <div class = "navbar-header">
-
-
-				<a href ="#" class="navbar-brand">TravelMate</span></a>
-				<button type="button" class = "navbar-toggle" data-toggle = "collapse" data-target = ".navbar-collapse">
-					<span class = "icon-bar"></span>
-					<span class = "icon-bar"></span>
-					<span class = "icon-bar"></span>
-				</button>
-      </div>
+  				<a href ="#" class="navbar-brand">TravelMate</span></a>
+  				<button type="button" class = "navbar-toggle" data-toggle = "collapse" data-target = ".navbar-collapse">
+  					<span class = "icon-bar"></span>
+  					<span class = "icon-bar"></span>
+  					<span class = "icon-bar"></span>
+  				</button>
+        </div>
 				<div class = "collapse navbar-collapse navHeaderCollapse">
 					<ul class = "nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -32,7 +29,6 @@
               <li class="dropdown dropdown-inverse ">
                 <a class ="dropdown-toggle navbarPic" data-toggle = "dropdown">
                   <img class = "circular" img src="" ng-src="{{auth.profile.picture}}" alt="picture" ></img>
-
                   </a>
                   <ul class = "dropdown-menu dropdown-menu-inverse">
                     <li ng-class="{ active: isActive('/about')}"><a href="#about"><i class="fa fa-info"></i> About</a></li>
@@ -41,13 +37,8 @@
                     <li><a ng-click="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
                   </ul>
               </li>
-
 					</ul>
 				</div>
 			</div>
-
 		</nav>
-
-  <div ui-view>
-</div>
 </div>

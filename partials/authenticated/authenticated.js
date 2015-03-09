@@ -1,35 +1,28 @@
 angular.module('sample.auth', [
-  'ui.router'
+  'auth0'
 ])
-.config(function($stateProvider) {
-  $stateProvider
-    .state('auth', {
-      abstract: true,
-      controller: 'AuthCtrl',
-      templateUrl: 'partials/authenticated/authenticated.html',
-      data: {
-        requiresLogin: true
-      }
-    });
 
-})
-.controller('AuthCtrl', function($scope, auth, $state, store) {
+.controller( 'NavCtrl', function HomeController( $scope, auth, $http, $location, store, $rootScope ) {
+
   $scope.auth = auth;
+
+
 
   $scope.logout = function() {
     auth.signout();
     store.remove('profile');
-    $state.go('login');
-  };
-
+    store.remove('token');
+    $rootScope.isAuthenticated = false;
+    $location.path('/login');
+  }
   var profile = store.get('profile');
 //getting users
-     getUsers();
+/*     getUsers();
         function getUsers(){
               var userData = {
                 uid : profile.user_id,
                 name : profile.name
               };
               console.log(userData);
-        }
+        } */
 });
