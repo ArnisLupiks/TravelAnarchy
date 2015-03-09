@@ -28,13 +28,18 @@
       if(mysqli_num_rows($query) > 0){
           //do update on user talbe
           echo "User already exists here";
-          $update_query = "UPDATE users SET name = '$username', surname = '$surname', birthday = '$birthday', picture = '$picture' WHERE uid = '$usrid' AND email = '$email'";
-          if ($mysqli->query($update_query) ===TRUE){
-            echo " Records updated succeddfully";
+          $query ="UPDATE users SET name = ?, surname = ?, picture = ?
+                   WHERE uid = ? AND email = ?";
+          $statement = $mysqli->prepare($query);
+          //bind parameters for markers, where (s = string, i = integer, d = double,  b = blob)
+          $results = $statement->bind_param('ssbss', $username, $surname, $picture, $usrid, $email);
+
+          if($results){
+              print 'Success! recordsl in database updated';
           }else{
-            echo " Error updating records: " . $mysqli->error;
+              print 'Error : ('. $mysqli->errno .') '. $mysqli->error;
           }
-        }else{
+      }else{
         //else insert new user in database.
         echo 'there is no user like this, we are storing it in our database';
         $query="INSERT INTO users(uid,name,surname,email,birthday,picture) VALUES ('$usrid', '$username', '$surname', '$email', '$birthday', '$picture')";
