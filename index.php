@@ -38,15 +38,19 @@
   <script type = "text/javacript" src = "bower_components/ng-file-upload/angular-file-upload.js"></script>
   <script type = "text/javacript" src = "bower_components/auth0-lock/build/auth0-lock.min.js"></script>
   <script type = "text/javacript" src = "bower_components/auth0-angular/build/auth0-angular.min.js"></script>
-  <script type = "text/javacript" src = "bower_components/angular-file-upload\angular-file-upload.min.js"></script>
+  <script type = "text/javacript" src = "bower_components/angular-file-upload/angular-file-upload.min.js"></script>
   <script type = "text/javacript" src = "bower_components/bootstrap/js/collapse.js"></script>
   <script type = "text/javacript" src = "bower_components/bootstrap/js/transition.js"></script>
+  <script type = "text/javacript" src = "bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
+
 
     <!-- App partials &****************************************-->
    <script type="text/javascript" src="partials/login/login.js"></script>
    <script type="text/javascript" src="partials/authenticated/authenticated.js"></script>
    <script type="text/javascript" src="partials/allPosts/allPosts.js"></script>
    <script type="text/javascript" src="partials/addPosts/addPosts.js"></script>
+   <script type="text/javascript" src="partials/profile/profile.js"></script>
+
 
 
   </head>

@@ -3,6 +3,7 @@ var app = angular.module( 'sample', [
   'ngRoute',
   'sample.allPosts',
   'sample.addPosts',
+  'sample.profile',
   'sample.auth',
   'sample.login',
   'angular-storage',
@@ -21,6 +22,12 @@ var app = angular.module( 'sample', [
       controller: 'addPostCtrl',
       templateUrl: 'partials/addPosts/addPosts.html',
       pageTitle: 'AddPosts',
+      requiresLogin: true
+    })
+    .when( '/profile',{
+      controller: 'profileCtrl',
+      templateUrl: 'partials/profile/profile.html',
+      pageTitle: 'Profile',
       requiresLogin: true
     })
     .when( '/login', {
@@ -57,7 +64,6 @@ var app = angular.module( 'sample', [
         }
       }
     }
-
   });
 })
 .controller( 'AppCtrl', function AppCtrl ( $scope, $location) {

@@ -1,0 +1,34 @@
+<div class="mainPage" ng-controller="profileCtrl" data-ng-init="init()">
+  <br />
+  <br />
+  <br />
+  <span ng-bing = "user.name"></span>
+
+  <span>{{auth.profile.name}}</span>
+
+
+  <table class="table table-hover" >
+    <tbody>
+      <div class = "list-group" >
+        <div infinite-scroll="myPagingFunction()" infinite-scroll-distance="3">
+          <div ng-repeat="prof in user_profile " >
+          <!--  <div ng-click ="setMaster($this, post, $scope)"> -->
+              <!--<div class="list-group-item" ng-click="openPopup(post)"> -->
+                <div class = "col-md-6">
+                  <div class = "panel-body">
+
+                    <span ng-bing = "prof.name"></span>
+                    <span ng-bind = "prof.surname"></span>
+                    <span ng-bind= "prof.picture"></span>
+                </div>
+                </div>
+            <!--  </div>  -->
+            <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+    </tbody>
+  </table>
+
+</div>
