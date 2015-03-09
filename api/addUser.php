@@ -20,20 +20,22 @@
     $picture = mysql_real_escape_string($data->picture);
     //execute
 
-
+      //selects from database user id and email
       $query = mysqli_query($mysqli, "SELECT * FROM users WHERE uid = '$usrid' AND email = '$email'");
 
 
-
+      //if user id and email is the same
       if(mysqli_num_rows($query) > 0){
+          //do update on user talbe
           echo "User already exists here";
-          $update_query = mysqli_query($mysqli,"UPDATE users SET name = '$username', surname = '$surname', birthday = '$birthday', picture = '$picture' WHERE uid = '$usrid' AND email = '$email'");
+          $update_query = "UPDATE users SET name = '$username', surname = '$surname', birthday = '$birthday', picture = '$picture' WHERE uid = '$usrid' AND email = '$email'";
           if ($mysqli->query($update_query) ===TRUE){
             echo " Records updated succeddfully";
           }else{
             echo " Error updating records: " . $mysqli->error;
           }
         }else{
+        //else insert new user in database.
         echo 'there is no user like this, we are storing it in our database';
         $query="INSERT INTO users(uid,name,surname,email,birthday,picture) VALUES ('$usrid', '$username', '$surname', '$email', '$birthday', '$picture')";
         $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
