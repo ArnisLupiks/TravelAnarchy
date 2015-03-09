@@ -1,15 +1,7 @@
 angular.module('sample.addPosts', [
-  'ui.router',
-  'restangular',
+  'auth0',
+
 ])
-.config(function($stateProvider) {
-  $stateProvider
-    .state('auth.addPosts', {
-      url: '/addPosts',
-      controller: 'addPostCtrl',
-      templateUrl: 'partials/addPosts/addPosts.html',
-    });
-})
 .controller('addPostCtrl',
             function($scope, $http, $filter, $location, auth){
               //shows user credentials

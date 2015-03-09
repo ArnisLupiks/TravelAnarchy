@@ -1,43 +1,74 @@
 var app = angular.module( 'sample', [
-  'ui.router',
-  'restangular',
-  'sample.auth',
+  'auth0',
+  'ngRoute',
   'sample.allPosts',
   'sample.addPosts',
+  'sample.auth',
   'sample.login',
-  'uiGmapgoogle-maps',
-  'auth0',
-  'angular-storage'
+  'angular-storage',
+  'angular-jwt'
 ])
-.config( function ( RestangularProvider, $urlRouterProvider, authProvider, $httpProvider) {
+.config( function myAppConfig ( $routeProvider, authProvider, $httpProvider, $locationProvider,
+  jwtInterceptorProvider) {
+  $routeProvider
+    .when( '/', {
+      controller: 'postCtrl',
+      templateUrl: 'partials/allPosts/allPosts.html',
+      pageTitle: 'Home',
+      requiresLogin: true
+    })
+    .when( '/addPosts', {
+      controller: 'addPostCtrl',
+      templateUrl: 'partials/addPosts/addPosts.html',
+      pageTitle: 'AddPosts',
+      requiresLogin: true
+    })
+    .when( '/login', {
+      controller: 'LoginCtrl',
+      templateUrl: 'partials/login/login.html',
+      pageTitle: 'Login'
+    });
+
 
   authProvider.init({
     domain: AUTH0_DOMAIN,
     clientID: AUTH0_CLIENT_ID,
-    callbackURL: location.href,
-    loginState: 'login'
+    loginUrl: '/login'
   });
 
-  RestangularProvider.setBaseUrl('http://localhost/TravelAnarchy/');
-
-  $httpProvider.interceptors.push('authInterceptor');
-
-  $urlRouterProvider.otherwise('/');
-
-  authProvider.on('loginSuccess', function($state) {
-    $state.go('auth.allPosts');
-  })
-})
-.run(function(auth) {
-  auth.hookEvents();
-})
-.controller( 'AppCtrl', function AppCtrl ( $scope, $location, auth, $state ) {
-  $scope.auth = auth;
-
-  $scope.logout = function(){
-    auth.singout();
-    $state.go('auth.login');
+  jwtInterceptorProvider.tokenGetter = function(store) {
+    return store.get('token');
   }
+  $httpProvider.interceptors.push('jwtInterceptor');
+}).run(function($rootScope, auth, store, jwtHelper, $location) {
+//chech if user is loggend in webapp / on refresh page stay in logged in / if not gring to login page
+  $rootScope.$on('$locationChangeStart', function() {
+    if (!auth.isAuthenticated) {
+      var token = store.get('token');
+      if (token) {
+        if (!jwtHelper.isTokenExpired(token)) {
+          auth.authenticate(store.get('profile'), token);
+          //if authenticated show navbar
+          $rootScope.isAuthenticated = true;
+        } else {
+          $location.path('/login');
+          //if not authenticated hide navbar
+          $rootScope.isAuthenticated = false;
+        }
+      }
+    }
+
+  });
+})
+.controller( 'AppCtrl', function AppCtrl ( $scope, $location) {
+
+  $scope.$on('$routeChangeSuccess', function(e, nextRoute){
+
+
+    if ( nextRoute.$$route && angular.isDefined( nextRoute.$$route.pageTitle ) ) {
+      $scope.pageTitle = nextRoute.$$route.pageTitle + ' | Auth0 Sample' ;
+    }
+  });
 })
 
 ;

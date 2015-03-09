@@ -1,21 +1,13 @@
 angular.module('sample.allPosts', [
-  'ui.router',
-  'restangular'
+'auth0'
 
 
 
 ])
-.config(function($stateProvider) {
-  $stateProvider
-    .state('auth.allPosts', {
-      url: '/',
-      controller: 'postCtrl',
-      templateUrl: 'partials/allPosts/allPosts.html'
-    
-    });
-})
 
-.controller('postCtrl', function($scope, $http, $filter, $location, Restangular, auth){
+
+
+.controller('postCtrl', function($scope, $http, $filter, $location, auth){
 
 	$scope.auth = auth;
         // google map scope

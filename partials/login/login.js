@@ -1,30 +1,43 @@
-angular.module('sample.login', [
-  'ui.router',
+angular.module( 'sample.login', [
   'auth0'
 ])
-.config(function($stateProvider, authProvider) {
-  $stateProvider
-    .state('login', {
-      url: '/login',
-      controller: 'LoginCtrl',
-      templateUrl: 'partials/login/login.html'
-    });
+.controller( 'LoginCtrl', function HomeController( $scope, auth, $location, store, $http ) {
 
-    authProvider.on('loginSuccess', function($state){
-      $state.go('auth.allPosts');
+  $scope.login = function() {
+    auth.signin({}, function(profile, token) {
+      store.set('profile', profile);
+      store.set('token', token);
+      $location.path("/");
+      $scope.$root.isAuthenticated = true;
+      //storing user in database
+      getUsers();
+      function getUsers() {
+             var formData = {
+             uid: profile.user_id,
+             username: profile.given_name,
+             surname: profile.family_name,
+             email: profile.email,
+             birthday: profile.birthday,
+            picture: profile.picture
+           };
+           console.log(formData);
+           $http({
+               url: "api/addUser.php",
+               data: formData,
+               method: 'POST',
+               headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+           }).success(function(data){
+               //if added information, it will log OK and redirect.
+               console.log("OK", data);
+               //redirect to main post page
+               $location.path("/");
+           }).error(function(err){"ERR", console.log(err)})
+       };
+    }, function(error) {
+      console.log("There was an error logging in", error);
     });
+  }
 
-    authProvider.on('loginFailure', function(error){
-      console.log('there was an error', error);
-    });
-})
-.controller('LoginCtrl', function($scope, auth, $state, store) {
-  auth.signin({
-    standalone: true,
-    chrome: true
 
-  }, function(profile){
-    store.set('profile', profile);
-  });
 
 });
