@@ -6,6 +6,7 @@ angular.module( 'sample.login', [
   $scope.login = function() {
     auth.signin({}, function(profile, token) {
       store.set('profile', profile);
+      store.set('but', profile);
       store.set('token', token);
       $location.path("/");
       $scope.$root.isAuthenticated = true;

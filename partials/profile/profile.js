@@ -1,20 +1,25 @@
-angular.module('sample.profile', ['auth0'])
+angular.module('sample.profile', ['auth0', 'angular-storage'])
 
-.controller('profileCtrl', function($scope, $http, auth, store){
+.controller('profileCtrl', function HomeController ($scope, auth, $location, store, $http ){
   $scope.auth = auth;
+              //get logged user id
+              var profil =  store.get("profile");
+              var thisUser = { uid: profil.user_id};
+              console.log(thisUser);
+                $http.post(
+                     "api/getProfile.php",
+                     thisUser,
+                {
+                   headers : {'Content-Type':'application/json'}
+                }).success(function(data){
+                    //if added information, it will log OK and redirect.
+                    console.log("OK", data);
+                    $scope.user_profile = data;
+                }).error(function(err){"ERR", console.log(err)});
 
 
-  var profileID =  store.get('profile');
-
-  console.log("This is profile ID: "+ profileID);
-
-  getProfile(); //Load profile function
-
-          function getProfile(){
 
 
-                  $http.get("api/getProfile.php").success(function(data){
-                          $scope.user_profile = data;
-                  });
-          }
+
+
 });
