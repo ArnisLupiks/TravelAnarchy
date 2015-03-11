@@ -1,3 +1,33 @@
+.profilePicture{
+  display: block;
+    width: 200px;
+    height: 200px;
+    margin: 1em auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-border-radius: 99em;
+    -moz-border-radius: 99em;
+    border-radius: 99em;
+    border: 3px solid #eee;
+    box-shadow: 0 5px 5px rgba(44, 34, 3, 0.3);
+    margin: 0 0 0 0;
+    padding: 0;
+    z-index: 1;
+}
+.dropdown-menu{
+  background-color: #222;
+
+}
+.dropdown-menu>li>a {
+  color: #ffffff ;
+}
+.navbar-inverse .navbar-nav>li>a {
+  color: #ffffff ;
+}
+.navbar-inverse .navbar-brand {
+  color: #ffffff;
+}
 .circular{
   display: block;
     width: 50px;

@@ -2,15 +2,16 @@
   <br />
   <br />
   <br />
+<ul>
 
+</ul>
 
-  <span>{{auth.profile.name}}</span>
-
-
-
+<div class = "col-md-6">
                     <span ng-bind = "user_profile.name"></span>
                     <span ng-bind = "user_profile.surname"></span>
-                    <img ng-src= "{{user_profile.picture}}"></img>
-
+                  </div>
+                    <div class = "col-md-6">
+                      <img class = "profilePicture" ng-src= "{{user_profile.picture}}"></img>
+                  </div>
 
 </div>

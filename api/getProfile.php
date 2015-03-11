@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 
 	error_reporting(0);
-
+	try {
 	require_once ("php_includes/db_conn.php");
 
 	$mysqli = $db_conn;
@@ -11,23 +11,45 @@ header("Access-Control-Allow-Origin: *");
 	if (mysqli_connect_errno()) {
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
+
+	$data = json_decode(file_get_contents("php://input"));
+	$usrid = mysql_real_escape_string($data->uid);
+
+		$status = '%';
+		if(isset($_GET['status'])){
+			$status = $_GET['status'];
+		}
+
 	//declare
 	$data = json_decode(file_get_contents("php://input"));
 	$usrid = mysql_real_escape_string($data->uid);
 
 	$query = "SELECT uid, name, surname, birthday, picture
 	 					FROM users WHERE uid = ?";
-	if($statement = $mysqli->prepare($query)){
+	$statement = $mysqli->prepare($query);
 	$statement->bind_param('s', $usrid);
 	$statement->execute();
-	$statement->bind_result($uid, $name, $surname, $birthday, $picture);
-	$statement->fetch();
-	$statement->free_result();
-	echo $json_response = json_encode($result);
+	$result = $statement -> get_result();
+
+        $data = array();
+
+        //MYSQLI_NUM = Array items will use a numerical index key.
+        //MYSQLI_ASSOC = Array items will use the column name as an index key.
+        //MYSQLI_BOTH = [default] Array items will be duplicated, with one having a numerical index key and one having the column name as an index key.
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $data[] = $row;
+        }
+
+        //unicode
+        header("Content-Type: application/json", true);
+
+        echo json_encode($data);
+
+
+
 
 						//close connection
-						$statement->close();
-					}
+$statement->close();
 					$mysqli->close();
 /*
 	if($usrid != null){
@@ -56,5 +78,7 @@ header("Access-Control-Allow-Origin: *");
 
 */
 
-
+} catch (exception $e) {
+        echo json_encode(null);
+    }
 ?>
