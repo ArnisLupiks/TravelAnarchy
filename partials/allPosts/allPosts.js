@@ -20,38 +20,28 @@ angular.module('sample.allPosts', [
                                 $scope.posts = data;
                         });
                 }
-
         //optional -- order by date
         var orderBy = $filter('orderBy');
         $scope.order = function(predicate, reverse){
                 $scope.posts = orderBy($scope.posts, predicate, reverse);
         };
-
         $scope.order ('-postDate',false);
-
         // date pick option
         $scope.today = function(){
                 $scope.dt = new Date();
                 console.log("today button pressed");
         };
-
         $scope.open = function($event){
                 $event.preventDefault();
                 $event.stopPropagation();
-
                 $scope.opened = true;
         };
-
         $scope.dateOption = {
                 formatYear: 'yy',
                 startingDay:1
         };
-
         $scope.formats = ['yyyy/MM/dd','ss-MMMM-yyyy','dd.MM.yyyy','shortDate'];
         $scope.format = $scope.formats[0];
-
-
-
         //reset form ********************************************
         $scope.master = {};
         $scope.maste = "";
@@ -73,7 +63,6 @@ angular.module('sample.allPosts', [
         $scope.markers = { key: mid, coords: {latitude :lat, longitude: long },icon: 'bower_components/angular-maps/example/assets/images.blue_marker.png',
                 optimized:false,labelClass:"label"};
         };
-
         $scope.isSelected = function(section){
                 return $scope.selected === section;
         }
@@ -81,7 +70,13 @@ angular.module('sample.allPosts', [
                 preprocess: 'unix', //optional
                 timezone: 'Europe/London' //optional
         });
-
+				//get post picture
+				$scope.init = function(){
+					var postUser = {
+					uid: $('input[name=postUser]').val()
+					}
+					console.log(postUser);
+				}
 
 
 });

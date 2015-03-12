@@ -3,7 +3,7 @@ angular.module('sample.addPosts', [
 
 ])
 .controller('addPostCtrl',
-            function($scope, $http, $filter, $location, auth){
+            function HomeController($scope, $http, $filter, $location, auth){
               //shows user credentials
               $scope.auth = auth;
               // date pick option

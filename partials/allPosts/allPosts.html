@@ -9,7 +9,8 @@
               <!--  <div ng-click ="setMaster($this, post, $scope)"> -->
                   <!--<div class="list-group-item" ng-click="openPopup(post)"> -->
                     <div class = "col-md-6">
-
+                        <input type="hidden" name="postUser" ng-value ="post.uid"/>
+                        <span ng-bind = "post.uid"></span>
                         <h3 class = "panel-heading" ng-bind = "post.postHeading"></h3>
 
                       <div class = "panel-body">
