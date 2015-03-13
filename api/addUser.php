@@ -20,13 +20,13 @@
       $query = mysqli_query($mysqli, "SELECT * FROM users WHERE uid = '$usrid' AND email = '$email'");
       //if user id and email is the same
       if(mysqli_num_rows($query) > 0){
-          //do update on user talbe
+          //do update on user table
           //echo "User already exists here";
-          $query ="UPDATE users SET name = ?, surname = ?, picture = ?
-                   WHERE uid = ? AND email = ?";
+          $mysqli->query = ("UPDATE users SET name = ?, surname = ?, picture = ?
+                   WHERE uid = '$usrid AND email = '$email'");
           $statement = $mysqli->prepare($query);
           //bind parameters for markers, where (s = string, i = integer, d = double,  b = blob)
-          $results = $statement->bind_param('ssbss', $username, $surname, $picture, $usrid, $email);
+          $results = $statement->bind_param('ssb', $username, $surname, $picture);
 
           if($results){
               //print 'Success! recordsl in database updated';

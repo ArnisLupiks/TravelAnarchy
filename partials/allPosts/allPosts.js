@@ -1,41 +1,47 @@
 angular.module('sample.allPosts', [
-'auth0'
-
 
 
 ])
 
+.controller('postCtrl', function HomeController ($scope, $http, $filter, $location, auth){
 
 
-.controller('postCtrl', function($scope, $http, $filter, $location, auth){
-
-	$scope.auth = auth;
-        // google map scope
-        $scope.map = { center :{latitude:45,longitude:-73},zoom:8};
-
-
-        getPosts(); //Load all available tasks
-                function getPosts(){
                         $http.get("api/getPosts.php").success(function(data){
-                                $scope.posts = data;
+                                $scope.posts = data
+
+																angular.forEach($scope.posts, function(post){
+																	console.log(post.uid);
+
+
+
+																		var picUsrId = {uid : post.uid };
+
+																				$http.post("api/getPostUPic.php" , picUsrId
+																			).success(function(picdata){
+
+																						console.log("OK", picdata)
+
+																						picID = picdata[0];
+																							$scope.pics = picdata[0];
+
+
+																				}).error(function(err){
+																						"ERROR in getPostUPic", console.log(err)
+																				});
+
+
+																});
+
                         });
-                }
+
+
         //optional -- order by date
         var orderBy = $filter('orderBy');
         $scope.order = function(predicate, reverse){
                 $scope.posts = orderBy($scope.posts, predicate, reverse);
         };
         $scope.order ('-postDate',false);
-        // date pick option
-        $scope.today = function(){
-                $scope.dt = new Date();
-                console.log("today button pressed");
-        };
-        $scope.open = function($event){
-                $event.preventDefault();
-                $event.stopPropagation();
-                $scope.opened = true;
-        };
+
         $scope.dateOption = {
                 formatYear: 'yy',
                 startingDay:1
@@ -70,13 +76,5 @@ angular.module('sample.allPosts', [
                 preprocess: 'unix', //optional
                 timezone: 'Europe/London' //optional
         });
-				//get post picture
-				$scope.init = function(){
-					var postUser = {
-					uid: $('input[name=postUser]').val()
-					}
-					console.log(postUser);
-				}
-
 
 });
