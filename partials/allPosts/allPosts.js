@@ -1,70 +1,35 @@
-angular.module('sample.allPosts', [
-
-
-])
-
+angular.module('sample.allPosts', ['auth0'])
+//controller
 .controller('postCtrl', function HomeController ($scope, $http, $filter, $location, auth){
-
-
-      $scope.method = 'GET';
-      $scope.url = 'api/getPosts.php';
-
-
-
+        //set get method for posts
+        $scope.method = 'GET';
+        $scope.url = 'api/getPosts.php';
+        //execute method
         $http({method: $scope.method, url: $scope.url}).
           success(function(data, status) {
             $scope.status = status;
             $scope.posts = data;
-            console.log($scope.posts);
+            //console.log($scope.posts);
+            //add to each post user profile information
             angular.forEach($scope.posts ,function(post){
+              //get user id
               var picUsrId = {uid : post.uid };
+              //get user information
               $http.post("api/getPostUPic.php" , picUsrId)
                 .success(function(picdata){
-
+                      //adds picture/name/surname to post object
                       post.picture = picdata[0];
-                      console.log(post.picture);
-
+                    //trow error if not successfully executed function
                     }).error(function(err){
                         "ERROR in getPostUPic", console.log(err)
                     });
-
             })
           }).
+          //state errer if couldn't make connection
           error(function(data, status) {
             $scope.posts = data || "Request failed";
             $scope.status = status;
         });
-
-
-
-/*
-
-$http.get("api/getPosts.php").success(function(data){
-                              $scope.posts = data
-
-															angular.forEach($scope.posts, function(post){
-																	console.log(post.uid);
-																	var picUsrId = {uid : post.uid };
-																	$http.post("api/getPostUPic.php" , picUsrId)
-                                    .success(function(picdata){
-
-																						console.log("OK", picdata)
-
-																						picID = picdata[0];
-																							$scope.pics = picdata[0];
-
-
-																				}).error(function(err){
-																						"ERROR in getPostUPic", console.log(err)
-																				});
-
-
-																});
-
-                          }).error(function(data, status) {
-                            console.log("Error : " + data + " @ status : " + status);
-                          });
-*/
 
         //optional -- order by date
         var orderBy = $filter('orderBy');
