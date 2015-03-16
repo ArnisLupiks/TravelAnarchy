@@ -6,18 +6,47 @@ angular.module('sample.allPosts', [
 .controller('postCtrl', function HomeController ($scope, $http, $filter, $location, auth){
 
 
-                        $http.get("api/getPosts.php").success(function(data){
-                                $scope.posts = data
+      $scope.method = 'GET';
+      $scope.url = 'api/getPosts.php';
 
-																angular.forEach($scope.posts, function(post){
+
+
+        $http({method: $scope.method, url: $scope.url}).
+          success(function(data, status) {
+            $scope.status = status;
+            $scope.posts = data;
+            console.log($scope.posts);
+            angular.forEach($scope.posts ,function(post){
+              var picUsrId = {uid : post.uid };
+              $http.post("api/getPostUPic.php" , picUsrId)
+                .success(function(picdata){
+
+                      post.picture = picdata[0];
+                      console.log(post.picture);
+
+                    }).error(function(err){
+                        "ERROR in getPostUPic", console.log(err)
+                    });
+
+            })
+          }).
+          error(function(data, status) {
+            $scope.posts = data || "Request failed";
+            $scope.status = status;
+        });
+
+
+
+/*
+
+$http.get("api/getPosts.php").success(function(data){
+                              $scope.posts = data
+
+															angular.forEach($scope.posts, function(post){
 																	console.log(post.uid);
-
-
-
-																		var picUsrId = {uid : post.uid };
-
-																				$http.post("api/getPostUPic.php" , picUsrId
-																			).success(function(picdata){
+																	var picUsrId = {uid : post.uid };
+																	$http.post("api/getPostUPic.php" , picUsrId)
+                                    .success(function(picdata){
 
 																						console.log("OK", picdata)
 
@@ -32,8 +61,10 @@ angular.module('sample.allPosts', [
 
 																});
 
-                        });
-
+                          }).error(function(data, status) {
+                            console.log("Error : " + data + " @ status : " + status);
+                          });
+*/
 
         //optional -- order by date
         var orderBy = $filter('orderBy');
@@ -71,10 +102,7 @@ angular.module('sample.allPosts', [
         };
         $scope.isSelected = function(section){
                 return $scope.selected === section;
-        }
-        app.constant('angularMomentConfig',{
-                preprocess: 'unix', //optional
-                timezone: 'Europe/London' //optional
-        });
+        };
+
 
 });

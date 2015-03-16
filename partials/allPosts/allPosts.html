@@ -9,9 +9,14 @@
               <!--  <div ng-click ="setMaster($this, post, $scope)"> -->
                   <!--<div class="list-group-item" ng-click="openPopup(post)"> -->
                     <div class = "col-md-6">
-                          <input type="hidden" ng-model = "formData.postUser" ng-value ="post.uid"/>
-                          <img class = "circular" ng-src= "{{pics.picture}}" alt="profile pic" />
-                        <span ng-bind = "post.uid"></span>
+                      <div class="col-md-6">
+                        <span>posted by: {{post.picture.name}} {{post.picture.surname}}</span>
+                      </div>
+                      <div class="col-md-6">
+                        <img class = "circular" ng-src= "{{post.picture.picture}}"alt="profile pic" />
+
+                      </div>
+
                         <h3 class = "panel-heading" ng-bind = "post.postHeading"></h3>
 
                       <div class = "panel-body">
