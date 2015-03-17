@@ -1,4 +1,4 @@
-var app = angular.module( 'sample', [
+var app = angular.module( 'TravelMate', [
   'auth0',
   'ngRoute',
   'sample.allPosts',
@@ -6,7 +6,8 @@ var app = angular.module( 'sample', [
   'sample.profile',
   'sample.auth',
   'sample.login',
-  'angular-storage',
+  'sample.newMessage',
+  'angular-storage', 'ui.bootstrap',
   'angular-jwt'
 ])
 .config( function myAppConfig ( $routeProvider, authProvider, $httpProvider, $locationProvider,
@@ -34,6 +35,12 @@ var app = angular.module( 'sample', [
       controller: 'LoginCtrl',
       templateUrl: 'partials/login/login.html',
       pageTitle: 'Login'
+    })
+    .when( '/newMessage', {
+      controller: 'newMessageCtrl',
+      templateUrl: 'partials/newMessage/newMessage.html',
+      pageTitle: 'New Message',
+      requiresLogin: true
     });
 
 

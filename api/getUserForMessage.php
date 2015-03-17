@@ -14,24 +14,25 @@ header("Access-Control-Allow-Origin: *");
 
 	//declare
 	$data = json_decode(file_get_contents("php://input"));
-	$usrid = mysql_real_escape_string($data->uid);
+	$name = mysql_real_escape_string($data->name);
+//  $surname = mysql_real_escape_string($data->surname);
 
-	$query = "SELECT picture, username, surname
-	 					FROM users WHERE uid = ?";
+	$query = "SELECT distinct uid, c.name
+	 					FROM users c order by 1";
 	$statement = $mysqli->prepare($query);
-	$statement->bind_param('s', $usrid);
+	$statement->bind_param();
 	$statement->execute();
-	$result = $statement -> get_result();
-        $picdata = array();
+	$result = $statement ->get_result();
+        $data = array();
         //MYSQLI_NUM = Array items will use a numerical index key.
         //MYSQLI_ASSOC = Array items will use the column name as an index key.
         //MYSQLI_BOTH = [default] Array items will be duplicated, with one having a numerical index key and one having the column name as an index key.
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $picdata[] = $row;
+            $data[] = $row;
         }
         //unicode
         header("Content-Type: application/json", true);
-        echo json_encode($picdata);
+        echo json_encode($data);
 	//close connection
   $statement->close();
 	$mysqli->close();

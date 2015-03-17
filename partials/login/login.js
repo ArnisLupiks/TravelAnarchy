@@ -15,6 +15,7 @@ angular.module( 'sample.login', [
       function getUsers() {
              var formData = {
              uid: profile.user_id,
+             name: profile.name,
              username: profile.given_name,
              surname: profile.family_name,
              email: profile.email,

@@ -1,35 +1,65 @@
 
   <style>
-    html, body { padding: 0; margin: 0; }
+    .blurred-bg {
+        background-image:url(img/natureblur.jpg);
+      	background-repeat:no-repeat;
+      	@include background-size(cover);
+      	background-attachment: fixed;
+        -webkit-background-size: 100% auto;
+        -moz-background-size: 100% auto;
+        -o-background-size: 100% auto;
+        background-size: 100% auto;
+      	&.tinted{
+      		@include background-image(linear-gradient(0deg, rgba(255,255,255,.2),rgba(255,255,255,.2)),url($blurred-img));
+      	}
+      	&.shaded{
+      		@include background-image(linear-gradient(0deg, rgba(0,0,0,.2),rgba(0,0,0,.2)),url($blurred-img));
+      	}
+      }
+    .box{
+      left:-webkit-calc( 50% - 250px );
+      top:25%;
+    	position:absolute;
+    	border-radius:10px;
+    	@include box-shadow(0 20px 30px rgba(0,0,0,.6));
+    	border:1px solid rgba(39, 17, 17, 0.3);
+    	padding:20px;
+    	text-align: center;
+    	@include box-sizing(border-box);
+    	text-shadow:0 1px 1px rgba(47, 91, 148, 0.3);
 
-    .table {
-      display: table;
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-      background-color: #e8ebef;
+      transition: box-shadow .3s ease;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      &:active{
+        cursor:move;
+        @include box-shadow(0 20px 50px rgba(0,0,0,.9));
+        }
+
+      .content{
+          margin: auto;
+      }
     }
-
-    .cell {
-      display: table-cell;
-      vertical-align: middle;
-    }
-
-    .content {
-      padding: 25px 0px 25px 0px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 280px; /* login widget width */
+  body {
+      background: url(img/nature.jpg);
+      background-repeat:no-repeat;
+    	background-size: cover;
+    	background-attachment: fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    	font-family:Raleway, Open Sans, Droid Sans, Roboto,arial, sans-serif;
     }
   </style>
 
 
-  <div class="login-page clearfix">
-    <div class="login-box auth0-box">
-      <img src="https://i.cloudup.com/StzWWrY34s.png" />
-      <h3>Auth0 Example</h3>
-      <p>Zero friction identity infrastructure, built for developers</p>
-      <a ng-click="login()" class="btn btn-primary btn-lg btn-block">SignIn</a>
+  <div class="box blurred-bg tinted">
+    <div class="content">
+      <h3>Travel Mate</h3>
+      <p>Login to view friends and other people traveling experiences</p>
+      <button ng-click="login()" class="btn btn-primary btn-block">SignIn</button>
     </div>
-  </div>
+    </div>

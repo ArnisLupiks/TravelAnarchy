@@ -10,6 +10,7 @@
     //declare
     $data = json_decode(file_get_contents("php://input"));
     $usrid = mysql_real_escape_string($data->uid);
+    $name = mysql_real_escape_string($data->name);
     $username = mysql_real_escape_string($data->username);
     $email = mysql_real_escape_string($data->email);
     $surname = mysql_real_escape_string($data->surname);
@@ -22,11 +23,11 @@
       if(mysqli_num_rows($query) > 0){
           //do update on user table
           //echo "User already exists here";
-          $mysqli->query = ("UPDATE users SET name = ?, surname = ?, picture = ?
+          $mysqli->query = ("UPDATE users SET name =?, username = ?, surname = ?, picture = ?
                    WHERE uid = '$usrid AND email = '$email'");
           $statement = $mysqli->prepare($query);
           //bind parameters for markers, where (s = string, i = integer, d = double,  b = blob)
-          $results = $statement->bind_param('ssb', $username, $surname, $picture);
+          $results = $statement->bind_param('sssb', $name, $username, $surname, $picture);
 
           if($results){
               //print 'Success! recordsl in database updated';
@@ -36,7 +37,7 @@
       }else{
         //insert new user in database.
         //echo 'there is no user like this, we are storing it in our database';
-        $query="INSERT INTO users(uid,name,surname,email,birthday,picture) VALUES ('$usrid', '$username', '$surname', '$email', '$birthday', '$picture')";
+        $query="INSERT INTO users(uid,name,username,surname,email,birthday,picture) VALUES ('$usrid','$name','$username', '$surname', '$email', '$birthday', '$picture')";
         $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
         $result = $mysqli->affected_rows;
       }

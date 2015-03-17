@@ -20,7 +20,7 @@ header("Access-Control-Allow-Origin: *");
 	$data = json_decode(file_get_contents("php://input"));
 	$usrid = mysql_real_escape_string($data->uid);
 
-	$query = "SELECT name, surname, picture
+	$query = "SELECT username, surname, picture
 	 					FROM users WHERE uid = ?";
 	$statement = $mysqli->prepare($query);
 	$statement->bind_param('s', $usrid);
