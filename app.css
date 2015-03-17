@@ -94,8 +94,8 @@
 @media (min-width: 768px) and (max-width: 979px) {
 .col-md-6, .container{
 
-  padding-right: 0px;
-  padding-left: 0px;
+  padding-right: 10px;
+  padding-left: 10px;
 
   marging-right: 0px;
   marging-left:0px;
@@ -119,8 +119,8 @@
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
   .col-md-6, .container{
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 10px;
+    padding-left: 10px;
 
     marging-right: 0px;
     marging-left:0px;

@@ -1,12 +1,5 @@
 <div class="mainPage"  ng-controller="newMessageCtrl">
-      <input type="text" placeholder="Search Users"
-      ng-model="selectedUsers"
-      typeahead="c as c.country for c in countries | filter:$viewValue | limitTo:10"
-      typeahead-min-length='1'
-      typeahead-on-select='onSelectPart($item, $model, $label)'
-      typeahead-template-url="customTemplate.html" style="width:350px;">
-
-
+    
       <div class="row">
         	<div class="container">
 

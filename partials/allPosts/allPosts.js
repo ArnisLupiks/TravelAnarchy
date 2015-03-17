@@ -1,6 +1,6 @@
-angular.module('sample.allPosts', ['auth0'])
+angular.module('sample.allPosts', ['auth0']);
 //controller
-.controller('postCtrl', function HomeController ($scope, $http, $filter, $location, auth){
+app.controller('postCtrl', function HomeController ($scope, $http, $filter, $location, auth, ngDialog){
         //set get method for posts
         $scope.method = 'GET';
         $scope.url = 'api/getPosts.php';
@@ -56,7 +56,7 @@ angular.module('sample.allPosts', ['auth0'])
         $scope.openPopup = function(post){
                 var newScope = $scope.$new();
                 newScope.post = post;
-                ngDialog.open({ template: 'posts/individualPosts.html', className: 'ngdialog-theme-default', controller: 'postCtrl', scope: newScope});
+                ngDialog.open({ template: 'partials/allPosts/post.html', className: 'ngdialog-theme-default', controller: 'postCtrl', scope: newScope});
                 var lat = post.latitude;
                 var long = post.longitude;
                 var mid = post.postID;

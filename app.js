@@ -7,8 +7,7 @@ var app = angular.module( 'TravelMate', [
   'sample.auth',
   'sample.login',
   'sample.newMessage',
-  'angular-storage', 'ui.bootstrap',
-  'angular-jwt'
+  'angular-storage', 'ui.bootstrap',  'angular-jwt', 'ngDialog'
 ])
 .config( function myAppConfig ( $routeProvider, authProvider, $httpProvider, $locationProvider,
   jwtInterceptorProvider) {
@@ -79,7 +78,7 @@ var app = angular.module( 'TravelMate', [
 
 
     if ( nextRoute.$$route && angular.isDefined( nextRoute.$$route.pageTitle ) ) {
-      $scope.pageTitle = nextRoute.$$route.pageTitle + ' | Auth0 Sample' ;
+      $scope.pageTitle = nextRoute.$$route.pageTitle + ' | TravelMate' ;
     }
   });
 })

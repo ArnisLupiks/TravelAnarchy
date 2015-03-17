@@ -1,37 +1,57 @@
-<div class="mainPage" ng-controller="postCtrl" data-ng-init="init()">
-      <label>Filter by keywords: <input type="text" ng-model="objProppostHeadingFilter" /></label><br />
 
-      <table class="table table-hover" >
-        <tbody>
-          <div class = "list-group" >
-            <div infinite-scroll="myPagingFunction()" infinite-scroll-distance="3">
-              <div ng-repeat ="post in posts.slice().reverse() | filter:{$: objProppostHeadingFilter} " >
-              <!--  <div ng-click ="setMaster($this, post, $scope)"> -->
-                  <!--<div class="list-group-item" ng-click="openPopup(post)"> -->
-                    <div class = "col-md-6">
-                      <div class="col-md-6">
-                        <span>posted by: {{post.picture.name}} {{post.picture.surname}}</span>
-                      </div>
-                      <div class="col-md-6">
-                        <img class = "circular" ng-src= "{{post.picture.picture}}"alt="profile pic" />
 
-                      </div>
 
-                        <h3 class = "panel-heading" ng-bind = "post.postHeading"></h3>
-
-                      <div class = "panel-body">
-                        <h5 class = "maincontent text-justify" ng-bind = "post.postContent"></h5>
-                        <!--  <ui-gmap-google-map center='{latitude : "ng-bind: post.latitude", longitude:"ng-bind: post.logitude"}' zoom='map.zoom'></ui-gmap-google-map> -->
-                        <!-- image view -->
-                      <img src ="img/1.jpg" class= "img-responsive" />
-                    </div>
-                <!--  </div>  -->
-                <!-- </div> -->
-            </div>
-
+    <div class="mainPage" ng-controller="postCtrl" data-ng-init="init()">
+      <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-lg-6">
+            <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control" placeholder="Filter by keywords" aria-describedby="sizing-addon2" ng-model="objProppostHeadingFilter">
+          </div>
           </div>
         </div>
       </div>
+
+      <table class="table table-hover" >
+        <tbody>
+          <ul class = "list-group" >
+              <li ng-repeat ="post in posts.slice().reverse() | filter:{$: objProppostHeadingFilter} " class="list-group">
+
+                  <div class = "" ng-click="openPopup(post)">
+                    <div class="row">
+
+
+                    <div class="col-md-6">
+
+
+                        <span>posted by: {{post.picture.username}} {{post.picture.surname}}</span>
+
+                        <img class = "circular" ng-src= "{{post.picture.picture}}"alt="profile pic" />
+
+
+
+                        <h3 class = "panel-heading" ng-bind = "post.postHeading"></h3>
+
+
+                        <h5 class = "maincontent text-justify" ng-bind = "post.postContent"></h5>
+                        <!--  <ui-gmap-google-map center='{latitude : "ng-bind: post.latitude", longitude:"ng-bind: post.logitude"}' zoom='map.zoom'></ui-gmap-google-map> -->
+                        <!-- image view -->
+                      </div>
+                      <div class="col-md-6">
+
+
+                      <img src ="img/1.jpg" class= "img-responsive" />
+
+                    </div>
+                  </div>
+                </div>
+
+
+
+        </li>
+
+    </ul>
         </tbody>
       </table>
 </div>

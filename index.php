@@ -9,7 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- font awesome from BootstrapCDN -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/ngDialog-theme-default.css">
+  <link rel="stylesheet" href="css/ngDialog-theme-plain.css">
+  <link rel="stylesheet" href="css/ngDialog.css">
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -42,6 +46,8 @@
   <script type = "text/javacript" src = "bower_components/angular-file-upload/angular-file-upload.min.js"></script>
   <script type = "text/javacript" src = "bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
   <script type = "text/javacript" src = "bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.2.3/js/ngDialog.min.js"></script>
+
 
 
 
@@ -52,9 +58,6 @@
    <script type="text/javascript" src="partials/addPosts/addPosts.js"></script>
    <script type="text/javascript" src="partials/profile/profile.js"></script>
    <script type="text/javascript" src="partials/newMessage/newMessage.js"></script>
-
-
-
 
   </head>
   <body>
