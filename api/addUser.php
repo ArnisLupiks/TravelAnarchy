@@ -18,7 +18,7 @@
     $picture = mysql_real_escape_string($data->picture);
     //execute
       //selects from database user id and email
-      $query = mysqli_query($mysqli, "SELECT * FROM users WHERE uid = '$usrid' AND email = '$email'");
+      $query = mysqli_query($mysqli, "SELECT uid, email FROM users WHERE uid = '$usrid' AND email = '$email'");
       //if user id and email is the same
       if(mysqli_num_rows($query) > 0){
           //do update on user table

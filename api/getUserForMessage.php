@@ -17,7 +17,7 @@ header("Access-Control-Allow-Origin: *");
 	$name = mysql_real_escape_string($data->name);
 //  $surname = mysql_real_escape_string($data->surname);
 
-	$query = "SELECT distinct uid, c.name
+	$query = "SELECT distinct uid, c.name, c.email
 	 					FROM users c order by 1";
 	$statement = $mysqli->prepare($query);
 	$statement->bind_param();

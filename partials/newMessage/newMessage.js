@@ -1,6 +1,7 @@
 angular.module('sample.newMessage', ['auth0'])
 
-.controller('newMessageCtrl', function HomeController ($scope, $http, $filter, $location, auth){
+.controller('newMessageCtrl', function HomeController ($scope, $rootScope, $http, $filter, $window, $location, auth){
+  $scope.auth = auth;
 
   $scope.method = 'GET';
   $scope.url = 'api/getUserForMessage.php';
@@ -30,5 +31,53 @@ angular.module('sample.newMessage', ['auth0'])
          $scope.posts = data || "Request failed";
          $scope.status = status;
      });
+
+
+      //setting receiver scope infromation
+      var selUs;
+       $rootScope.selectedUsers = "";
+         $scope.$watch('selectedUsers', function(newValue, oldValue) {
+           console.log('newMessageCtrl.watch.list:', newValue);
+           if(newValue !== oldValue){
+             $rootScope.selectedUsers = newValue;
+           }
+           return selUs;
+
+         });
+         //SELECTS MESSAGE FROM USER
+         $rootScope.mess = "";
+           $scope.$watch('mess', function(newValue, oldValue) {
+             console.log('newMessageCtrl.watch.list:', newValue);
+             if(newValue !== oldValue){
+               $rootScope.mess = newValue;
+             }
+           });
+
+
+         //posting message to user
+         $scope.sendMessage = function() {
+
+           var messy = {
+             receiverUid: $rootScope.selectedUsers.uid,
+             senderUid: auth.profile.user_id,
+             message: $rootScope.mess
+           }
+           console.log("LOL didn't work: " +auth.profile.user_id);
+           console.log("HSKDAJKDJA didn't work: " +$rootScope.selectedUsers.uid);
+           console.log("HSKDAJKDJA didn't work: " +$rootScope.mess);
+
+           $scope.method = 'POST';
+           $scope.url = 'api/sendMessage.php';
+
+           $http({method: $scope.method, url:$scope.url, data: messy, headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
+           .success(function(data,status){
+             console.log("OK- message sent", data);
+           })
+           .error(function(data, status){
+             $scope.message = data || " Sending failed";
+             $scope.status = status;
+           });
+       };
+
 
 });
