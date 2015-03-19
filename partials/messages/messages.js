@@ -1,25 +1,19 @@
-angular.module('sample.messages', ['auth0']);
+angular.module('sample.messages', ['auth0'])
 //controller
-app.controller('messageCtrl', function  ($scope, $http, $filter, auth){
+.controller('messageCtrl', function  ($scope, $http, $filter, auth){
   $scope.auth = auth;
-
-
-var Usr = {
-    uid: auth.profile.user_id
-};
-
-console.log("This user ID: ", Usr);
+  //declare user id
+  var Usr = {
+      uid: auth.profile.user_id
+  };
   //set get method for posts
   $scope.method = 'POST';
   $scope.url = 'api/getMessages.php';
-  $scope.uid = auth.profile.user_id;
   //execute method
   $http({method: $scope.method, url: $scope.url, data: Usr, headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).
     success(function(data, status) {
       $scope.status = status;
       $scope.messages = data;
-      console.log(data);
-      console.log("EEEE :" , status);
       //add to each post user profile information
       angular.forEach($scope.messages ,function(message){
         //get user id

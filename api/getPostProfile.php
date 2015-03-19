@@ -1,17 +1,13 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-
+	header("Access-Control-Allow-Origin: *");
 	error_reporting(0);
 	try {
 	require_once ("php_includes/db_conn.php");
-
 	$mysqli = $db_conn;
-
 	// Check for database connection error
 	if (mysqli_connect_errno()) {
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-
  //declare
 	$data = json_decode(file_get_contents("php://input"));
 	$usrid = mysql_real_escape_string($data->uid);
@@ -38,5 +34,5 @@ header("Access-Control-Allow-Origin: *");
 
 } catch (exception $e) {
         echo json_encode(null);
-    }
+}
 ?>

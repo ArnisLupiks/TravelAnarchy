@@ -8,7 +8,7 @@ header("Access-Control-Allow-Origin: *");
 	if (mysqli_connect_errno()) {
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
-
+	//declaring
 	$data = json_decode(file_get_contents("php://input"));
 	$receiverUid = mysql_real_escape_string($data->uid);
 	//executig sql query
@@ -32,5 +32,5 @@ header("Access-Control-Allow-Origin: *");
 		$mysqli->close();
 } catch (exception $e) {
         echo json_encode(null);
-    }
+}
 ?>

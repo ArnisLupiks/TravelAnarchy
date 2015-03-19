@@ -7,8 +7,6 @@ angular.module('sample.profile', ['auth0', 'angular-storage'])
               var thisUser = { uid: profil.user_id};
               console.log(thisUser);
 
-
-
                 $http.post(
                      "api/getProfile.php",
                      thisUser,
@@ -20,10 +18,5 @@ angular.module('sample.profile', ['auth0', 'angular-storage'])
                     $scope.user_profile = data[0];
 
                 }).error(function(err){"ERR", console.log(err)});
-
-
-
-
-
 
 });

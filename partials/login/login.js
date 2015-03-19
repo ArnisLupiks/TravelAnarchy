@@ -2,7 +2,6 @@ angular.module( 'sample.login', [
   'auth0'
 ])
 .controller( 'LoginCtrl', function HomeController( $scope, auth, $location, store, $http ) {
-
   $scope.login = function() {
     auth.signin({}, function(profile, token) {
       store.set('profile', profile);
@@ -39,7 +38,4 @@ angular.module( 'sample.login', [
       console.log("There was an error logging in", error);
     });
   }
-
-
-
 });
