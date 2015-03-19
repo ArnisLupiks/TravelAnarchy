@@ -12,11 +12,7 @@ header("Access-Control-Allow-Origin: *");
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-	$data = json_decode(file_get_contents("php://input"));
-	$usrid = mysql_real_escape_string($data->uid);
-
-
-	//declare
+ //declare
 	$data = json_decode(file_get_contents("php://input"));
 	$usrid = mysql_real_escape_string($data->uid);
 

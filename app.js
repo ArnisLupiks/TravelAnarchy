@@ -7,6 +7,7 @@ var app = angular.module( 'TravelMate', [
   'sample.auth',
   'sample.login',
   'sample.newMessage',
+  'sample.messages',
   'angular-storage', 'ui.bootstrap',  'angular-jwt', 'ngDialog'
 ])
 .config( function myAppConfig ( $routeProvider, authProvider, $httpProvider, $locationProvider,
@@ -39,6 +40,12 @@ var app = angular.module( 'TravelMate', [
       controller: 'newMessageCtrl',
       templateUrl: 'partials/newMessage/newMessage.html',
       pageTitle: 'New Message',
+      requiresLogin: true
+    })
+    .when( '/message', {
+      controller: 'messageCtrl',
+      templateUrl: 'partials/messages/messages.html',
+      pageTitle: 'Messages',
       requiresLogin: true
     });
 

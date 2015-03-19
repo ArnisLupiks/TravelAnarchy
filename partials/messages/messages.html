@@ -1,0 +1,42 @@
+<div class="mainPage" ng-controller="messageCtrl">
+
+  <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-lg-6">
+        <div class="input-group">
+        <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search"></i></span>
+        <input type="text" class="form-control" placeholder="Filter messages by keywords" aria-describedby="sizing-addon2" ng-model="objProppostHeadingFilter">
+      </div>
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover" >
+    <tbody>
+      <ul class = "list-group" >
+          <li ng-repeat ="message in messages.slice().reverse() | filter:{$: objProppostHeadingFilter} ">
+              <a class = "box">
+                <div class="row">
+
+
+                <div class="col-xs-6">
+                  <img class = "circular" ng-src= "{{message.picture.picture}}"alt="profile pic" />
+                    <h5><span>received from: {{message.picture.username}} {{message.picture.surname}}</span></h5>
+                  </div>
+                  <div class="col-md-6">
+                    <h4 class = "maincontent text-justify" ng-bind = "message.mess"></h4>
+                </div>
+                <div class="col-xs-3">
+                  <h6 ng-bind = "message.postedOn"></h6>
+                </div>
+
+                  <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue();reset()">
+                      <span class="glyphicon glyphicon-trash"></span> Delete Message
+                  </button>
+              
+              </div>
+            </a>
+          </li>
+      </ul>
+    </tbody>
+  </table>
+</div>

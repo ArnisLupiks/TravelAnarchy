@@ -17,11 +17,11 @@ header("Access-Control-Allow-Origin: *");
     $data = json_decode(file_get_contents("php://input"));
     $receiverUid = mysql_real_escape_string($data->receiverUid);
     $senderUid = mysql_real_escape_string($data->senderUid);
-    $message = mysql_real_escape_string($data->message);
+    $mess = mysql_real_escape_string($data->message);
   //execute
   if($senderUid != null){
         echo $usrid;
-        $query="INSERT INTO messages(receiverUid,senderUid,message) VALUES ('$receiverUid', '$senderUid', '$message')";
+        $query="INSERT INTO messages(receiverUid,senderUid,mess) VALUES ('$receiverUid', '$senderUid', '$mess')";
         $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
         $result = $mysqli->affected_rows;
        echo $json_response = json_encode($result);
