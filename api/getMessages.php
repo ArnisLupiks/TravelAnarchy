@@ -10,7 +10,7 @@ header("Access-Control-Allow-Origin: *");
 	}
 	//declaring
 	$data = json_decode(file_get_contents("php://input"));
-	$receiverUid = mysql_real_escape_string($data->uid);
+	$receiverUid = $data->uid;
 	//executig sql query
 	$query = "SELECT * FROM messages WHERE receiverUid = ?";
 		$statement = $mysqli->prepare($query);

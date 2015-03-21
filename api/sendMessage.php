@@ -14,9 +14,9 @@ header("Access-Control-Allow-Origin: *");
 
     //declare
     $data = json_decode(file_get_contents("php://input"));
-    $receiverUid = mysql_real_escape_string($data->receiverUid);
-    $senderUid = mysql_real_escape_string($data->senderUid);
-    $mess = mysql_real_escape_string($data->message);
+    $receiverUid = $data->receiverUid;
+    $senderUid = $data->senderUid;
+    $mess = m$data->message;
   //execute
   if($senderUid != null){
         echo $usrid;

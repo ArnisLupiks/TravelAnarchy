@@ -14,7 +14,7 @@ header("Access-Control-Allow-Origin: *");
 
 	//declare
 	$data = json_decode(file_get_contents("php://input"));
-	$name = mysql_real_escape_string($data->name);
+	$name = $data->name;
 //  $surname = mysql_real_escape_string($data->surname);
 
 	$query = "SELECT distinct uid, c.name, c.email

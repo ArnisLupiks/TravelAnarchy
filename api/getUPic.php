@@ -14,7 +14,7 @@ header("Access-Control-Allow-Origin: *");
 
 	//declare
 	$data = json_decode(file_get_contents("php://input"));
-	$usrid = mysql_real_escape_string($data->uid);
+	$usrid = $data->uid;
 
 	$query = "SELECT picture
 	 					FROM users WHERE uid = ?";

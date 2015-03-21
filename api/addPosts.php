@@ -1,6 +1,5 @@
 <?php
 
-    error_reporting(0);
 
     require_once ("php_includes/db_conn.php");
     // Connecting to mysql database
@@ -14,11 +13,11 @@
 
     //declare
     $data = json_decode(file_get_contents("php://input"));
-    $usrid = mysql_real_escape_string($data->uid);
-    $heading = mysql_real_escape_string($data->heading);
-    $content = mysql_real_escape_string($data->content);
+    $usrid = $data->uid;
+    $heading = $data->heading;
+    $content = $data->content;
     //$location = mysql_real_escape_string($data->location);
-    $date = mysql_real_escape_string($data->date);
+    $date = $data->date;
 
     //execute
   if($usrid != null){
