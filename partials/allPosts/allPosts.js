@@ -23,7 +23,7 @@ app.controller('postCtrl', function ($scope, $http, $filter, $location, auth, ng
                       //adds picture/name/surname to post object
                       console.log(status);
                     //  console.log(picdata);
-                      return(post.picture = picdata[0]);
+                      post.picture = picdata[0];
                     //trow error if not successfully executed function
                     }).error(function(err){
                         "ERROR in getPostUPic", console.log(err)

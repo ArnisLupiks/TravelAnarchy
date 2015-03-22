@@ -19,10 +19,10 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 
 	$query = "SELECT picture, username, surname
 	 					FROM users WHERE uid = ?";
-	$statement = $mysqli->prepare($query);
-	$statement->bind_param('s', $usrid);
-	$statement->execute();
-	$result = $statement -> get_result();
+						$statement = $mysqli->prepare($query);
+						$statement->bind_param('s', $usrid);
+						$statement->execute();
+						$result = $statement -> get_result();
         $picdata = array();
         //MYSQLI_NUM = Array items will use a numerical index key.
         //MYSQLI_ASSOC = Array items will use the column name as an index key.

@@ -24,7 +24,7 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
         //MYSQLI_NUM = Array items will use a numerical index key.
         //MYSQLI_ASSOC = Array items will use the column name as an index key.
         //MYSQLI_BOTH = [default] Array items will be duplicated, with one having a numerical index key and one having the column name as an index key.
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        while ($row = mysqli_fetch_assoc($result, MYSQLI_ASSOC)) {
             $data[] = $row;
         }
         //unicode
