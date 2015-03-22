@@ -9,15 +9,19 @@ app.controller('postCtrl', function HomeController ($scope, $http, $filter, $loc
           success(function(data, status) {
             $scope.status = status;
             $scope.posts = data;
-            //console.log($scope.posts);
+            console.log($scope.posts);
             //add to each post user profile information
             angular.forEach($scope.posts ,function(post){
               //get user id
               var picUsrId = {uid : post.uid };
               //get user information
-              $http.post("api/getPostUPic.php" , picUsrId)
-                .success(function(picdata){
+              $scope.method = 'POST';
+              $scope.url = 'api/getPostUPic.php';
+              $http({method: $scope.method, url: $scope.url, data: picUsrId})
+                .success(function(picdata, status){
                       //adds picture/name/surname to post object
+                      console.log(status);
+                    //  console.log(picdata);
                       post.picture = picdata[0];
                     //trow error if not successfully executed function
                     }).error(function(err){
