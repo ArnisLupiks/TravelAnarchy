@@ -1,7 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 
-    error_reporting(0);
+    //error_reporting(0);
 
     require_once ("php_includes/db_conn.php");
     // Connecting to mysql database
@@ -16,10 +16,10 @@ header("Access-Control-Allow-Origin: *");
     $data = json_decode(file_get_contents("php://input"));
     $receiverUid = $data->receiverUid;
     $senderUid = $data->senderUid;
-    $mess = m$data->message;
+    $mess = $data->message;
   //execute
   if($senderUid != null){
-        echo $usrid;
+        echo $receiverUid;
         $query="INSERT INTO messages(receiverUid,senderUid,mess) VALUES ('$receiverUid', '$senderUid', '$mess')";
         $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
         $result = $mysqli->affected_rows;

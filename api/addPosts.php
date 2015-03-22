@@ -1,6 +1,8 @@
 <?php
-
-
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Authorization");
+header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
+try{
     require_once ("php_includes/db_conn.php");
     // Connecting to mysql database
     $mysqli = $db_conn;
@@ -22,12 +24,16 @@
     //execute
   if($usrid != null){
         echo $usrid;
-        $query="INSERT INTO posts(uid,postHeading,postContent,date) VALUES ('$usrid', '$heading', '$content', '$date')";
+        $query="INSERT INTO posts (uid,postHeading,postContent,date) VALUES ('$usrid', '$heading', '$content', '$date')";
         $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
         $result = $mysqli->affected_rows;
        echo $json_response = json_encode($result);
     }else{
       echo "there is some errors!! ";
     }
+
+  } catch (exception $e) {
+          echo json_encode(null);
+}
 
 ?>

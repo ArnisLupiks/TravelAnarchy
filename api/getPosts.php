@@ -1,7 +1,9 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Authorization");
+header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 
-	error_reporting(0);
+	//error_reporting(0);
 
 	require_once ("php_includes/db_conn.php");
 
@@ -10,11 +12,6 @@ header("Access-Control-Allow-Origin: *");
 	// Check for database connection error
 	if (mysqli_connect_errno()) {
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
-
-	$status = '%';
-	if(isset($_GET['status'])){
-		$status = $_GET['status'];
 	}
 
 	$query="select * from posts";

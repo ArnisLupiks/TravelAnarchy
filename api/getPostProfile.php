@@ -1,6 +1,8 @@
 <?php
-	header("Access-Control-Allow-Origin: *");
-	error_reporting(0);
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Authorization");
+header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
+	//error_reporting(0);
 	try {
 	require_once ("php_includes/db_conn.php");
 	$mysqli = $db_conn;

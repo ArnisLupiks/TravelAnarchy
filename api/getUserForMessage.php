@@ -1,7 +1,9 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Authorization");
+header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 
-	error_reporting(0);
+	//error_reporting(0);
 	try {
 	require_once ("php_includes/db_conn.php");
 
@@ -12,15 +14,12 @@ header("Access-Control-Allow-Origin: *");
 			echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-	//declare
-	$data = json_decode(file_get_contents("php://input"));
-	$name = $data->name;
+
 //  $surname = mysql_real_escape_string($data->surname);
 
-	$query = "SELECT distinct uid, c.name, c.email
+	$query = "SELECT DISTINCT uid, c.name, c.email
 	 					FROM users c order by 1";
 	$statement = $mysqli->prepare($query);
-	$statement->bind_param();
 	$statement->execute();
 	$result = $statement ->get_result();
         $data = array();

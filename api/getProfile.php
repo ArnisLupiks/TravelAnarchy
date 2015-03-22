@@ -1,6 +1,8 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-	error_reporting(0);
+header("Access-Control-Allow-Headers: Authorization");
+header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
+	//error_reporting(0);
 	try {
 	require_once ("php_includes/db_conn.php");
 	$mysqli = $db_conn;
@@ -12,8 +14,7 @@ header("Access-Control-Allow-Origin: *");
 	$data = json_decode(file_get_contents("php://input"));
 	$usrid = $data->uid;
 	//executig sql query
-	$query = "SELECT uid, username, surname, birthday, picture
-	 					FROM users WHERE uid = ?";
+	$query = "SELECT * FROM users WHERE uid = ?";
 		$statement = $mysqli->prepare($query);
 		$statement->bind_param('s', $usrid);
 		$statement->execute();
