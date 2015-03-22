@@ -1,6 +1,6 @@
 angular.module('sample.allPosts', ['auth0']);
 //controller
-app.controller('postCtrl', function HomeController ($scope, $http, $filter, $location, auth, ngDialog){
+app.controller('postCtrl', function ($scope, $http, $filter, $location, auth, ngDialog){
         //set get method for posts
         $scope.method = 'GET';
         $scope.url = 'api/getPosts.php';
@@ -10,6 +10,7 @@ app.controller('postCtrl', function HomeController ($scope, $http, $filter, $loc
             $scope.status = status;
             $scope.posts = data;
             console.log($scope.posts);
+
             //add to each post user profile information
             angular.forEach($scope.posts ,function(post){
               //get user id
@@ -22,7 +23,7 @@ app.controller('postCtrl', function HomeController ($scope, $http, $filter, $loc
                       //adds picture/name/surname to post object
                       console.log(status);
                     //  console.log(picdata);
-                      post.picture = picdata[0];
+                      return(post.picture = picdata[0]);
                     //trow error if not successfully executed function
                     }).error(function(err){
                         "ERROR in getPostUPic", console.log(err)
