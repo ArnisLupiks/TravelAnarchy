@@ -1,6 +1,5 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Authorization");
 header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 	//error_reporting(0);
 	try {
