@@ -16,8 +16,22 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 
 	//declare
 	$data = json_decode(file_get_contents("php://input"));
-	$usrid = $data->uid;
+	$usrid = mysql_real_escape_string($data->uid);
 
+	$query="SELECT picture FROM users WHERE uid = '$usrid'";
+	$result = $mysqli->query($query) or die($mysqli->conn->error.__LINE__);
+	$picdata = array();
+
+	if($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+		$picdata[] = $row;
+		}
+	}
+
+	echo $json_response = json_encode($picdata);
+
+
+/*
 	$query = "SELECT picture
 	 					FROM users WHERE uid = ?";
 	$statement = $mysqli->prepare($query);
@@ -37,7 +51,7 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 	//close connection
   $statement->close();
 	$mysqli->close();
-
+*/
 } catch (exception $e) {
         echo json_encode(null);
     }

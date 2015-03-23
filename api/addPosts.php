@@ -15,11 +15,11 @@ try{
 
     //declare
     $data = json_decode(file_get_contents("php://input"));
-    $usrid = $data->uid;
-    $heading = $data->heading;
-    $content = $data->content;
+    $usrid = mysql_real_escape_string($data->uid);
+    $heading = mysql_real_escape_string($data->heading);
+    $content = mysql_real_escape_string($data->content);
     //$location = mysql_real_escape_string($data->location);
-    $date = $data->date;
+    $date = mysql_real_escape_string($data->date);
 
     //execute
   if($usrid != null){

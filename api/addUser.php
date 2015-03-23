@@ -13,12 +13,12 @@
     } // The mysql database connection script
     //declare
     $data = json_decode(file_get_contents("php://input"));
-    $usrid = $data->uid;
-    $name = $data->name;
-    $username = $data->username;
-    $email = $data->email;
-    $surname = $data->surname;
-    $picture = $data->picture;
+    $usrid = mysql_real_escape_string($data->uid);
+    $name = mysql_real_escape_string($data->name);
+    $username = mysql_real_escape_string($data->username);
+    $email = mysql_real_escape_string($data->email);
+    $surname = mysql_real_escape_string($data->surname);
+    $picture = mysql_real_escape_string($data->picture);
     //execute
       //selects from database user id and email
       $query = mysqli_query($mysqli, "SELECT email FROM users WHERE email = '$email'");

@@ -16,6 +16,23 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 
 //  $surname = mysql_real_escape_string($data->surname);
 
+
+	$query="SELECT DISTINCT uid, c.name, c.email
+	 					FROM users c order by 1";
+	$result = $mysqli->query($query) or die($mysqli->conn->error.__LINE__);
+	$data = array();
+
+	if($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+		$data[] = $row;
+		}
+	}
+
+	echo $json_response = json_encode($data);
+
+
+/*
+
 	$query = "SELECT DISTINCT uid, c.name, c.email
 	 					FROM users c order by 1";
 	$statement = $mysqli->prepare($query);
@@ -34,7 +51,7 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 	//close connection
   $statement->close();
 	$mysqli->close();
-
+*/
 } catch (exception $e) {
         echo json_encode(null);
     }
