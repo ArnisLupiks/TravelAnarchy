@@ -21,21 +21,15 @@
     $picture = mysql_real_escape_string($data->picture);
     //execute
       //selects from database user id and email
-      $query = mysqli_query($mysqli, "SELECT email FROM users WHERE email = '$email'");
+      $query = "SELECT email FROM users WHERE uid = '$usrid'";
       //if user id and email is the same
-      if(mysqli_num_rows($query) > 0){
+      if( $result = $mysqli->query($query) > null){
           //do update on user table
           echo "User already exists here";
-          $query = "UPDATE users SET name = ?, username = ?, surname = ?, picture = ?
-                   WHERE email = ?";
-          $statement = $mysqli->prepare($query);
-          //bind parameters for markers, where (s = string, i = integer, d = double,  b = blob)
-          $statement->bind_param('sssbs', $name, $username, $surname, $picture, $usrid);
-          $statement->execute();
-
-
-          echo  $statement->affected_rows .  print 'Success! recordsl in database updated';
-
+          $query = "UPDATE users SET name = '$name', username = '$username', surname = '$surname', email = '$email'
+                   WHERE uid = '$usrid'";
+                   $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+                   $result = $mysqli->affected_rows;
 
       }else{
         //insert new user in database.
