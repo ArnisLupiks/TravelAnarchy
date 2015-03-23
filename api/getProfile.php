@@ -12,7 +12,7 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 	}
 	//declare
 	$data = json_decode(file_get_contents("php://input"));
-	$usrid = mysql_real_escape_string($data->uid);
+	$usrid = $data->uid;
 	//executig sql query
 
 	$query="SELECT * FROM users WHERE uid = '$usrid'";
