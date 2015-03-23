@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/ngDialog.css">
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <!-- Jquery -->
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
@@ -57,6 +57,9 @@
    <script type="text/javascript" src="partials/profile/profile.js"></script>
    <script type="text/javascript" src="partials/newMessage/newMessage.js"></script>
    <script type="text/javascript" src="partials/messages/messages.js"></script>
+
+
+   <script type="text/javascript" src="js/custom.js"></script>
 
 
   </head>

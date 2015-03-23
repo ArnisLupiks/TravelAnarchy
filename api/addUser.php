@@ -1,6 +1,5 @@
 <?php
     header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: Authorization");
     header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 
     require_once ("php_includes/db_conn.php");
@@ -13,17 +12,20 @@
     } // The mysql database connection script
     //declare
     $data = json_decode(file_get_contents("php://input"));
-    $usrid = mysql_real_escape_string($data->uid);
-    $name = mysql_real_escape_string($data->name);
-    $username = mysql_real_escape_string($data->username);
-    $email = mysql_real_escape_string($data->email);
-    $surname = mysql_real_escape_string($data->surname);
-    $picture = mysql_real_escape_string($data->picture);
+    $usrid =$data->uid;
+    $name = $data->name;
+    $username = $data->username;
+    $email = $data->email;
+    $surname = $data->surname;
+    $picture = $data->picture;
     //execute
       //selects from database user id and email
       $query = "SELECT email FROM users WHERE uid = '$usrid'";
+      $res = $mysqli->query($query) or die($mysqli->error.__LINE__);
+      $res = $mysqli->affected_rows;
+
       //if user id and email is the same
-      if( $result = $mysqli->query($query) > null){
+      if($res = $mysqli->affected_rows > 0){
           //do update on user table
           echo "User already exists here";
           $query = "UPDATE users SET name = '$name', username = '$username', surname = '$surname', email = '$email'
