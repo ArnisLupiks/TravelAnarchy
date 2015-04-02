@@ -35,15 +35,15 @@
     <script src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js" type="text/javascript"> </script>
     <script type="text/javascript" src="app.js"></script>
     <!-- bower components -->
-  <script type ="text/javascript" src = "bower_components/lodash/dist/lodash.min.js" type = "text/javascript"></script>
-  <script type ="text/javascript" src = "bower_components/angular-google-maps/dist/angular-google-maps.min.js" type = "text/javascript"></script>
-  <script type ="text/javascript" src = "bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
-  <script type = "text/javacript" src = "bower_components/ng-file-upload/angular-file-upload.js"></script>
-  <script type = "text/javacript" src = "bower_components/auth0-lock/build/auth0-lock.min.js"></script>
-  <script type = "text/javacript" src = "bower_components/auth0-angular/build/auth0-angular.min.js"></script>
-  <script type = "text/javacript" src = "bower_components/angular-file-upload/angular-file-upload.min.js"></script>
-  <script type = "text/javacript" src = "bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
-  <script type = "text/javacript" src = "bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script  src = "bower_components/lodash/dist/lodash.min.js" type = "text/javascript"></script>
+  <script src = "bower_components/angular-google-maps/dist/angular-google-maps.min.js" type = "text/javascript"></script>
+  <script src = "bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
+  <script src = "bower_components/ng-file-upload/angular-file-upload.js"></script>
+  <script src = "bower_components/auth0-lock/build/auth0-lock.min.js"></script>
+  <script src = "bower_components/auth0-angular/build/auth0-angular.min.js"></script>
+  <script src = "bower_components/angular-file-upload/angular-file-upload.min.js"></script>
+  <script src = "bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
+  <script src = "bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.2.3/js/ngDialog.min.js"></script>
 
 
@@ -58,8 +58,6 @@
    <script type="text/javascript" src="partials/newMessage/newMessage.js"></script>
    <script type="text/javascript" src="partials/messages/messages.js"></script>
 
-
-   <script type="text/javascript" src="js/custom.js"></script>
 
 
   </head>
