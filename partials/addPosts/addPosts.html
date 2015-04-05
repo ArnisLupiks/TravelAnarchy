@@ -1,141 +1,92 @@
 <div class = "postContainer">
   <form name = "post"  ng-controller="addPostCtrl" ng-submit="submitForm()"  class="addPost" nv-file-drop="" uploader="uploader">
-    <div class="col-md-6 col-centered">
-      <!-- ************************* Use ID ************************************************* -->
-        <input type="hidden" name="uid" ng-value ="auth.profile.user_id"/>
-        <!-- *************************** Post heading **************************************-->
-          <h4>Name of the post:</h4>
-          <input type="text" class= "form-control" name="heading" ng-model="form.heading" ng-trim = "false" maxlength="30" />
-        <!-- ************************** Post content ****************************************** -->
-          <h4>Post Content:</h4>
-          <textarea type="text" class="form-control" rows="3" name="content" ng-model="form.content" ng-trim = "false" maxlength="350" ></textarea></p>
-          <span>{{350 - form.content.length}} left</span>
-        <!-- **************************** Selects location ****************************************** -->
-        <!--  <h4>Lookup location:</h4>
-          <google-places location=location class="form-control" ng-model="form.location" ></google-places> -->
-        <!-- ***************************** Date visited ******************************************** -->
-          <h4>Date visited</h4>
-                    <p class="input-group">
-                      <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                      </span>
-                    </p>
-            <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button> <br />
-
+    <div class="row">
+      <div class="col-dm-6">
+        <div class="col-md-6 col-centered">
+            <!--* Use ID  -->
+            <input type="hidden" name="uid" ng-value ="auth.profile.user_id"/>
+            <!-- Post heading -->
+              <h4>Name of the post:</h4>
+              <input type="text" class= "form-control" name="heading" ng-model="form.heading" ng-trim = "false" maxlength="30" />
+            <!--  Post content  -->
+              <h4>Post Content:</h4>
+              <textarea type="text" class="form-control" rows="3" name="content" ng-model="form.content" ng-trim = "false" maxlength="350" ></textarea></p>
+              <span>{{350 - form.content.length}} left</span>
+            <!-- Selects location -->
+            <!--  <h4>Lookup location:</h4>
+              <google-places location=location class="form-control" ng-model="form.location" ></google-places> -->
+            <!-- Date visited -->
+              <h4>Date visited</h4>
+                <p class="input-group">
+                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </p>
+              <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button> <br />
+          </div>
         <!-- ****************************** picture select ************************************************-->
-        <h4>Select files</h4>
-        <input type="file" ng-file-select ng-model="files" uploader="uploader" multiple  /><br/>
+        <div class="col-md-6">
+          <h3>Select files</h3>
+          <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+          <input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
+          <p>Amount of pictures uploding: {{ uploader.queue.length }}</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th width="50%">Name</th>
+                  <th ng-show="uploader.isHTML5">Size</th>
+                  <th ng-show="uploader.isHTML5">Progress</th>
 
-        <div class="row">
-
-                  <div class="col-md-3">
-
-                      <h3>Select files</h3>
-
-                      <div ng-show="uploader.isHTML5">
-                          <!-- 3. nv-file-over uploader="link" over-class="className" -->
-                          <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
-                              Base drop zone
-                          </div>
-
-                          <!-- Example: nv-file-drop="" uploader="{Object}" options="{Object}" filters="{String}" -->
-                          <div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
-                              <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone">
-                                  Another drop zone with its own settings
-                              </div>
-                          </div>
-                      </div>
-
-                      <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
-                      <input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
-
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in uploader.queue">
+                  <td>
+                    <strong>{{ item.file.name }}</strong>
+                    <!-- Image preview -->
+                    <!--auto height-->
+                    <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
+                    <!--auto width-->
+                    <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                    <!--fixed width and height -->
+                    <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
+                  </td>
+                  <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                  <td ng-show="uploader.isHTML5">
+                  <div class="progress" style="margin-bottom: 0;">
+                  <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
                   </div>
+                  </td>
+                  <td nowrap>
 
-                  <div class="col-md-9" style="margin-bottom: 40px">
-                      <h2>Uploads only images (with canvas preview)</h2>
-                      <h3>The queue</h3>
-                      <p>Queue length: {{ uploader.queue.length }}</p>
-
-                      <table class="table">
-                          <thead>
-                              <tr>
-                                  <th width="50%">Name</th>
-                                  <th ng-show="uploader.isHTML5">Size</th>
-                                  <th ng-show="uploader.isHTML5">Progress</th>
-                                  <th>Status</th>
-                                  <th>Actions</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr ng-repeat="item in uploader.queue">
-                                  <td>
-                                      <strong>{{ item.file.name }}</strong>
-                                      <!-- Image preview -->
-                                      <!--auto height-->
-                                      <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
-                                      <!--auto width-->
-                                      <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
-                                      <!--fixed width and height -->
-                                      <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
-                                  </td>
-                                  <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
-                                  <td ng-show="uploader.isHTML5">
-                                      <div class="progress" style="margin-bottom: 0;">
-                                          <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
-                                      </div>
-                                  </td>
-                                  <td class="text-center">
-                                      <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-                                      <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
-                                      <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
-                                  </td>
-                                  <td nowrap>
-                                      <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                                          <span class="glyphicon glyphicon-upload"></span> Upload
-                                      </button>
-                                      <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
-                                          <span class="glyphicon glyphicon-ban-circle"></span> Cancel
-                                      </button>
-                                      <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-                                          <span class="glyphicon glyphicon-trash"></span> Remove
-                                      </button>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-
-                      <div>
-                          <div>
-                              Queue progress:
-                              <div class="progress" style="">
-                                  <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
-                              </div>
-                          </div>
-                          <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
-                              <span class="glyphicon glyphicon-upload"></span> Upload all
-                          </button>
-                          <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
-                              <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
-                          </button>
-                          <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
-                              <span class="glyphicon glyphicon-trash"></span> Remove all
-                          </button>
-                      </div>
-
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                      <span class="glyphicon glyphicon-trash"></span> Remove
+                    </button>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+            <div>
+              <div>
+                Queue progress:
+                  <div class="progress" style="">
+                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
                   </div>
-
-
-
-
-        <div class = "buttonClassic">
-          <button type="button" class="btn btn-success btn-s" ng-click="submitForm() ; uploader.uploadAll()">
-              <span class="glyphicon glyphicon-upload"></span> Upload all
-          </button>
-          <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue();reset()">
-              <span class="glyphicon glyphicon-trash"></span> Clear all
-          </button>
+              </div>
+            </div>
         </div>
+      </div>
+    </div>
+      <div class = "buttonClassic">
+        <button type="button" class="btn btn-success btn-s" ng-click="submitForm() ; uploader.uploadAll()">
+            <span class="glyphicon glyphicon-upload"></span> Upload all
+        </button>
+        <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue();reset()">
+          <span class="glyphicon glyphicon-trash"></span> Clear all
+        </button>
+      </div>
 
   </form>
 </div>
