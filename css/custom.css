@@ -1,4 +1,6 @@
-
+body{
+	background-color:#e5f4f0;
+}
 ul{
 	list-style: none;
 }
@@ -205,3 +207,61 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
  * off Canvas sidebar
  * --------------------------------------------------
  */
+.navbar-default {
+  background-color: #009971;
+  border-color: #007a5a;
+}
+.navbar-default .navbar-brand {
+  color: #ffffff;
+	text-shadow: 4px 4px 2px #004d39;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #ecdbff;
+	text-shadow: 4px 4px 2px #004d39;
+
+}
+.navbar-default .navbar-text {
+  color: #ffffff;
+	text-shadow: 4px 4px 2px #004d39;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #ffffff;
+	text-shadow: 4px 4px 4px #001e16;
+
+
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #ffffff;
+	text-shadow: 5px 5px 3px #004d39;
+	box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.3);
+	box-shadow: 10px 0 30px #004d39;
+	bottom: 2px;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #ffffff;
+  background-color: #007a5a;
+
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #ffffff;
+  background-color: #007a5a;
+}
+.navbar-default .navbar-toggle {
+  border-color: #007a5a;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #007a5a;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #ffffff;
+}
+.navbar-default .navbar-link {
+  color: #ffffff;
+}
+.navbar-default .navbar-link:hover {
+  color: #ecdbff;
+}

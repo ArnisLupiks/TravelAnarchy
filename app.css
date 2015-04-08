@@ -29,7 +29,7 @@
     z-index: 1;
 }
 .dropdown-menu{
-  background-color: #222;
+  background-color: #009971;
 
 }
 .dropdown-menu>li>a {
@@ -91,6 +91,16 @@
   .poster{
     position:absolute;
   }
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+  color: #ffffff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+  color: #ffffff;
+  background-color: #007a5a;
+  box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.3);
+	box-shadow: 10px 0 30px #004d39;
+
+  }
 }
 
 /* Large desktop */
@@ -100,6 +110,15 @@
     padding-top:55px;
     padding-right:50px;
     padding-left:50px;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+  color: #ffffff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+  color: #ffffff;
+  background-color: #007a5a;
+  box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.3);
+	box-shadow: 10px 0 30px #004d39;
   }
 }
 
@@ -122,6 +141,15 @@
   padding-top:55px;
   padding-right:20px;
   padding-left:20px;
+}
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+color: #ffffff;
+}
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+color: #ffffff;
+background-color: #007a5a;
+box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.3);
+box-shadow: 10px 0 30px #004d39;
 }
 /*.panel-body{
   padding-right:0px;
@@ -168,6 +196,15 @@
   .buttonClassic{
     padding-bottom:20px;
   }
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+  color: #ffffff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+  color: #ffffff;
+  background-color: #007a5a;
+  box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.3);
+	box-shadow: 10px 0 30px #004d39;
+  }
   }
 
 /* Landscape phones and down */
@@ -192,5 +229,13 @@
   .buttonClassic{
     padding-bottom:20px;
   }
-
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+  color: #ffffff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+  color: #ffffff;
+  background-color: #007a5a;
+  box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.3);
+	box-shadow: 10px 0 30px #004d39;
+  }
   }
