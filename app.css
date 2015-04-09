@@ -209,12 +209,14 @@ box-shadow: 10px 0 30px #004d39;
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
-  .col-md-6, .container{
-    padding-right: 0px;
-    padding-left: 0px;
+  
 
-    marging-right: 0px;
-    marging-left:0px;
+  .col-md-6, .container{
+
+  }
+  .maincontent{
+    padding-right: 2px;
+    padding-left: 2px;
   }
   .panel-body{
 
