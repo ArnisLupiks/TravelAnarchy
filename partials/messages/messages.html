@@ -12,6 +12,8 @@
   </div>
 
       <ul class = "list-group" >
+        <div class="panel panel-default">
+        <div class="panel-body">
           <li ng-repeat ="message in messages.slice().reverse() | filter:{$: objProppostHeadingFilter} ">
             <div class="box2">
 
@@ -41,6 +43,8 @@
               </div>
             </div>
           </li>
+        </div>
+      </div>
       </ul>
 
 </div>
