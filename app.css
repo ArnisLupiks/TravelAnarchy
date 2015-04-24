@@ -29,10 +29,9 @@ padding-right: 5px;
 p:first-letter{
   font-size: 200%;
   font-family:  garamond, bodoni, curly, times, serif;
-color: orange;
-padding-right: 1px;
-position:relative;
-margin-left: -26px;
+  text-shadow: 2px 1px 0 #BBBFC7, 7px 7px 0 #fff;
+  color: #cc8400;
+
 }
 .about-img{
   height: 50px;
