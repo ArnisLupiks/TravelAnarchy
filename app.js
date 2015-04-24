@@ -42,14 +42,17 @@ var app = angular.module( 'TravelMate', [
       pageTitle: 'New Message',
       requiresLogin: true
     })
+    .when( '/about', {
+      templateUrl: 'partials/about/about.html',
+      pageTitle: 'About' ,
+      requiresLogin: true
+    })
     .when( '/message', {
       controller: 'messageCtrl',
       templateUrl: 'partials/messages/messages.html',
       pageTitle: 'Messages',
       requiresLogin: true
     });
-
-
   authProvider.init({
     domain: AUTH0_DOMAIN,
     clientID: AUTH0_CLIENT_ID,

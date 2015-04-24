@@ -10,7 +10,33 @@
 
 
 }
+.centered{
+  display: flex;
+justify-content: center; /* align horizontal */
+align-items: center; /* align vertical */
+padding-left:5px;
+padding-right: 5px;
+}
+.center-justified{
+  text-align: justify;
+  margin: 0 auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-indent: 30px;
 
+
+}
+p:first-letter{
+  font-size: 200%;
+  font-family:  garamond, bodoni, curly, times, serif;
+color: orange;
+padding-right: 1px;
+position:relative;
+margin-left: -26px;
+}
+.about-img{
+  height: 50px;
+}
 .profilePicture{
   display: block;
     width: 200px;
@@ -209,7 +235,7 @@ box-shadow: 10px 0 30px #004d39;
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
-  
+
 
   .col-md-6, .container{
 
