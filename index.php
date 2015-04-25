@@ -57,6 +57,8 @@
    <script type="text/javascript" src="partials/profile/profile.js"></script>
    <script type="text/javascript" src="partials/newMessage/newMessage.js"></script>
    <script type="text/javascript" src="partials/messages/messages.js"></script>
+   <script type="text/javascript" src="partials/favoriteLogs/favorite.js"></script>
+
 
 
 

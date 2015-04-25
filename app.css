@@ -44,6 +44,10 @@ p:first-letter{
   color:#ffff19;
 
 }
+/* -- Remove favorite -- */
+.fa.fa-minus-circle.fa-3x.remove{
+  color:red;
+}
 .panel.panel-default.logs {
   background-color: #b7c3c0;
 }

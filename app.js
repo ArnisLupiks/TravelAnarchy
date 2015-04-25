@@ -8,6 +8,7 @@ var app = angular.module( 'TravelMate', [
   'sample.login',
   'sample.newMessage',
   'sample.messages',
+  'sample.favorLogs',
   'angular-storage', 'ui.bootstrap',  'angular-jwt', 'ngDialog', 'angularFileUpload'
 ])
 .config( function myAppConfig ( $routeProvider, authProvider, $httpProvider, $locationProvider,
@@ -24,6 +25,12 @@ var app = angular.module( 'TravelMate', [
       templateUrl: 'partials/addPosts/addPosts.html',
       pageTitle: 'AddPosts',
       requiresLogin: true
+    })
+    .when( '/favoritlogs' ,{
+      controller: 'favoriteCtrl',
+      templateUrl: 'partials/favoriteLogs/favorLogs.html',
+      pageTitle: 'FavoriteLogs',
+      requiresLogin:true
     })
     .when( '/profile',{
       controller: 'profileCtrl',

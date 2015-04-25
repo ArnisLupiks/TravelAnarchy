@@ -1,0 +1,66 @@
+<div class="mainPage" ng-controller="favoriteCtrl">
+  <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-lg-6">
+        <div class="input-group">
+        <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search"></i></span>
+        <input type="text" class="form-control" placeholder="Filter by keywords" aria-describedby="sizing-addon2" ng-model="objProppostHeadingFilter">
+      </div>
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover" >
+    <tbody>
+      <div class "col-md-9">
+          <article class="col-md-6" ng-repeat ="post in posts.slice().reverse() | filter:{$: objProppostHeadingFilter} " >
+
+                              <div class="panel panel-default logs">
+
+                              <div class = "" ng-click="openPopup(post)">
+
+                                      <img src ="img/1.jpg" class= "img-responsive" />
+
+                                      <div class="row">
+
+                                    <div class="col-xs-2 col-sm-6" style ="width: 80px;">
+                                      <img class = "circular" ng-src= "{{post.picture.picture}}"alt="profile pic" />
+                                    </div>
+                                    <div class="col-sm-push-6">
+                                      <h3 class = "panel-heading" ng-bind = "post.postHeading"></h3>
+
+                                    </div>
+                                  </div>
+                                    <p class = "maincontent text-justify" ng-bind = "post.postContent"></p>
+                                    <!--  <ui-gmap-google-map center='{latitude : "ng-bind: post.latitude", longitude:"ng-bind: post.logitude"}' zoom='map.zoom'></ui-gmap-google-map> -->
+                                    <!-- image view -->
+                                    <span>posted by: {{post.picture.username}} {{post.picture.surname}}</span>
+
+                                  </div>
+                                    <div class="row">
+                                    <!-- Hearts to post -->
+                                      <div class="col-xs-3">
+                                        <a ng-click = "count(post)">
+                                          <span ng-bind = "post.like"></span>
+                                          <i class="fa fa-heart fa-3x red"></i>
+                                        </a>
+                                      </div>
+                                      <!-- comment amount -->
+                                      <div class="col-xs-3">
+                                        <i class="fa fa-comment fa-3x"></i>
+                                      </div>
+                                      <!-- Remove from Favorite -->
+                                      <div class="col-xs-3">
+                                        <a ng-click = "removeFavorit(post)">
+                                          <i class="fa fa-minus-circle fa-3x remove"></i>
+                                       </a>
+                                      </div>
+                                    </div>
+
+
+                            </div>
+
+          </article>
+      </div>
+    </tbody>
+  </table>
+</div>
