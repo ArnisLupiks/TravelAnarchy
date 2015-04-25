@@ -26,6 +26,7 @@ padding-right: 5px;
 
 
 }
+/*
 p:first-letter{
   font-size: 200%;
   font-family:  garamond, bodoni, curly, times, serif;
@@ -33,6 +34,49 @@ p:first-letter{
   color: #cc8400;
 
 }
+*/
+/* -- Heart color --*/
+.fa.fa-heart.fa-3x.red{
+  color:#cc0000;
+}
+/* -- Star color -- */
+.fa.fa-star.fa-3x.yellow{
+  color:#ffff19;
+
+}
+.panel.panel-default.logs {
+  background-color: #b7c3c0;
+}
+/* just for test image main page */
+.tile.wide.imagetext.wideimage {
+  width: 310px;
+  height: 150px;
+  padding: 0;
+}
+
+.metro.tile {
+  position: relative;
+  display: block;
+  float: left;
+  width: 150px;
+  height: 150px;
+  padding: 0;
+  margin: 5px;
+  overflow: hidden;
+  color: #FFF;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #2C83EF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-background-clip: padding;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+.bg-color-blue {
+  background-color: #2e8bcc !important;
+}
+
 .about-img{
   height: 50px;
 }
