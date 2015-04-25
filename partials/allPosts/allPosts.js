@@ -74,5 +74,31 @@ app.controller('postCtrl', function ($scope, $http, $filter, $location, auth, ng
                 return $scope.selected === section;
         };
 
+  // add Heart to post
+  //add likes to post
+  $scope.count = function(post){
+    console.log(post.postID);
 
+    $scope.like = post.likes + 1;
+
+    };
+
+    $scope.addToFavorit = function(post){
+      console.log(post);
+      console.log(post.postID);
+      var favoritData = {uid:post.uid, postID:post.postID
+      };
+      $scope.method = 'POST';
+      $scope.url = 'api/addToFavorit.php';
+      $http({method: $scope.method, url: $scope.url, data: favoritData})
+        .success(function(data, status){
+              //adds picture/name/surname to post object
+              console.log(status);
+            //  console.log(picdata);
+            //trow error if not successfully executed function
+            }).error(function(err){
+                "ERROR in getPostUPic", console.log(err)
+            });
+
+    };
 });
