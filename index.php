@@ -44,7 +44,6 @@
   <script src = "bower_components/angular-file-upload/angular-file-upload.min.js"></script>
   <script src = "bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
   <script src = "bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-  <script src = "bower_components/angular-flash-alert/dist/angular-flash.min.css"></script>
   <script src = "bower_components/angular-flash-alert/dist/angular-flash.min.js"></script>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.2.3/js/ngDialog.min.js"></script>

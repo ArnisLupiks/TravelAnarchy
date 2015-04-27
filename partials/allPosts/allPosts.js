@@ -1,6 +1,6 @@
-angular.module('sample.allPosts', ['auth0']);
+angular.module('sample.allPosts', ['auth0'])
 //controller
-app.controller('postCtrl', function (Flash, $scope, $http, $filter, $location, auth, ngDialog){
+.controller('postCtrl', function (Flash, $scope, $http, $filter, $location, auth, ngDialog){
 
         //set get method for posts
         $scope.method = 'GET';
