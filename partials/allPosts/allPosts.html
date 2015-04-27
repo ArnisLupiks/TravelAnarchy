@@ -39,25 +39,19 @@
                                         <span>posted by: {{post.picture.username}} {{post.picture.surname}}</span>
 
                                       </div>
-                                        <div class="row">
-                                          <!-- stared log -->
-                                          <div class="col-xs-3">
-                                            <a ng-click = "addToFavorit(post)">
-                                              <i class="fa fa-star fa-3x yellow"></i>
-                                            </a>
+                                      <div flash-message="5000" ></div> 
+
+                                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                          <div class="btn-group" role="group">
+                                            <button type="button"  ng-click = "addToFavorit(post)" class="btn btn-default"><i class="fa fa-star fa-2x yellow"></i> Add to Favorite</button>
                                           </div>
-                                          <!-- Hearts to post -->
-                                          <div class="col-xs-3">
-                                            <a ng-click = "count(post)">
-                                              <span ng-bind = "post.like"></span>
-                                              <i class="fa fa-heart fa-3x red"></i>
-                                            </a>
+                                          <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default"><i class="fa fa-heart fa-2x red"></i> Give a heart</button>
                                           </div>
-                                          <div class="col-xs-3">
-                                            <i class="fa fa-comment fa-3x"></i>
+                                          <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default">  <i class="fa fa-comment fa-2x"></i> Comments</button>
                                           </div>
                                         </div>
-
 
                                 </div>
 

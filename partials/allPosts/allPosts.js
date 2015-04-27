@@ -1,6 +1,7 @@
 angular.module('sample.allPosts', ['auth0']);
 //controller
-app.controller('postCtrl', function ($scope, $http, $filter, $location, auth, ngDialog){
+app.controller('postCtrl', function (Flash, $scope, $http, $filter, $location, auth, ngDialog){
+
         //set get method for posts
         $scope.method = 'GET';
         $scope.url = 'api/getPosts.php';
@@ -91,6 +92,8 @@ app.controller('postCtrl', function ($scope, $http, $filter, $location, auth, ng
       $http({method: $scope.method, url: $scope.url, data: favoritData})
         .success(function(data, status){
               //adds picture/name/surname to post object
+              var message = "<strong> "+auth.profile.name+"</strong> you have added to favorites <em>" + post.picture.username + "</em> log";
+              Flash.create('success', message, 'customAlert');
               console.log(status);
             console.log(data);
             //trow error if not successfully executed function

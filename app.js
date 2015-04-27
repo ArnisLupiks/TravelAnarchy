@@ -8,7 +8,7 @@ var app = angular.module( 'TravelMate', [
   'sample.login',
   'sample.newMessage',
   'sample.messages',
-  'sample.favorLogs',
+  'sample.favorLogs','flash',
   'angular-storage', 'ui.bootstrap',  'angular-jwt', 'ngDialog', 'angularFileUpload'
 ])
 .config( function myAppConfig ( $routeProvider, authProvider, $httpProvider, $locationProvider,

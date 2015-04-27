@@ -36,16 +36,16 @@ p:first-letter{
 }
 */
 /* -- Heart color --*/
-.fa.fa-heart.fa-3x.red{
+.fa.fa-heart.fa-2x.red{
   color:#cc0000;
 }
 /* -- Star color -- */
-.fa.fa-star.fa-3x.yellow{
+.fa.fa-star.fa-2x.yellow{
   color:#ffff19;
 
 }
 /* -- Remove favorite -- */
-.fa.fa-minus-circle.fa-3x.remove{
+.fa.fa-minus-circle.fa-2x.remove{
   color:red;
 }
 .panel.panel-default.logs {
