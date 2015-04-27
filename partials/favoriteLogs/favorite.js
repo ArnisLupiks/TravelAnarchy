@@ -1,6 +1,6 @@
 angular.module('sample.favorLogs',['auth0'])
 //controller
-.controller('favoriteCtrl', function ($scope, $http, $filter, $location, auth, ngDialog){
+.controller('favoriteCtrl', function ($scope, $http, $filter, $route, $location, auth, ngDialog){
   //set get method for posts
   var Usr ={uid:auth.profile.user_id};
   $scope.method = 'POST';
@@ -52,6 +52,7 @@ angular.module('sample.favorLogs',['auth0'])
     $http({method: $scope.method, url: $scope.url, data: rmFavor})
       .success(function(data,status){
         console.log(data);
+        $route.reload();
       })
       .error(function(err){
         "ERROR in deleting Favorite Log", console.log(err)
