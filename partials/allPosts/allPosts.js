@@ -92,7 +92,7 @@ app.controller('postCtrl', function (Flash, $scope, $http, $filter, $location, a
       $http({method: $scope.method, url: $scope.url, data: favoritData})
         .success(function(data, status){
               //adds picture/name/surname to post object
-              var message = "<strong> "+auth.profile.name+"</strong> you have added to favorites <em>" + post.picture.username + "</em> log";
+              var message = "<strong> "+auth.profile.name+"</strong> you have added to favorites <em>" + post.picture.username + " " + post.picture.surname + "</em> log";
               Flash.create('success', message, 'customAlert');
               console.log(status);
             console.log(data);

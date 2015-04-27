@@ -26,9 +26,7 @@ angular.module('sample.favorLogs',['auth0'])
                     $http({method: $scope.method, url: $scope.url, data: picUsrId})
                       .success(function(picdata, status){
                             //adds picture/name/surname to post object
-                            console.log(status);
-                           //console.log(picdata);
-                            log.picture = picdata[0];
+                          log.picture = picdata[0];
                           //trow error if not successfully executed function
                       }).error(function(err){
                           "ERROR in getPostUPic", console.log(err)
@@ -44,14 +42,12 @@ angular.module('sample.favorLogs',['auth0'])
   });
   // remove log from favoites
   $scope.removeFavorit = function(favorite){
-    console.log("YOu have pressed me!!!!!!!");
     var rmFavor = {uid:auth.profile.user_id, postID:favorite.postID};
-    console.log("This is variable from favorites: " + rmFavor);
     $scope.method = 'POST';
     $scope.url = 'api/removeFavorite.php';
     $http({method: $scope.method, url: $scope.url, data: rmFavor})
       .success(function(data,status){
-        console.log(data);
+        //reload page
         $route.reload();
       })
       .error(function(err){
