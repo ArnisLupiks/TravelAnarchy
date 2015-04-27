@@ -9,10 +9,6 @@
       </div>
     </div>
   </div>
-  <article class="" ng-repeat="favorite in favorites">
-    {{favorite.id}}
-    {{favorite.uid}}
-  </article>
   <table class="table table-hover" >
     <tbody>
       <div class "col-md-9">
@@ -53,7 +49,7 @@
                                       </div>
                                       <!-- Remove from Favorite -->
                                       <div class="col-xs-3">
-                                        <a ng-click = "removeFavorit(post)">
+                                        <a ng-click = "removeFavorit(favorite)">
                                           <i class="fa fa-minus-circle fa-3x remove"></i>
                                        </a>
                                       </div>
