@@ -1,6 +1,6 @@
 angular.module('sample.favorLogs',['auth0'])
 //controller
-.controller('favoriteCtrl', function ($scope, $http, $filter, $route, $location, auth, ngDialog){
+.controller('favoriteCtrl', function ($scope, Flash, $http, $filter, $route, $location, auth, ngDialog){
   //set get method for posts
   var Usr ={uid:auth.profile.user_id};
   $scope.method = 'POST';
@@ -48,6 +48,8 @@ angular.module('sample.favorLogs',['auth0'])
     $http({method: $scope.method, url: $scope.url, data: rmFavor})
       .success(function(data,status){
         //reload page
+        var message = "<strong> "+auth.profile.name+"</strong> you have deleted from favorites <em>" + favorite.logs.picture.username + " " + favorite.logs.picture.surname + "</em> log";
+        Flash.create('danger', message, 'customAlert');
         $route.reload();
       })
       .error(function(err){
