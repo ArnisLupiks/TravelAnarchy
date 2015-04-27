@@ -84,8 +84,7 @@ app.controller('postCtrl', function ($scope, $http, $filter, $location, auth, ng
 
  //add favorite posts to users collection
     $scope.addToFavorit = function(post){
-      console.log(auth.profile.user_id);
-      console.log(post.postID);
+
       var favoritData = {uid:auth.profile.user_id, postID:post.postID
       };
       $scope.method = 'POST';
