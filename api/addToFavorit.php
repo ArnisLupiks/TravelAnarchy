@@ -18,7 +18,6 @@ try{
     $postID = $data->postID;
       //execute
   if($usrid != null){
-        echo $usrid;
         $query="INSERT INTO favoritLogs (uid,postID) VALUES ('$usrid', '$postID')";
         $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
         $result = $mysqli->affected_rows;

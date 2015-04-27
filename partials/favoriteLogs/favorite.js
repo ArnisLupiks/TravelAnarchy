@@ -10,20 +10,16 @@ angular.module('sample.favorLogs',['auth0'])
     .success(function(data, status) {
       $scope.status = status;
       $scope.favorites = data;
-      console.log($scope.favorites);
-      console.log("YO, this is some favorites you have here: "+ data);
+      //for each favorite log id get all log details
         angular.forEach($scope.favorites, function(favorite){
           var postID = {postID:favorite.postID};
           $scope.method = 'POST';
           $scope.url = 'api/getFavoriteLogs.php';
             $http({method: $scope.method, url: $scope.url, data: postID})
               .success(function(logs, status){
-                console.log(status);
-                console.log("this is logs for your favorites: "+ logs);
                 favorite.logs = logs[0];
                 $scope.logs = logs;
                   angular.forEach($scope.logs, function(log){
-                    console.log("this is user id: "+log.uid);
                     var picUsrId = {uid: log.uid};
                     $scope.method = 'POST';
                     $scope.url = 'api/getPostUPic.php';

@@ -85,15 +85,14 @@ app.controller('postCtrl', function ($scope, $http, $filter, $location, auth, ng
  //add favorite posts to users collection
     $scope.addToFavorit = function(post){
 
-      var favoritData = {uid:auth.profile.user_id, postID:post.postID
-      };
+      var favoritData = {uid:auth.profile.user_id, postID:post.postID};
       $scope.method = 'POST';
       $scope.url = 'api/addToFavorit.php';
       $http({method: $scope.method, url: $scope.url, data: favoritData})
         .success(function(data, status){
               //adds picture/name/surname to post object
               console.log(status);
-            //  console.log(picdata);
+            console.log(data);
             //trow error if not successfully executed function
             }).error(function(err){
                 "ERROR in getPostUPic", console.log(err)
