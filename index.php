@@ -34,6 +34,8 @@
     <script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
     <script src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js" type="text/javascript"> </script>
     <script type="text/javascript" src="app.js"></script>
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+
     <!-- bower components -->
   <script  src = "bower_components/lodash/dist/lodash.min.js" type = "text/javascript"></script>
   <script src = "bower_components/angular-google-maps/dist/angular-google-maps.min.js" type = "text/javascript"></script>
@@ -55,6 +57,8 @@
    <script type="text/javascript" src="partials/login/login.js"></script>
    <script type="text/javascript" src="partials/authenticated/authenticated.js"></script>
    <script type="text/javascript" src="partials/allPosts/allPosts.js"></script>
+   <script type="text/javascript" src="partials/allPosts/post.js"></script>
+
    <script type="text/javascript" src="partials/addPosts/addPosts.js"></script>
    <script type="text/javascript" src="partials/profile/profile.js"></script>
    <script type="text/javascript" src="partials/newMessage/newMessage.js"></script>

@@ -155,6 +155,47 @@ p:first-letter{
   min-width: 200px;
 }
 
+/*/ customAlert */
+.alert.customAlert {
+    background-color: #fafafa;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #666;
+    min-width: 400px;
+    padding : 20px 40px 20px 30px;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    height: 92px;
+}
+
+.customAlert strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.customAlert .close {
+    position: absolute !important;
+    right: 15px !important;
+    top: 5px !important;
+}
+.customAlert em {
+    color: #999;
+    display: inline-block;
+    margin: 0 5px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: pre;
+}
+.listAddCont .action{
+    top: 13px;
+}
 /* XLarge Desktop */
 
 @media (min-width:1200px){
@@ -175,48 +216,7 @@ p:first-letter{
 	box-shadow: 10px 0 30px #004d39;
 
   }
-  /*/ customAlert */
-  .alert.customAlert {
-      background-color: #fafafa;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      border-radius: 0;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      color: #666;
-      min-width: 400px;
-      padding : 20px 40px 20px 30px;
-      position: fixed;
-      top: 22%;
-      left: 50%;
-      /* bring your own prefixes */
-      transform: translate(-50%, -50%);
 
-      z-index: 9999;
-      height: 92px;
-  }
-
-  .customAlert strong {
-      display: block;
-      font-size: 16px;
-      margin-bottom: 5px;
-  }
-  .customAlert .close {
-      position: absolute !important;
-      right: 15px !important;
-      top: 5px !important;
-  }
-  .customAlert em {
-      color: #999;
-      display: inline-block;
-      margin: 0 5px;
-      max-width: 100px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      vertical-align: middle;
-      white-space: pre;
-  }
-  .listAddCont .action{
-      top: 13px;
-  }
 }
 
 /* Large desktop */
@@ -236,48 +236,7 @@ p:first-letter{
   box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.3);
 	box-shadow: 10px 0 30px #004d39;
   }
-  /*/ customAlert */
-  .alert.customAlert {
-      background-color: #fafafa;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      border-radius: 0;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      color: #666;
-      min-width: 400px;
-      padding : 20px 40px 20px 30px;
-      position: fixed;
-      top: 22%;
-      left: 50%;
-      /* bring your own prefixes */
-      transform: translate(-50%, -50%);
 
-      z-index: 9999;
-      height: 92px;
-  }
-
-  .customAlert strong {
-      display: block;
-      font-size: 16px;
-      margin-bottom: 5px;
-  }
-  .customAlert .close {
-      position: absolute !important;
-      right: 15px !important;
-      top: 5px !important;
-  }
-  .customAlert em {
-      color: #999;
-      display: inline-block;
-      margin: 0 5px;
-      max-width: 100px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      vertical-align: middle;
-      white-space: pre;
-  }
-  .listAddCont .action{
-      top: 13px;
-  }
 }
 
 /* Portrait tablet to landscape and desktop */
@@ -314,48 +273,7 @@ box-shadow: 10px 0 30px #004d39;
   padding-left:0px;
 }*/
 
-/*/ customAlert */
-.alert.customAlert {
-    background-color: #fafafa;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: #666;
-    min-width: 400px;
-    padding : 20px 40px 20px 30px;
-    position: fixed;
-    top: 22%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
 
-    z-index: 9999;
-    height: 92px;
-}
-
-.customAlert strong {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-.customAlert .close {
-    position: absolute !important;
-    right: 15px !important;
-    top: 5px !important;
-}
-.customAlert em {
-    color: #999;
-    display: inline-block;
-    margin: 0 5px;
-    max-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    vertical-align: middle;
-    white-space: pre;
-}
-.listAddCont .action{
-    top: 13px;
-}
 }
 
 /* Landscape phone to portrait tablet */
@@ -406,48 +324,7 @@ box-shadow: 10px 0 30px #004d39;
   box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.3);
 	box-shadow: 10px 0 30px #004d39;
   }
-  /*/ customAlert */
-  .alert.customAlert {
-      background-color: #fafafa;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      border-radius: 0;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      color: #666;
-      min-width: 400px;
-      padding : 20px 40px 20px 30px;
-      position: fixed;
-      top: 22%;
-      left: 50%;
-      /* bring your own prefixes */
-      transform: translate(-50%, -50%);
 
-      z-index: 9999;
-      height: 92px;
-  }
-
-  .customAlert strong {
-      display: block;
-      font-size: 16px;
-      margin-bottom: 5px;
-  }
-  .customAlert .close {
-      position: absolute !important;
-      right: 15px !important;
-      top: 5px !important;
-  }
-  .customAlert em {
-      color: #999;
-      display: inline-block;
-      margin: 0 5px;
-      max-width: 100px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      vertical-align: middle;
-      white-space: pre;
-  }
-  .listAddCont .action{
-      top: 13px;
-  }
   }
 
 /* Landscape phones and down */
@@ -483,47 +360,6 @@ box-shadow: 10px 0 30px #004d39;
   box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.3);
 	box-shadow: 10px 0 30px #004d39;
   }
-  /*/ customAlert */
-  .alert.customAlert {
-      background-color: #fafafa;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      border-radius: 0;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      color: #666;
-      min-width: 400px;
-      padding : 20px 40px 20px 30px;
-      position: fixed;
-      top: 22%;
-      left: 50%;
-      /* bring your own prefixes */
-      transform: translate(-50%, -50%);
 
-      z-index: 9999;
-      height: 92px;
-  }
-
-  .customAlert strong {
-      display: block;
-      font-size: 16px;
-      margin-bottom: 5px;
-  }
-  .customAlert .close {
-      position: absolute !important;
-      right: 15px !important;
-      top: 5px !important;
-  }
-  .customAlert em {
-      color: #999;
-      display: inline-block;
-      margin: 0 5px;
-      max-width: 100px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      vertical-align: middle;
-      white-space: pre;
-  }
-  .listAddCont .action{
-      top: 13px;
-  }
 
   }

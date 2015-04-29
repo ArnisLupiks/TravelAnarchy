@@ -102,4 +102,27 @@ angular.module('sample.allPosts', ['auth0'])
             });
 
     };
+    $scope.individualPost= "";
+
+    $scope.openPost = function(post) {
+      $location.path( '/individualPost' );
+            var postData = {postID:post.postID};
+            $scope.poste = post;
+            $scope.method = 'POST';
+            $scope.url = 'api/getPost.php';
+            $http({method: $scope.method, url: $scope.url, data: postData})
+              .success(function(data, status){
+                    //adds picture/name/surname to post object
+                    $scope.individualPost = data[0];
+                    console.log(status);
+                    console.log($scope.individualPost);
+                  //trow error if not successfully executed function
+                  }).error(function(err){
+                      "ERROR in individualPost", console.log(err)
+                  });
+
+
+console.log("this is gabshite: "+ $scope.poste.uid);
+      console.log(post.postID);
+    };
 });
