@@ -18,7 +18,7 @@ angular.module('sample.allPosts', ['auth0'])
   };
 })
 
-.controller('postCtrl', function HomeController (Flash, posts, $scope, $http, $filter, $location, auth, ngDialog){
+.controller('postCtrl', function HomeController (Flash, posts, $scope, $http, $filter, $location, auth){
 
         posts.list(function(posts){
           $scope.posts = posts;
@@ -107,9 +107,10 @@ angular.module('sample.allPosts', ['auth0'])
     };
 
 })
-.controller('postDetailCtrl', function HomeController (Flash, posts, $routeParams, $scope, $http, $filter, $location, auth){
+.controller('postDetailCtrl', function HomeController (Flash, posts,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
         posts.find($routeParams.postID, function(post){
           $scope.post = post;
+          $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 14 };
             //get user id
             var picUsrId = {uid : post.uid };
             //get user information
