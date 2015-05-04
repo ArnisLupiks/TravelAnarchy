@@ -18,7 +18,7 @@ angular.module('sample.allPosts', ['auth0'])
   };
 })
 
-.controller('postCtrl', function (Flash, posts, $scope, $http, $filter, $location, auth, ngDialog){
+.controller('postCtrl', function HomeController (Flash, posts, $scope, $http, $filter, $location, auth, ngDialog){
 
         posts.list(function(posts){
           $scope.posts = posts;
@@ -107,7 +107,7 @@ angular.module('sample.allPosts', ['auth0'])
     };
 
 })
-.controller('postDetailCtrl', function (Flash, posts, $routeParams, $scope, $http, $filter, $location, auth){
+.controller('postDetailCtrl', function HomeController (Flash, posts, $routeParams, $scope, $http, $filter, $location, auth){
         posts.find($routeParams.postID, function(post){
           $scope.post = post;
             //get user id

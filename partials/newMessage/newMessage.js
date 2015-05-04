@@ -1,6 +1,6 @@
 angular.module('sample.newMessage', ['auth0'])
 
-.controller('newMessageCtrl', function HomeController ($scope, $rootScope, $http, $filter, $window, $location, auth){
+.controller('newMessageCtrl', function ($scope, $rootScope, $http, $filter, $window, $location, auth){
   $scope.auth = auth;
   //getting receiver user details for messaging
   $scope.method = 'GET';
