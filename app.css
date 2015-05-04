@@ -26,6 +26,30 @@ padding-right: 5px;
 
 
 }
+.btn.btn-default {
+    background:  transparent;
+
+    border: none;
+}
+.btn.btn-default:hover {
+    background:  transparent;
+
+    border: none;
+}
+/* ------------------- */
+
+/* a href link color main content */
+.link{
+  color:black;
+   text-decoration: none;
+   background-color: none;
+}
+.link:focus{
+  text-decoration: none;
+}
+.link:hover, .link:active, .link:focus{
+    text-decoration:none;
+}
 .angular-google-map-container { height: 400px; }
 /*
 p:first-letter{
@@ -217,7 +241,13 @@ p:first-letter{
 	box-shadow: 10px 0 30px #004d39;
 
   }
-
+  /* main content style */
+  .maincontent.text-justify.max{
+    width: 525px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 /* Large desktop */
@@ -237,7 +267,13 @@ p:first-letter{
   box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.3);
 	box-shadow: 10px 0 30px #004d39;
   }
-
+  /* main content style */
+  .maincontent.text-justify.max{
+    width: 430px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 /* Portrait tablet to landscape and desktop */
@@ -273,7 +309,15 @@ box-shadow: 10px 0 30px #004d39;
   padding-right:0px;
   padding-left:0px;
 }*/
-
+/* main content style */
+.maincontent.text-justify.max{
+  padding-left:10px;
+  width: 670px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size:150%;
+}
 
 }
 
@@ -325,7 +369,15 @@ box-shadow: 10px 0 30px #004d39;
   box-shadow: inset 300px 0 300px -300px rgba(255, 255, 255, 0.3);
 	box-shadow: 10px 0 30px #004d39;
   }
-
+  /* main content style */
+  .maincontent.text-justify.max{
+    padding-left:10px;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size:125%;
+  }
   }
 
 /* Landscape phones and down */
@@ -362,5 +414,13 @@ box-shadow: 10px 0 30px #004d39;
 	box-shadow: 10px 0 30px #004d39;
   }
 
+  /* main content style */
+  .maincontent.text-justify.max{
+    padding-left:10px;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
+  }
   }

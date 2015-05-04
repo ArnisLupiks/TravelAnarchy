@@ -26,7 +26,7 @@ var app = angular.module( 'TravelMate', [
       pageTitle: 'AddPosts',
       requiresLogin: true
     })
-    .when( '/post/:postID',{
+    .when( '/log/:postID',{
       controller: 'postDetailCtrl',
       templateUrl: 'partials/allPosts/post.html',
       pageTitle: 'Post',
