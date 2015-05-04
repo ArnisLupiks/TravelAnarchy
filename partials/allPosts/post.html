@@ -1,19 +1,20 @@
-<div class="mainPage" ng-controller="postCtrl">
+<div class="mainPage" ng-controller="postDetailCtrl">
   <div class="panel panel-default logs">
                 <div class="col-md-6">
-                  <h3>{{individualPost.postHeading}}  by:  </h3>
+                  <h3>{{post.postHeading}}  by:  </h3>
 
                 </div>
                 <div class="col-md-6">
-                  <span ng-bind="individualPost.picture.name"></span><img class = "circular" ng-src= "{{individualPost.picture.picture}}"alt="profile pic" />
+                  <span ng-bind="post.picture.name"></span><img class = "circular" ng-src= "{{post.picture.picture}}"alt="profile pic" />
                 </div>
-                {{individualPost.postContent}}
-                <span ng-bind = "individualPost"></span>
+                <span ng-bind = "post.picture.username"></span>
+                <span ng-bind = "post.picture.surname"></span>
+                <hr />
               <!-- <img src ="img/1.jpg" class= "img-responsive" /> -->
 
-               <span ng-bind = "poste.postContent"></span><br />
+               <span ng-bind = "post.postContent"></span><br />
 
-               <span id = "{{poste.uid}}">{{individualPost.uid}}</span><br />
+               <span id = "{{post.uid}}">{{post.uid}}</span><br />
                <!--  <span>{{individualPost.location}}</span><br /> -->
                <div class = "col-sm-6 map_canvas">
 
@@ -34,19 +35,16 @@
                    </ui-gmap-marker>
                </ui-gmap-google-map>
              </div>
-               <span>{{individualPost.postID}}</span>
+               <span>{{post.postDate}}</span>
                <hr />
 
-               <span am-time-ago="individualPost.postDate"></span>
+               <span am-time-ago="post.postDate"></span>
 
 
-               <div>
-                 <span ng-bind = "indi.postID"> this is joke</span>
-                 <p>
-                   This is some thext here
-                 </p>
-               </div>
-
+            
+<pre>
+  {{ post | json}}
+</pre>
 
              </div>
 

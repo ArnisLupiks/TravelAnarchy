@@ -57,7 +57,6 @@
    <script type="text/javascript" src="partials/login/login.js"></script>
    <script type="text/javascript" src="partials/authenticated/authenticated.js"></script>
    <script type="text/javascript" src="partials/allPosts/allPosts.js"></script>
-   <script type="text/javascript" src="partials/allPosts/post.js"></script>
 
    <script type="text/javascript" src="partials/addPosts/addPosts.js"></script>
    <script type="text/javascript" src="partials/profile/profile.js"></script>

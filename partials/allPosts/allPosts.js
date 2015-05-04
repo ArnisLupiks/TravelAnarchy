@@ -1,18 +1,27 @@
 angular.module('sample.allPosts', ['auth0'])
 //controller
-.controller('postCtrl', function (Flash, $scope, $http, $filter, $location, auth, ngDialog){
 
-        //set get method for posts
-        $scope.method = 'GET';
-        $scope.url = 'api/getPosts.php';
-        //execute method
-        $http({method: $scope.method, url: $scope.url}).
-          success(function(data, status) {
-            $scope.status = status;
-            $scope.posts = data;
-            console.log($scope.posts);
+.factory('posts',function($http){
+  return{
+    list: function(callback){
+      $http.get('api/getPosts.php').
+        success(callback)
+    },
+    find: function(postID, callback){
+      $http.get('api/getPosts.php').success(function(data){
+        var post = data.filter(function(entry){
+          return entry.postID === postID;
+        })[0];
+        callback(post);
+      });
+    }
+  };
+})
 
-            //add to each post user profile information
+.controller('postCtrl', function (Flash, posts, $scope, $http, $filter, $location, auth, ngDialog){
+
+        posts.list(function(posts){
+          $scope.posts = posts;
             angular.forEach($scope.posts ,function(post){
               //get user id
               var picUsrId = {uid : post.uid };
@@ -30,13 +39,7 @@ angular.module('sample.allPosts', ['auth0'])
                         "ERROR in getPostUPic", console.log(err)
                     });
             })
-          }).
-          //state errer if couldn't make connection
-          error(function(data, status) {
-            $scope.posts = data || "Request failed";
-            $scope.status = status;
-        });
-
+      });
         //optional -- order by date
         var orderBy = $filter('orderBy');
         $scope.order = function(predicate, reverse){
@@ -102,27 +105,29 @@ angular.module('sample.allPosts', ['auth0'])
             });
 
     };
-    $scope.individualPost= "";
 
-    $scope.openPost = function(post) {
-      $location.path( '/individualPost' );
-            var postData = {postID:post.postID};
-            $scope.poste = post;
+})
+.controller('postDetailCtrl', function (Flash, posts, $routeParams, $scope, $http, $filter, $location, auth){
+        posts.find($routeParams.postID, function(post){
+          $scope.post = post;
+            //get user id
+            var picUsrId = {uid : post.uid };
+            //get user information
             $scope.method = 'POST';
-            $scope.url = 'api/getPost.php';
-            $http({method: $scope.method, url: $scope.url, data: postData})
-              .success(function(data, status){
+            $scope.url = 'api/getPostUPic.php';
+            $http({method: $scope.method, url: $scope.url, data: picUsrId})
+              .success(function(picdata, status){
                     //adds picture/name/surname to post object
-                    $scope.individualPost = data[0];
                     console.log(status);
-                    console.log($scope.individualPost);
+                  //  console.log(picdata);
+                    post.picture = picdata[0];
                   //trow error if not successfully executed function
                   }).error(function(err){
-                      "ERROR in individualPost", console.log(err)
+                      "ERROR in getPostUPic", console.log(err)
                   });
+        });
 
 
-console.log("this is gabshite: "+ $scope.poste.uid);
-      console.log(post.postID);
-    };
+
+
 });

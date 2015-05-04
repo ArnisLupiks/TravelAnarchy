@@ -7,7 +7,7 @@ var app = angular.module( 'TravelMate', [
   'sample.auth',
   'sample.login',
   'sample.newMessage',
-  'sample.messages', 'sample.post',
+  'sample.messages',
   'sample.favorLogs','flash','uiGmapgoogle-maps',
   'angular-storage', 'ui.bootstrap',  'angular-jwt', 'ngDialog', 'angularFileUpload'
 ])
@@ -26,9 +26,8 @@ var app = angular.module( 'TravelMate', [
       pageTitle: 'AddPosts',
       requiresLogin: true
     })
-    .when( '/individualPost',{
-      controller: 'postCtrl',
-
+    .when( '/:postID',{
+      controller: 'postDetailCtrl',
       templateUrl: 'partials/allPosts/post.html',
       pageTitle: 'Post',
       requiresLogin: true
