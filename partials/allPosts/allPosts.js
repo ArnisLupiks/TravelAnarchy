@@ -129,6 +129,7 @@ angular.module('sample.allPosts', ['auth0'])
         });
 
 
-
-
+  $scope.back = function() {
+    window.history.back();
+  };
 });
