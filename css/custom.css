@@ -1,5 +1,14 @@
 body{
-	background-color:#e5f4f0;
+	/*background-color:#e5f4f0;*/
+	background-image:url(../img/sun1.png);
+	background-repeat:no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family:Raleway, Open Sans, Droid Sans, Roboto,arial, sans-serif;
 }
 ul{
 	list-style: none;

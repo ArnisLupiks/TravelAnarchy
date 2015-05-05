@@ -10,6 +10,10 @@
 
 
 }
+/* panel body color for search bar */
+.panel-body {
+  background-color: #8ebd8d;
+}
 .centered{
   display: flex;
 justify-content: center; /* align horizontal */
@@ -74,8 +78,9 @@ p:first-letter{
 .fa.fa-minus-circle.fa-2x.remove{
   color:red;
 }
+/* main page log background color */
 .panel.panel-default.logs {
-  background-color: #b7c3c0;
+  background-color: #8EBD8D;
 }
 /* just for test image main page */
 .tile.wide.imagetext.wideimage {
@@ -221,6 +226,20 @@ p:first-letter{
 .listAddCont .action{
     top: 13px;
 }
+/* padding col main */
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9,
+.col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+padding-right:2px;
+padding-left:2px;
+}
+/*small picture on main content logs page */
+.col-xs-2.col-sm-6.small{
+  width:80px;
+  margin-top:7px;
+  margin-left:22px;
+}
+
+
 /* XLarge Desktop */
 
 @media (min-width:1200px){
@@ -248,6 +267,13 @@ p:first-letter{
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  /*padding add log main window */
+  .panel.panel-default.add{
+    padding-right:200px;
+    padding-left:200px;
+    background: transparent;
+    border: none;
+  }
 }
 
 /* Large desktop */
@@ -274,12 +300,20 @@ p:first-letter{
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  /*padding add log main window */
+  .panel.panel-default.add{
+    padding-right:150px;
+    padding-left:150px;
+  }
 }
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
 .col-md-6, .container{
-
+  /* font size in add post texarea/ input */
+  .form-control.chopsticks {
+  font-size:115%;
+}
   padding-right: 10px;
   padding-left: 10px;
 
@@ -323,6 +357,10 @@ box-shadow: 10px 0 30px #004d39;
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
+  /* font size in add post texarea/ input */
+  .form-control.chopsticks {
+  font-size:125%;
+}
   .col-md-6, .container{
     padding-right: 10px;
     padding-left: 10px;
@@ -354,8 +392,7 @@ box-shadow: 10px 0 30px #004d39;
   }
   .postContainer{
     padding-top:55px;
-    padding-right:10px;
-    padding-left:10px;
+
   }
   .buttonClassic{
     padding-bottom:20px;
@@ -382,11 +419,11 @@ box-shadow: 10px 0 30px #004d39;
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+  /* font size in add post texarea/ input */
+  .form-control.chopsticks {
+  font-size:125%;
+}
 
-
-  .col-md-6, .container{
-
-  }
   .maincontent{
     padding-right: 2px;
     padding-left: 2px;
@@ -398,8 +435,6 @@ box-shadow: 10px 0 30px #004d39;
   }
   .postContainer{
     padding-top:55px;
-    padding-right:5px;
-    padding-left:5px;
   }
   .buttonClassic{
     padding-bottom:20px;
