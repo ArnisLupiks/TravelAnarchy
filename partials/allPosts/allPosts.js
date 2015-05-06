@@ -17,7 +17,7 @@ angular.module('sample.allPosts', ['auth0'])
     }
   };
 })
-
+//displays all logs in grid view on main page
 .controller('postCtrl', function HomeController (Flash, posts, $scope, $http, $filter, $location, auth){
 
         posts.list(function(posts){
@@ -107,6 +107,7 @@ angular.module('sample.allPosts', ['auth0'])
     };
 
 })
+// displays selected log from the list above
 .controller('postDetailCtrl', function HomeController (Flash, posts,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
         posts.find($routeParams.postID, function(post){
           $scope.post = post;
@@ -128,7 +129,7 @@ angular.module('sample.allPosts', ['auth0'])
                   });
         });
 
-
+// return to previous page
   $scope.back = function() {
     window.history.back();
   };
