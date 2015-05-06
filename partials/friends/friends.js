@@ -10,15 +10,12 @@ angular.module('sample.friends', ['auth0'])
 })
 //********* adding new friend to database ************
 .factory('addFriend' ,function($http, Flash, auth){
-  var friends = [];
   return function(friendData, callback){
     $http.post('api/addFriend.php', friendData).
     success(function(data,status){
-      var message = "<strong> "+auth.profile.given_name+"</strong> you are already friends !!!";
+      var message = "<strong> "+auth.profile.given_name+"</strong> " + data + " !!!";
       Flash.create('success', message, 'customAlert');
-      console.log("OK- message sent", data);
     })
-    console.log("this is addFriend", friendData);
   }
 })
 //********* Add friend controller *********************

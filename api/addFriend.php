@@ -1,7 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
-	error_reporting(0);
 	try {
   	require_once ("php_includes/db_conn.php");
   	$mysqli = $db_conn;
@@ -21,17 +20,17 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
     //if user userID and friendID exists
     if($res = $mysqli->affected_rows > 0){
         //do update on user table
-        echo $json_response = json_encode("User already exists here");
+        echo json_encode("You are already friends");
     }else{
-      echo $userID;
       $query="INSERT INTO friends (userID, friendID) VALUES ('$userID', '$friendID')";
       $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
       $result = $mysqli->affected_rows;
+      echo json_encode("You are Friends now");
     }
-      echo $json_response = json_encode($result);
+
 
   } catch (exception $e) {
-        echo json_encode(null);
+        echo json_encode(e);
   }
 
 ?>
