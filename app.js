@@ -7,7 +7,7 @@ var app = angular.module( 'TravelMate', [
   'sample.auth',
   'sample.login',
   'sample.newMessage',
-  'sample.messages',
+  'sample.messages', 'sample.friends',
   'sample.favorLogs','flash','uiGmapgoogle-maps',
   'angular-storage', 'ui.bootstrap',  'angular-jwt', 'ngDialog', 'angularFileUpload'
 ])
@@ -31,6 +31,12 @@ var app = angular.module( 'TravelMate', [
       templateUrl: 'partials/allPosts/post.html',
       pageTitle: 'Post',
       requiresLogin: true
+    })
+    .when( '/friends' ,{
+      controller: 'messageCtrl',
+      templateUrl: 'partials/friends/friends.html',
+      pageTitle: 'Friends',
+      requireLogin: true
     })
     .when( '/favoritlogs' ,{
       controller: 'favoriteCtrl',

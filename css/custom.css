@@ -1,6 +1,6 @@
 body{
-	/*background-color:#e5f4f0;*/
-	background-image:url(../img/sun1.png);
+	background-color:#e5f4f0;
+
 	background-repeat:no-repeat;
 	background-size: cover;
 	background-attachment: fixed;

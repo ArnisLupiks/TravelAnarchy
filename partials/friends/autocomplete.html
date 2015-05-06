@@ -1,0 +1,28 @@
+<div>
+<script type="text/ng-template" id="customTemplate.html">
+  <a>
+      <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+
+      <i>({{match.model.email}})</i>
+  </a>
+</script>
+<h4>Search for a member to add as a friend</h4>
+  <table>
+    <tr>
+      <td>
+        <form class="form-search" ng-controller="friendsCtrl">
+            <!--Selected Friend: window.card = {{selectedUsers}} -->
+                <input type="text" ng-model="selectedUsers" placeholder="Search for User"
+                    typeahead="c as c.name for c in users | filter:$viewValue | limitTo:10"
+                    typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label)'
+                    typeahead-template-url="customTemplate.html" class="form-control" style="width:350px;">
+                <i class="icon-search nav-search-icon"></i>
+        </form>
+      </td>
+      <td>
+        <button name="Add Friend" class = "btn btn-large btn-success">Add Friend</button>
+
+      </td>
+    </tr>
+  </table>
+</div>
