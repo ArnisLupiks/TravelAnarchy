@@ -1,43 +1,52 @@
 angular.module('sample.friends', ['auth0'])
-
-.controller('friendsCtrl', function ($scope, $rootScope, $http, $filter, $window, $location, auth){
+//********* getting members from database ***********
+.factory('members',function($http){
+  return{
+    get: function(callback){
+      $http.get('api/getUserForMessage.php').
+        success(callback)
+    }
+  };
+})
+//********* adding new friend to database ************
+.factory('addFriend' ,function($http){
+  var friends = [];
+  return function(friendData, callback){
+    $http.post('api/addFriend.php', friendData).
+    success(function(data,status){
+      console.log("OK- message sent", data);
+    })
+    console.log("this is addFriend", friendData);
+  }
+})
+//********* Add friend controller *********************
+.controller('friendsCtrl', function ($scope, members, addFriend, $rootScope, $http, $filter, $window, $location, auth){
   $scope.auth = auth;
-  //getting receiver user details for messaging
-  $scope.method = 'GET';
-  $scope.url = 'api/getUserForMessage.php';
-  //execute method
-  $http({method: $scope.method, url: $scope.url})
-  .success(function(data, status){
-        $scope.status = status;
-        $scope.users = data;
-        console.log($scope.users);
-        angular.forEach($scope.users ,function(user){
-          //get user id
-          var picUsrId = {uid : user.uid };
-          //get user information
-          $http.post("api/getUPic.php" , picUsrId)
-            .success(function(picdata){
-                  //adds picture/name/surname to post object
-                  user.picture = picdata[0];
-                //trow error if not successfully executed function
-                }).error(function(err){
-                    "ERROR in getPostUPic", console.log(err)
-                });
-        })
-       }).
-       //state errer if couldn't make connection
-       error(function(data, status) {
-         $scope.posts = data || "Request failed";
-         $scope.status = status;
+    //getting receiver user details for messaging
+      members.get(function(members){
+        $scope.users = members;
      });
+
+
+     //adding new friend
+     $scope.addFriend = function(){
+       var friendData = {userID: auth.profile.user_id, friendID: $rootScope.selectedUsers.uid};
+       addFriend(friendData);
+     };
+
+
+
       //setting receiver scope infromation
        $rootScope.selectedUsers = "";
          $scope.$watch('selectedUsers', function(newValue, oldValue) {
-           console.log('newMessageCtrl.watch.list:', newValue);
            if(newValue !== oldValue){
              $rootScope.selectedUsers = newValue;
            }
          });
+
+
+
+
          //SELECTS MESSAGE FROM USER
          $rootScope.mess = "";
            $scope.$watch('mess', function(newValue, oldValue) {
@@ -46,6 +55,7 @@ angular.module('sample.friends', ['auth0'])
                $rootScope.mess = newValue;
              }
            });
+
          //posting message to user
          $scope.sendMessage = function() {
            //declare message payload
