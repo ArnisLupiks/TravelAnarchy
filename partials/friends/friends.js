@@ -9,11 +9,13 @@ angular.module('sample.friends', ['auth0'])
   };
 })
 //********* adding new friend to database ************
-.factory('addFriend' ,function($http){
+.factory('addFriend' ,function($http, Flash, auth){
   var friends = [];
   return function(friendData, callback){
     $http.post('api/addFriend.php', friendData).
     success(function(data,status){
+      var message = "<strong> "+auth.profile.given_name+"</strong> you are already friends !!!";
+      Flash.create('success', message, 'customAlert');
       console.log("OK- message sent", data);
     })
     console.log("this is addFriend", friendData);
@@ -32,6 +34,7 @@ angular.module('sample.friends', ['auth0'])
      $scope.addFriend = function(){
        var friendData = {userID: auth.profile.user_id, friendID: $rootScope.selectedUsers.uid};
        addFriend(friendData);
+
      };
 
 
@@ -47,14 +50,6 @@ angular.module('sample.friends', ['auth0'])
 
 
 
-         //SELECTS MESSAGE FROM USER
-         $rootScope.mess = "";
-           $scope.$watch('mess', function(newValue, oldValue) {
-             console.log('newMessageCtrl.watch.list:', newValue);
-             if(newValue !== oldValue){
-               $rootScope.mess = newValue;
-             }
-           });
 
          //posting message to user
          $scope.sendMessage = function() {
