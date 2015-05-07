@@ -7,7 +7,11 @@
           </div>
           <div class="" ng-controller = "allFriendsCtrl" data-ng-init="init()">
             <ul>
-              <li ng-repeat = "bud in buddys"></li>
+              <li ng-repeat = "buddy in buddys"></li>
+              <pre>
+                {{ buddys | json}}
+              </pre>
+
             </ul>
           </div>
       </div>
