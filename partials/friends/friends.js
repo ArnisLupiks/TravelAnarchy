@@ -58,21 +58,19 @@ angular.module('sample.friends', ['auth0'])
 })
 .controller('allFriendsCtrl', function($scope, allFriends, $rootScope, auth){
   $scope.buddys = [];
+  //declaring member details
   var myDetails = {userID: auth.profile.user_id};
-
-  allFriends.getFriends(myDetails).success(function(data){
-    $scope.buddys = data;
-
-    angular.forEach($scope.buddys ,function(buddy){
-      console.log($scope.buddy);
-      $scope.buddy = [];
-      var picUsrId = {uid : buddy.friendID };
-      allFriends.getFriendsProfile(picUsrId).success(function(picdata){
-        buddy.picture = picdata[0];
-        console.log($scope.buddys);
-      })
-
-  });
-
-});
+  //getting member friends
+    allFriends.getFriends(myDetails).success(function(data){
+      $scope.buddys = data;
+      //getting for each member profile information
+        angular.forEach($scope.buddys ,function(buddy){
+          $scope.buddy = [];
+          //setting variable wiwth member friend id
+          var picUsrId = {uid : buddy.friendID };
+            allFriends.getFriendsProfile(picUsrId).success(function(picdata){
+              buddy.picture = picdata[0];
+            })
+        });
+    });
 });
