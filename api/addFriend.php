@@ -13,7 +13,7 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
   	$userID = $data->userID;
     $friendID = $data->friendID;
 
-    //selects from database user id and email
+    //selects from database user userID and friendID
     $query = "SELECT * FROM friends WHERE userID = '$userID' AND friendID = '$friendID'";
     $res = $mysqli->query($query) or die($mysqli->error.__LINE__);
     $res = $mysqli->affected_rows;
@@ -27,10 +27,7 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
       $result = $mysqli->affected_rows;
       echo json_encode("You are Friends now");
     }
-
-
   } catch (exception $e) {
         echo json_encode(e);
   }
-
 ?>

@@ -18,56 +18,39 @@ angular.module('sample.friends', ['auth0'])
     })
   }
 })
+// ****** getting all Friends from database ***********
+.factory('allFriends',function($http){
+  return function(myDetails, data){
+      $http.post('api/getAllFriends.php', myDetails).
+      success(function(data){
+        console.log("This is Friends data", data);
+      })
+  };
+})
 //********* Add friend controller *********************
 .controller('friendsCtrl', function ($scope, members, addFriend, $rootScope, $http, $filter, $window, $location, auth){
-  $scope.auth = auth;
     //getting receiver user details for messaging
-      members.get(function(members){
-        $scope.users = members;
-     });
-
-
-     //adding new friend
-     $scope.addFriend = function(){
-       var friendData = {userID: auth.profile.user_id, friendID: $rootScope.selectedUsers.uid};
-       addFriend(friendData);
-
-     };
-
-
-
-      //setting receiver scope infromation
+        members.get(function(members){
+          $scope.users = members;
+       });
+    //adding new friend
+       $scope.addFriend = function(){
+         var friendData = {userID: auth.profile.user_id, friendID: $rootScope.selectedUsers.uid};
+         addFriend(friendData);
+       };
+    //setting receiver scope infromation
        $rootScope.selectedUsers = "";
          $scope.$watch('selectedUsers', function(newValue, oldValue) {
            if(newValue !== oldValue){
              $rootScope.selectedUsers = newValue;
            }
-         });
+        });
+})
+.controller('allFriendsCtrl', function($scope, allFriends, $rootScope, auth){
+    $scope.init = function(){
+      var myDetails = {userID: auth.profile.user_id};
+      allFriends(myDetails);
 
-
-
-
-
-         //posting message to user
-         $scope.sendMessage = function() {
-           //declare message payload
-           var messy = {
-             receiverUid: $rootScope.selectedUsers.uid,
-             senderUid: auth.profile.user_id,
-             message: $rootScope.mess
-           };
-           //declare method/url
-           $scope.method = 'POST';
-           $scope.url = 'api/sendMessage.php';
-           //execute http
-           $http({method: $scope.method, url:$scope.url, data: messy, headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}})
-           .success(function(data,status){
-             console.log("OK- message sent", data);
-             $location.path("/message");
-           })
-           .error(function(data, status){
-             $scope.message = data || " Sending failed";
-             $scope.status = status;
-           });
-       };
+    $scope.buddys = $rootScope.friends;
+  }
 });
