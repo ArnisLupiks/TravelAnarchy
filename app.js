@@ -7,7 +7,7 @@ var app = angular.module( 'TravelMate', [
   'sample.auth',
   'sample.login',
   'sample.newMessage',
-  'sample.messages', 'sample.friends',
+  'sample.messages', 'sample.friends','angularMoment',
   'sample.favorLogs','flash','uiGmapgoogle-maps',
   'angular-storage', 'ui.bootstrap',  'angular-jwt', 'ngDialog', 'angularFileUpload'
 ])

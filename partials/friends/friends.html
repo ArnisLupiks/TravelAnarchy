@@ -6,11 +6,20 @@
             <div ng-include src="'partials/friends/autocomplete.html'"></div>
           </div>
           <div class="" ng-controller = "allFriendsCtrl" data-ng-init="init()">
-            <ul>
-              <li ng-repeat = "buddy in buddys"></li>
-              <pre>
-                {{ buddys | json}}
-              </pre>
+            <table class="table table-hover" >
+              <tbody>
+                <div class "col-md-9">
+                    <friends class="col-md-4" ng-repeat ="buddy in buddys">
+                      <img src="{{buddy.picture.picture}}" alt="profile picture" />
+                      <span ng-bind = "buddy.picture.username"></span>
+                      <span ng-bind = "buddy.picture.surname"></span>
+                      <span>Friends since: <span am-time-ago="buddy.when"></span></span>
+                      
+                    </friends>
+                  </div>
+                </tbody>
+            </table>
+
 
             </ul>
           </div>

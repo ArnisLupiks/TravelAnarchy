@@ -20,6 +20,7 @@
     "angular-file-upload": "~1.1.5",
     "auth0-angular": "~4.0.1",
     "bootstrap": "~3.3.2",
-    "ng-file-upload": "~3.0.7"
+    "ng-file-upload": "~3.0.7",
+    "angular-moment": "~0.10.1"
   }
 }

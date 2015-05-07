@@ -47,7 +47,8 @@
   <script src = "bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
   <script src = "bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script src = "bower_components/angular-flash-alert/dist/angular-flash.min.js"></script>
-
+  <script src = "bower_components/moment/moment.js"></script>
+  <script src = "bower_components/angular-moment/angular-moment.js"></script>
 
 
 
