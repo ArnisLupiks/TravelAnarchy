@@ -27,6 +27,13 @@ angular.module('sample.friends', ['auth0'])
         method: 'POST',
         data: myDetails
       })
+    },
+    getFriendsProfile : function(picUsrId){
+      return $http({
+        url: 'api/getPostUPic.php',
+        method: 'POST',
+        data: picUsrId
+      })
     }
   }
 })
@@ -55,7 +62,17 @@ angular.module('sample.friends', ['auth0'])
 
   allFriends.getFriends(myDetails).success(function(data){
     $scope.buddys = data;
-    console.log($scope.buddys);
+
+    angular.forEach($scope.buddys ,function(buddy){
+      console.log($scope.buddy);
+      $scope.buddy = [];
+      var picUsrId = {uid : buddy.friendID };
+      allFriends.getFriendsProfile(picUsrId).success(function(picdata){
+        buddy.picture = picdata[0];
+        console.log($scope.buddys);
+      })
+
   });
 
+});
 });
