@@ -1,18 +1,9 @@
 var app = angular.module( 'TravelMate', [
-  'auth0',
-  'ngRoute',
-  'sample.allPosts',
-  'sample.addPosts',
-  'sample.profile',
-  'sample.auth',
-  'sample.login',
-  'sample.newMessage',
-  'sample.messages', 'sample.friends','angularMoment',
-  'sample.favorLogs','flash','uiGmapgoogle-maps',
-  'angular-storage', 'ui.bootstrap',  'angular-jwt', 'ngDialog', 'angularFileUpload'
+  'auth0','ngRoute','sample.allPosts','sample.addPosts','sample.profile',
+  'sample.auth','sample.login','sample.newMessage','sample.messages', 'sample.friends','angularMoment',
+  'sample.favorLogs','flash','uiGmapgoogle-maps', 'angular-storage', 'ui.bootstrap',  'angular-jwt', 'ngDialog', 'angularFileUpload'
 ])
-.config( function myAppConfig ( $routeProvider, authProvider, $httpProvider, $locationProvider,
-  jwtInterceptorProvider) {
+.config( function myAppConfig ( $routeProvider, authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider) {
   $routeProvider
     .when( '/', {
       controller: 'postCtrl',
@@ -33,9 +24,15 @@ var app = angular.module( 'TravelMate', [
       requiresLogin: true
     })
     .when( '/friends' ,{
-      controller: 'messageCtrl',
+      controller: 'friendsCtrl',
       templateUrl: 'partials/friends/friends.html',
       pageTitle: 'Friends',
+      requireLogin: true
+    })
+    .when( '/friendProfile' ,{
+      controller: 'friendsCtrl',
+      templateUrl: 'partials/friends/friendProfile.html',
+      pageTitle: 'Friend Profile',
       requireLogin: true
     })
     .when( '/favoritlogs' ,{

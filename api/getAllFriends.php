@@ -24,7 +24,6 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
   	}
 
   	echo $json_response = json_encode($data);
-
   } catch (exception $e) {
         echo json_encode(e);
   }

@@ -37,8 +37,8 @@
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
 
     <!-- bower components -->
-  <script  src = "bower_components/lodash/dist/lodash.min.js" type = "text/javascript"></script>
-  <script src = "bower_components/angular-google-maps/dist/angular-google-maps.min.js" type = "text/javascript"></script>
+  <script  src = "bower_components/lodash/dist/lodash.min.js"></script>
+  <script src = "bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
   <script src = "bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
   <script src = "bower_components/ng-file-upload/angular-file-upload.js"></script>
   <script src = "bower_components/auth0-lock/build/auth0-lock.min.js"></script>

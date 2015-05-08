@@ -14,45 +14,43 @@
                     </div>
                   </a>
               </div>
-                <hr />
               <!-- <img src ="img/1.jpg" class= "img-responsive" /> -->
 
                <span ng-bind = "post.postContent"></span><br />
 
                <span id = "{{post.uid}}">{{post.uid}}</span><br />
                <!--  <span>{{individualPost.location}}</span><br /> -->
-               <div class = "col-sm-6 map_canvas">
+               <img ng-src="img/2.jpg" alt="" />
+               <div class = "col-sm-6">
+                 <div class = "map_canvas">
 
-               <ui-gmap-google-map center='map.center' zoom = 'map.zoom'>
+                     <ui-gmap-google-map center='map.center' zoom = 'map.zoom'>
 
-                  <ui-gmap-marker idkey="markers.key" coords='markers.coords' icon='markers.icon'>
-                 <!--       <ui-gmap-windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
-                         <div>
-                               I should not be attached to a
-                               marker.
-                             <div ng-controller='InfoController'>
-                                   <a class="btn" ng-click="clickedButtonInWindow()">CLICK ME</a>
-                               </div>
-                               <p ng-non-bindable >This is an info window at {{ latitude | number:4 }}, {{ longitude | number:4 }}!</p>
-                               <p class="muted">My marker will stay open when the window is popped up!</p>
-                           </div>
-                       </ui-gmap-windows> -->
-                   </ui-gmap-marker>
-               </ui-gmap-google-map>
+                        <ui-gmap-marker idkey="markers.key" coords='markers.coords' icon='markers.icon'>
+                       <!--       <ui-gmap-windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
+                               <div>
+                                     I should not be attached to a
+                                     marker.
+                                   <div ng-controller='InfoController'>
+                                         <a class="btn" ng-click="clickedButtonInWindow()">CLICK ME</a>
+                                     </div>
+                                     <p ng-non-bindable >This is an info window at {{ latitude | number:4 }}, {{ longitude | number:4 }}!</p>
+                                     <p class="muted">My marker will stay open when the window is popped up!</p>
+                                 </div>
+                             </ui-gmap-windows> -->
+                         </ui-gmap-marker>
+                     </ui-gmap-google-map>
              </div>
-               <span>{{post.postDate}}</span>
-               <hr />
-
-               <span am-time-ago="post.postDate"></span>
-
-
-
-<pre>
-  {{ post | json}}
-</pre>
-
-             </div>
-             <button class="btn btn-success btn-lg" ng-click="back()"><i class="fa fa-arrow-left"></i> Back to Logs!</button>
+           </div>
+             <p>
+               posted: <span am-time-ago="post.postDate"></span>
+             </p>
 
 
-</div>
+
+               <button class="btn btn-success btn-lg" ng-click="back()"><i class="fa fa-arrow-left"></i> Back to Logs</button>
+               <button class="btn btn-danger btn-lg" ng-click="back()"><i class="fa fa-trash-o"></i> Delete Log</button>
+
+          </div>
+
+          </div>

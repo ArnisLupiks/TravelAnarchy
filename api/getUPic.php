@@ -2,7 +2,6 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Authorization");
 header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
-
 	//error_reporting(0);
 	try {
 	require_once ("php_includes/db_conn.php");
@@ -27,7 +26,6 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 		$picdata[] = $row;
 		}
 	}
-
 	echo $json_response = json_encode($picdata);
 
 

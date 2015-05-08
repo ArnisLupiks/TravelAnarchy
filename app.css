@@ -10,6 +10,7 @@
 
 
 }
+.angular-google-map-container { height: 400px; }
 /* panel body color for search bar */
 .panel-body {
   background-color: #8ebd8d;

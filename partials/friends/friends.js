@@ -37,6 +37,20 @@ angular.module('sample.friends', ['auth0'])
     }
   }
 })
+.factory('sharedFriend' ,function(){
+  return
+})
+.factory('friendProfile',function($http){
+  return{
+    individualFriendProfile : function(friendID){
+      return $http({
+        url: 'api/getProfile.php',
+        method: 'POST',
+        data: friendID
+      })
+    }
+  }
+})
 //********* Add friend controller *********************
 .controller('friendsCtrl', function ($scope, members, addFriend, $rootScope, $http, $filter, $window, $location, auth){
     //getting receiver user details for messaging
@@ -56,7 +70,7 @@ angular.module('sample.friends', ['auth0'])
            }
         });
 })
-.controller('allFriendsCtrl', function($scope, allFriends, $rootScope, auth){
+.controller('allFriendsCtrl', function($scope, $location, allFriends,sharedFriend, $rootScope, auth){
   $scope.buddys = [];
   //declaring member details
   var myDetails = {userID: auth.profile.user_id};
@@ -73,4 +87,16 @@ angular.module('sample.friends', ['auth0'])
             })
         });
     });
+
+    $scope.thisFriend = function(buddy){
+      sharedFriend = buddy;
+        console.log($scope.bud);
+    }
+})
+
+.controller('friendProfileCtrl', function($scope, friendProfile, $rootScope, $rootScope, auth){
+  friendProfile.individualFriendProfile(friendID).success(function(data){
+    $scope.bud = data;
+  });
+  console.log("this is this",$rootScope.selectedUsers);
 });
