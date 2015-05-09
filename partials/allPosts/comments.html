@@ -9,12 +9,9 @@
 
   </div>
   <div class="col-md-6">
-    <button name="Add Friend" class = "btn btn-large btn-success" ng-click= "addComment()">Add Comment</button>
-
+    <button name="Add Friend" class = "btn btn-lg btn-success" ng-click= "addComment()">Add Comment</button>
   </div>
 </div>
-<div class="col-md-12 comment">
-
     <table class="table table-hover" >
       <tr ng-repeat ="allcom in allcoms.slice().reverse()">
         <div ng-click="thisFriend(buddy)">
@@ -30,15 +27,12 @@
         </td>
         <td>
           <span>Commmented: <span am-time-ago="allcom.comDate"></span></span>
-
+        </td>
+        <td>
+          <button class="btn btn-danger btn-lg" ng-click="deleteCom(allcom)"><i class="fa fa-trash-o"></i> Delete</button>
         </td>
       </div>
       </tr>
     </table>
-
-
-</div>
-
-
 </div>
 </div>

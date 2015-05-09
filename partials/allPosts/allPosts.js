@@ -39,7 +39,13 @@ angular.module('sample.allPosts', ['auth0'])
         method: 'POST',
         data: postID
       })
-      scope.$apply();
+    },
+    removeComment : function(comID){
+      return $http({
+        url: 'api/removeComment.php',
+        method: 'REMOVE',
+        data: comID
+      })
     }
   }
 })
@@ -157,21 +163,29 @@ angular.module('sample.allPosts', ['auth0'])
           $scope.addData();
           // end of get comments
           $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 14 };
-            //get user id
             var picUsrId = {uid : post.uid };
-            //get user information
+            // ******* get user information ********
             posts.getLogProfile(picUsrId).success(function(picdata){
               post.picture = picdata[0];
             })
           });
+        // *************** Add comment function **********************************
         $scope.addComment = function(){
           var commentData = {postID: $rootScope.post.postID, uid: $rootScope.post.uid, comUsrID: auth.profile.user_id, comContent: $('textarea[name=comment]').val()};
           addCom.addComments(commentData).success(function(data){
-            $scope.addCom = addCom;
             //after comment is added update list in Comment page
             $scope.addData();
           });
+        };
+        // *************** Remove comment function *******************************
 
+        $scope.deleteCom = function(allcom){
+          var comID = {comID: allcom.id, comUsrID: auth.profile.user_id};
+          addCom.removeComment(comID).success(function(data){
+            console.log(comID);
+            $scope.addData();
+            console.log("server",data);
+          });
         };
 // return to previous page
   $scope.back = function() {
