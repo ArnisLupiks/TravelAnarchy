@@ -13,7 +13,17 @@ body{
 ul{
 	list-style: none;
 }
-
+/* comment panel layout */
+.panel.panel-default.comment{
+	border: none;
+	padding-right:0px;
+	padding-left:0px;
+}
+/* comment panel main */
+.col-md-12.comment{
+	padding-right:0px;
+	padding-left:0px;
+}
 /* Removed width:auto from navbar-collapse classs; */
 .navbar-collapse {
 border-top: 0;

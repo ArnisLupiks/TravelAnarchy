@@ -17,6 +17,18 @@ angular.module('sample.allPosts', ['auth0'])
     }
   };
 })
+.factory('addCom' ,function($http){
+  return{
+    addComment : function(commentData){
+      return $http({
+        url: 'api/addComments.php',
+        method: 'POST',
+        data: commentData
+      })
+    }
+  }
+
+})
 //displays all logs in grid view on main page
 .controller('postCtrl', function HomeController (Flash, posts, $scope, $http, $filter, $location, auth){
 
@@ -108,8 +120,9 @@ angular.module('sample.allPosts', ['auth0'])
 
 })
 // displays selected log from the list above
-.controller('postDetailCtrl', function HomeController (Flash, posts,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
+.controller('postDetailCtrl', function HomeController (Flash, posts,addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
         posts.find($routeParams.postID, function(post){
+          $rootScope.post = post;
           $scope.post = post;
           $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 14 };
             //get user id
@@ -127,7 +140,14 @@ angular.module('sample.allPosts', ['auth0'])
                   }).error(function(err){
                       "ERROR in getPostUPic", console.log(err)
                   });
-        });
+                });
+
+        $scope.addComment = function(post){
+          var commentData = {postID: $rootScope.post.postID, uid: $rootScope.post.uid, comUsrID: auth.profile.user_id, comContent: $('textarea[name=comment]').val()};
+          addCom.addComment(commentData).success(function(data){
+            console.log("this is tet",data);
+          });
+        };
 
 // return to previous page
   $scope.back = function() {

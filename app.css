@@ -55,7 +55,6 @@ padding-right: 5px;
 .link:hover, .link:active, .link:focus{
     text-decoration:none;
 }
-.angular-google-map-container { height: 400px; }
 /*
 p:first-letter{
   font-size: 200%;
@@ -179,9 +178,7 @@ p:first-letter{
     height: 50px;
     padding-top: 0;
 }
-.angular-google-map-container{
-  height:200px;
-}
+
 .maincontent{
   min-width: 200px;
 }
