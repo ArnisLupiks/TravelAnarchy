@@ -39,6 +39,7 @@ angular.module('sample.allPosts', ['auth0'])
         method: 'POST',
         data: postID
       })
+      scope.$apply();
     }
   }
 })
@@ -139,6 +140,8 @@ angular.module('sample.allPosts', ['auth0'])
           $scope.post = post;
           //get comments
           var postID = {postID: post.postID};
+          //show and refresh list of comments
+          $scope.addData = function(){
             addCom.allComments(postID).success(function(data){
               $scope.allcoms = data;
               angular.forEach($scope.allcoms ,function(allcom){
@@ -149,8 +152,10 @@ angular.module('sample.allPosts', ['auth0'])
                     allcom.picture = picdata[0];
                   })
               });
-              console.log("this is comments: ",data);
-            }); // end of get comments
+            });
+          };
+          $scope.addData();
+          // end of get comments
           $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 14 };
             //get user id
             var picUsrId = {uid : post.uid };
@@ -162,9 +167,11 @@ angular.module('sample.allPosts', ['auth0'])
         $scope.addComment = function(){
           var commentData = {postID: $rootScope.post.postID, uid: $rootScope.post.uid, comUsrID: auth.profile.user_id, comContent: $('textarea[name=comment]').val()};
           addCom.addComments(commentData).success(function(data){
-            $location.path("/post");
-            console.log("this is tet",data);
+            $scope.addCom = addCom;
+            //after comment is added update list in Comment page
+            $scope.addData();
           });
+
         };
 // return to previous page
   $scope.back = function() {
