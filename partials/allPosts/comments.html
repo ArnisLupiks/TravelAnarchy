@@ -29,7 +29,7 @@
           <span>Commmented: <span am-time-ago="allcom.comDate"></span></span>
         </td>
         <td>
-          <button class="btn btn-danger btn-lg" ng-click="deleteCom(allcom)"><i class="fa fa-trash-o"></i> Delete</button>
+          <button ng-if ="allcom.comUsrID == auth.profile.user_id" class="btn btn-danger btn-lg" ng-click="deleteCom(allcom)"><i class="fa fa-trash-o"></i> Delete</button>
         </td>
       </div>
       </tr>

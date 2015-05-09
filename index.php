@@ -75,7 +75,7 @@
 
   </head>
   <body>
-    <div ng-include="'partials/authenticated/authenticated.html'" ng-show="isAuthenticated"></div>
+    <div ng-include="'partials/authenticated/authenticated.html'"></div>
     <div flash-message="3000" ></div>
 
     <div class="container" ng-view></div>

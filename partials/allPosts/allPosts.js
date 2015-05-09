@@ -141,6 +141,7 @@ angular.module('sample.allPosts', ['auth0'])
 })
 // displays selected log from the list above
 .controller('postDetailCtrl', function HomeController (Flash, posts, addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
+        $scope.auth = auth;
         posts.find($routeParams.postID, function(post){
           $rootScope.post = post;
           $scope.post = post;
@@ -178,7 +179,6 @@ angular.module('sample.allPosts', ['auth0'])
           });
         };
         // *************** Remove comment function *******************************
-
         $scope.deleteCom = function(allcom){
           var comID = {comID: allcom.id, comUsrID: auth.profile.user_id};
           addCom.removeComment(comID).success(function(data){
