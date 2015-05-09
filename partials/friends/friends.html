@@ -10,7 +10,7 @@
               <tr ng-repeat ="buddy in buddys" ng-click="thisFriend(buddy)">
                 <div ng-click="thisFriend(buddy)">
                 <td>
-                  <img ng-src= "{{buddy.picture.picture}}" alt="profile picture" />
+                  <img class = "circular" ng-src= "{{buddy.picture.picture}}" alt="profile picture" />
                 </td>
                 <td>
                   <span ng-bind = "buddy.picture.username"></span>

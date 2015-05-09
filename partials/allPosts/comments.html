@@ -2,18 +2,42 @@
 <div class="panel-body">
 <h4>Add a comments here:</h4>
 <div class="col-md-12 comment">
-  <form role="form" ng-submit="addComment()">
   <div class="col-md-6">
-    <textarea type="text" class="form-control chopsticks" rows="2" name="comment" ng-model="comment" ng-trim = "false" maxlength="100" ></textarea></p>
+    <form role="form" ng-submit="addComment()">
+    <textarea type="text" class="form-control chopsticks" rows="2" name="comment" ng-model="comment" ng-trim = "false" maxlength="100" ></textarea>
+  </form>
 
   </div>
   <div class="col-md-6">
     <button name="Add Friend" class = "btn btn-large btn-success" ng-click= "addComment()">Add Comment</button>
 
   </div>
-</form>
 </div>
+<div class="col-md-12 comment">
 
+    <table class="table table-hover" >
+      <tr ng-repeat ="allcom in allcoms.slice().reverse()">
+        <div ng-click="thisFriend(buddy)">
+        <td>
+          <img class = "circular" ng-src= "{{allcom.picture.picture}}" alt="profile picture" />
+        </td>
+        <td>
+          <span ng-bind = "allcom.picture.username"></span>
+          <span ng-bind = "allcom.picture.surname"></span>
+        </td>
+        <td>
+          <span ng-bind = "allcom.comContent"></span>
+        </td>
+        <td>
+          <span>Commmented: <span am-time-ago="allcom.comDate"></span></span>
+
+        </td>
+      </div>
+      </tr>
+    </table>
+
+
+</div>
 
 
 </div>

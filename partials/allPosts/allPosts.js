@@ -14,20 +14,33 @@ angular.module('sample.allPosts', ['auth0'])
         })[0];
         callback(post);
       });
+    },
+    getLogProfile : function(picUsrId){
+      return $http({
+        url: 'api/getPostUPic.php',
+        method: 'POST',
+        data: picUsrId
+      })
     }
   };
 })
 .factory('addCom' ,function($http){
   return{
-    addComment : function(commentData){
+    addComments : function(commentData){
       return $http({
         url: 'api/addComments.php',
         method: 'POST',
         data: commentData
       })
+    },
+    allComments : function(postID){
+      return $http({
+        url: 'api/getComments.php',
+        method: 'POST',
+        data: postID
+      })
     }
   }
-
 })
 //displays all logs in grid view on main page
 .controller('postCtrl', function HomeController (Flash, posts, $scope, $http, $filter, $location, auth){
@@ -120,35 +133,39 @@ angular.module('sample.allPosts', ['auth0'])
 
 })
 // displays selected log from the list above
-.controller('postDetailCtrl', function HomeController (Flash, posts,addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
+.controller('postDetailCtrl', function HomeController (Flash, posts, addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
         posts.find($routeParams.postID, function(post){
           $rootScope.post = post;
           $scope.post = post;
+          //get comments
+          var postID = {postID: post.postID};
+            addCom.allComments(postID).success(function(data){
+              $scope.allcoms = data;
+              angular.forEach($scope.allcoms ,function(allcom){
+                $scope.allcom = [];
+                //setting variable wiwth member friend id
+                var picUsrId = {uid : allcom.comUsrID };
+                  posts.getLogProfile(picUsrId).success(function(picdata){
+                    allcom.picture = picdata[0];
+                  })
+              });
+              console.log("this is comments: ",data);
+            }); // end of get comments
           $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 14 };
             //get user id
             var picUsrId = {uid : post.uid };
             //get user information
-            $scope.method = 'POST';
-            $scope.url = 'api/getPostUPic.php';
-            $http({method: $scope.method, url: $scope.url, data: picUsrId})
-              .success(function(picdata, status){
-                    //adds picture/name/surname to post object
-                    console.log(status);
-                  //  console.log(picdata);
-                    post.picture = picdata[0];
-                  //trow error if not successfully executed function
-                  }).error(function(err){
-                      "ERROR in getPostUPic", console.log(err)
-                  });
-                });
-
-        $scope.addComment = function(post){
+            posts.getLogProfile(picUsrId).success(function(picdata){
+              post.picture = picdata[0];
+            })
+          });
+        $scope.addComment = function(){
           var commentData = {postID: $rootScope.post.postID, uid: $rootScope.post.uid, comUsrID: auth.profile.user_id, comContent: $('textarea[name=comment]').val()};
-          addCom.addComment(commentData).success(function(data){
+          addCom.addComments(commentData).success(function(data){
+            $location.path("/post");
             console.log("this is tet",data);
           });
         };
-
 // return to previous page
   $scope.back = function() {
     window.history.back();

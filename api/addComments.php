@@ -19,16 +19,12 @@ try{
     $comUsrID = $data->comUsrID;
     //$location = mysql_real_escape_string($data->location);
     $comContent = $data->comContent;
-
     //execute
-  if($postID != null){
         $query="INSERT INTO logcomments (postID, uid, comUsrID, comContent) VALUES ('$postID', '$uid', '$comUsrID', '$comContent')";
         $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
         $result = $mysqli->affected_rows;
        echo $json_response = json_encode($result);
-    }else{
-      echo "there is some errors!! ";
-    }
+
 
   } catch (exception $e) {
           echo json_encode(null);
