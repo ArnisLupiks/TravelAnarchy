@@ -21,6 +21,13 @@ angular.module('sample.allPosts', ['auth0'])
         method: 'POST',
         data: picUsrId
       })
+    },
+    deleteLog : function(remLog){
+      return $http({
+        url: 'api/removeLog.php',
+        method: 'POST',
+        data: remLog
+      })
     }
   };
 })
@@ -135,9 +142,7 @@ angular.module('sample.allPosts', ['auth0'])
             }).error(function(err){
                 "ERROR in getPostUPic", console.log(err)
             });
-
     };
-
 })
 // displays selected log from the list above
 .controller('postDetailCtrl', function HomeController (Flash, posts, addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
@@ -186,6 +191,16 @@ angular.module('sample.allPosts', ['auth0'])
             $scope.addData();
             console.log("server",data);
           });
+        };
+        // ************** Remove Log form user ***********************************
+        $scope.removePost = function(post){
+          var remLog = {postID: post.postID, uid: auth.profile.user_id};
+          console.log(remLog);
+          posts.deleteLog(remLog).success(function(data){
+            //console.log("server says: ",data);
+            $location.path("/");
+          });
+          console.log(post.postID);
         };
 // return to previous page
   $scope.back = function() {

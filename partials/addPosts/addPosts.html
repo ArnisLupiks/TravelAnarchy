@@ -5,13 +5,12 @@
 
 
             <!--* Use ID  -->
-            <input type="hidden" name="uid" ng-value ="auth.profile.user_id"/>
             <!-- Post heading -->
               <h4>Name of the post:</h4>
-              <input type="text" class= "form-control chopsticks" name="heading" ng-model="form.heading" ng-trim = "false" maxlength="30" />
+              <input type="text" class= "form-control chopsticks" name="heading" ng-model="heading" ng-trim = "false" maxlength="30" />
             <!--  Post content  -->
               <h4>Post Content:</h4>
-              <textarea type="text" class="form-control chopsticks" rows="3" name="content" ng-model="form.content" ng-trim = "false" maxlength="350" ></textarea></p>
+              <textarea type="text" class="form-control chopsticks" rows="3" name="content" ng-model="content" ng-trim = "false" maxlength="350" ></textarea></p>
               <span>{{350 - form.content.length}} left</span>
             <!-- Selects location -->
             <!--  <h4>Lookup location:</h4>
@@ -80,7 +79,7 @@
 
 
       <div class = "buttonClassic">
-        <button type="button" class="btn btn-success btn-s" ng-click="submitForm() ; uploader.uploadAll()">
+        <button type="button" class="btn btn-success btn-s" ng-click="submitForm();uploader.uploadAll()">
             <span class="glyphicon glyphicon-upload"></span> Upload all
         </button>
         <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue();reset()">

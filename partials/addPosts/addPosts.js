@@ -77,9 +77,9 @@ angular.module('sample.addPosts', [
                          //alert('Yay. Location: ' + $scope.location);
                       }*/
                       var formData = {
-                      uid: $('input[name=uid]').val(),
-                      heading: $('input[name=heading]').val(),
-                      content: $('textarea[name=content]').val(),
+                      uid: auth.profile.user_id,
+                      heading: $scope.heading,
+                      content: $scope.content,
                       //location: $scope.location,
                       date: $scope.dt
                     };
