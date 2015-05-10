@@ -107,6 +107,15 @@ var app = angular.module( 'TravelMate', [
       $scope.pageTitle = nextRoute.$$route.pageTitle + ' | TravelMate' ;
     }
   });
-})
-
-;
+});
+app.factory('otherUsrPic',function($http){
+  return{
+    getOtherProfile : function(picUsrId){
+      return $http({
+        url: 'api/getPostUPic.php',
+        method: 'POST',
+        data: picUsrId
+      })
+    }
+}
+});

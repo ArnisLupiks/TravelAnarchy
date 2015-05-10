@@ -23,7 +23,6 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 		$arr[] = $row;
 		}
 	}
-
 	# JSON-encode the response
 	echo $json_response = json_encode($arr);
 

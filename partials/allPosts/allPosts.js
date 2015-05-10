@@ -1,3 +1,4 @@
+
 angular.module('sample.allPosts', ['auth0'])
 //controller
 
@@ -14,13 +15,6 @@ angular.module('sample.allPosts', ['auth0'])
         })[0];
         callback(post);
       });
-    },
-    getLogProfile : function(picUsrId){
-      return $http({
-        url: 'api/getPostUPic.php',
-        method: 'POST',
-        data: picUsrId
-      })
     },
     deleteLog : function(remLog){
       return $http({
@@ -57,7 +51,7 @@ angular.module('sample.allPosts', ['auth0'])
   }
 })
 //displays all logs in grid view on main page
-.controller('postCtrl', function HomeController (Flash, posts, $scope, $http, $filter, $location, auth){
+.controller('postCtrl', function HomeController (Flash, posts,otherUsrPic, $scope, $http, $filter, $location, auth){
 
         posts.list(function(posts){
           $scope.posts = posts;
@@ -65,19 +59,11 @@ angular.module('sample.allPosts', ['auth0'])
               //get user id
               var picUsrId = {uid : post.uid };
               //get user information
-              $scope.method = 'POST';
-              $scope.url = 'api/getPostUPic.php';
-              $http({method: $scope.method, url: $scope.url, data: picUsrId})
-                .success(function(picdata, status){
-                      //adds picture/name/surname to post object
-                      console.log(status);
-                    //  console.log(picdata);
-                      post.picture = picdata[0];
-                    //trow error if not successfully executed function
-                    }).error(function(err){
-                        "ERROR in getPostUPic", console.log(err)
-                    });
-            })
+
+              otherUsrPic.getOtherProfile(picUsrId).success(function(picdata){
+                post.picture = picdata[0];
+              });
+            });
       });
         //optional -- order by date
         var orderBy = $filter('orderBy');
@@ -145,7 +131,7 @@ angular.module('sample.allPosts', ['auth0'])
     };
 })
 // displays selected log from the list above
-.controller('postDetailCtrl', function HomeController (Flash, posts, addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
+.controller('postDetailCtrl', function HomeController (Flash, posts, otherUsrPic, addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
         $scope.auth = auth;
         posts.find($routeParams.postID, function(post){
           $rootScope.post = post;
@@ -160,7 +146,7 @@ angular.module('sample.allPosts', ['auth0'])
                 $scope.allcom = [];
                 //setting variable wiwth member friend id
                 var picUsrId = {uid : allcom.comUsrID };
-                  posts.getLogProfile(picUsrId).success(function(picdata){
+                otherUsrPic.getOtherProfile(picUsrId).success(function(picdata){
                     allcom.picture = picdata[0];
                   })
               });
@@ -171,7 +157,7 @@ angular.module('sample.allPosts', ['auth0'])
           $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 14 };
             var picUsrId = {uid : post.uid };
             // ******* get user information ********
-            posts.getLogProfile(picUsrId).success(function(picdata){
+            otherUsrPic.getOtherProfile(picUsrId).success(function(picdata){
               post.picture = picdata[0];
             })
           });
