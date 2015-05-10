@@ -80,15 +80,8 @@ angular.module('sample.addPosts', [
                       var formData = {uid: auth.profile.user_id, heading: $scope.heading,
                                       content: $scope.content, date: $scope.dt};
                       log.addLog(formData).success(function(data){
-                        console.log('yeey', data);
-                        if(data === 1){
-                          console.log("you are on the ball");
-                        }else{
-                          console.log("there is errors in sql or other stuff",data);
-                        }
+                        $location.path("/");
                       });
-                      //  $location.path("/");
-                    console.log(formData);
                 };
                 //reset form
                  $scope.master = {};

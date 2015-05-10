@@ -11,7 +11,7 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 	}
 	//declaring
 	$data = json_decode(file_get_contents("php://input"));
-	$receiverUid = $data->uid;
+	$receiverUid = $mysqli->real_escape_string($data->uid);
 
 	$query="SELECT * FROM messages WHERE receiverUid = '$receiverUid'";
 	$result = $mysqli->query($query) or die($mysqli->conn->error.__LINE__);

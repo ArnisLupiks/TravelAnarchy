@@ -11,11 +11,10 @@ try{
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     } // The mysql database connection script
 
-
     //declare
     $data = json_decode(file_get_contents("php://input"));
-    $usrid = $data->uid;
-    $postID = $data->postID;
+    $usrid = $mysqli->real_escape_string($data->uid);
+    $postID = $mysqli->real_escape_string($data->postID);
       //execute
   if($usrid != null){
         $query="INSERT INTO favoritLogs (uid,postID) VALUES ('$usrid', '$postID')";

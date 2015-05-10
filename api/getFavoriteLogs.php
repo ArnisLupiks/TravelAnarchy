@@ -11,7 +11,7 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 	}
 	//declaring
 	$data = json_decode(file_get_contents("php://input"));
-	$postID = $data->postID;
+	$postID = $mysqli->real_escape_string($data->postID);
 
 	$query="SELECT * FROM posts WHERE postID = '$postID'";
 	$result = $mysqli->query($query) or die($mysqli->conn->error.__LINE__);

@@ -14,11 +14,11 @@ try{
 
     //declare
     $data = json_decode(file_get_contents("php://input"));
-    $postID = $data->postID;
-    $uid = $data->uid;
-    $comUsrID = $data->comUsrID;
+    $postID = $mysqli->real_escape_string($data->postID);
+    $uid = $mysqli->real_escape_string($data->uid);
+    $comUsrID = $mysqli->real_escape_string($data->comUsrID);
     //$location = mysql_real_escape_string($data->location);
-    $comContent = $data->comContent;
+    $comContent = $mysqli->real_escape_string($data->comContent);
     //execute
         $query="INSERT INTO logcomments (postID, uid, comUsrID, comContent) VALUES ('$postID', '$uid', '$comUsrID', '$comContent')";
         $result = $mysqli->query($query) or die($mysqli->error.__LINE__);

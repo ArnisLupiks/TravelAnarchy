@@ -10,7 +10,7 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
   	}
   	//declaring
   	$data = json_decode(file_get_contents("php://input"));
-  	$userID = $data->userID;
+  	$userID = $mysqli->real_escape_string($data->userID);
 
     //selects from database user userID and friendID
     $query = "SELECT * FROM friends WHERE (userID = '$userID') OR (friendID = '$userID')";
