@@ -277,6 +277,8 @@ padding-left:2px;
 /* Large desktop */
 
 @media (min-width: 980px) and (max-width: 1199px){
+
+
   .postContainer{
     padding-top:55px;
     padding-right:50px;

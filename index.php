@@ -2,9 +2,7 @@
 <html ng-app="TravelMate" ng-controller="AppCtrl">
   <head>
     <title ng-bind="pageTitle"></title>
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- font awesome from BootstrapCDN -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="css/custom.css">
@@ -17,17 +15,13 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <!-- Jquery -->
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.9.0/ui-bootstrap-tpls.min.js"></script>
     <!-- font awesome from BootstrapCDN -->
     <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="app.css">
-
-
     <script type="text/javascript" src="auth0-variables.js"></script>
     <script type="text/javascript" src="https://cdn.auth0.com/js/auth0-lock-6.js"></script>
-
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular-cookies.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular-route.js"></script>
     <script type="text/javascript" src="https://cdn.auth0.com/w2/auth0-angular-4.js"></script>
@@ -50,13 +44,7 @@
   <script src = "bower_components/moment/moment.js"></script>
   <script src = "bower_components/angular-moment/angular-moment.js"></script>
 
-
-
-
   <script src="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.2.3/js/ngDialog.min.js"></script>
-
-
-
 
     <!-- App partials &****************************************-->
    <script type="text/javascript" src="partials/login/login.js"></script>
@@ -70,13 +58,10 @@
    <script type="text/javascript" src="partials/favoriteLogs/favorite.js"></script>
    <script type="text/javascript" src="partials/friends/friends.js"></script>
 
-
-
-
   </head>
   <body>
     <div ng-include="'partials/authenticated/authenticated.html'" ng-show="isAuthenticated"></div>
-    <div flash-message="3000" ></div>
+    <div flash-message="2000" ></div>
 
     <div class="container" ng-view></div>
   </body>

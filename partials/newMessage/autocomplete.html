@@ -9,7 +9,7 @@
 <blockquote><h1>Search for friend</h1></blockquote>
 <form class="form-search" ng-controller="newMessageCtrl">
     <!--Selected Friend: window.card = {{selectedUsers}} -->
-  
+
         <input type="text" ng-model="selectedUsers" placeholder="Search for User"
             typeahead="c as c.name for c in users | filter:$viewValue | limitTo:10"
             typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label)'

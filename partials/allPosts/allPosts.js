@@ -1,12 +1,9 @@
-
 angular.module('sample.allPosts', ['auth0'])
-//controller
-
+//factory to get/list logs
 .factory('posts',function($http){
   return{
     list: function(callback){
-      $http.get('api/getPosts.php').
-        success(callback)
+      $http.get('api/getPosts.php').success(callback)
     },
     find: function(postID, callback){
       $http.get('api/getPosts.php').success(function(data){
@@ -17,55 +14,37 @@ angular.module('sample.allPosts', ['auth0'])
       });
     },
     deleteLog : function(remLog){
-      return $http({
-        url: 'api/removeLog.php',
-        method: 'POST',
-        data: remLog
-      })
+      return $http({ url: 'api/removeLog.php', method: 'POST', data: remLog})
     }
   };
 })
+//factory to get/remove/add all comments from database
 .factory('addCom' ,function($http){
   return{
     addComments : function(commentData){
-      return $http({
-        url: 'api/addComments.php',
-        method: 'POST',
-        data: commentData
-      })
+      return $http({ url: 'api/addComments.php', method: 'POST', data: commentData })
     },
     allComments : function(postID){
-      return $http({
-        url: 'api/getComments.php',
-        method: 'POST',
-        data: postID
-      })
+      return $http({ url: 'api/getComments.php', method: 'POST', data: postID})
     },
     removeComment : function(comID){
-      return $http({
-        url: 'api/removeComment.php',
-        method: 'REMOVE',
-        data: comID
-      })
+      return $http({url: 'api/removeComment.php', method: 'REMOVE', data: comID})
     }
   }
 })
 //displays all logs in grid view on main page
 .controller('postCtrl', function HomeController (Flash, posts,otherUsrPic, $scope, $http, $filter, $location, auth){
-
-        posts.list(function(posts){
+      //lists all logs
+      posts.list(function(posts){
           $scope.posts = posts;
             angular.forEach($scope.posts ,function(post){
-              //get user id
               var picUsrId = {uid : post.uid };
-              //get user information
-
               otherUsrPic.getOtherProfile(picUsrId).success(function(picdata){
                 post.picture = picdata[0];
               });
             });
       });
-        //optional -- order by date
+      //optional -- order by date
         var orderBy = $filter('orderBy');
         $scope.order = function(predicate, reverse){
                 $scope.posts = orderBy($scope.posts, predicate, reverse);
@@ -81,23 +60,11 @@ angular.module('sample.allPosts', ['auth0'])
         //reset form ********************************************
         $scope.master = {};
         $scope.maste = "";
+        //reset all fields to empty
         $scope.reset = function(){
                 $scope.form = angular.copy($scope.master);
                 $scope.dt = angular.copy($scope.master);
                 console.log("reset has been pressed");
-        };
-  // popup dialog for post page ***************************
-        $scope.openPopup = function(post){
-                var newScope = $scope.$new();
-                newScope.post = post;
-                ngDialog.open({ template: 'partials/allPosts/post.html', className: 'ngdialog-theme-default', controller: 'postCtrl', scope: newScope});
-                var lat = post.latitude;
-                var long = post.longitude;
-                var mid = post.postID;
-                $scope.map = {center:{ latitude: lat, longitude: long}, zoom:15};
-
-        $scope.markers = { key: mid, coords: {latitude :lat, longitude: long },icon: 'bower_components/angular-maps/example/assets/images.blue_marker.png',
-                optimized:false,labelClass:"label"};
         };
         $scope.isSelected = function(section){
                 return $scope.selected === section;
@@ -106,9 +73,7 @@ angular.module('sample.allPosts', ['auth0'])
   // add Heart to post
   $scope.count = function(post){
     console.log(post.postID);
-
     $scope.like = post.likes + 1;
-
     };
 
  //add favorite posts to users collection
@@ -155,8 +120,11 @@ angular.module('sample.allPosts', ['auth0'])
           $scope.addData();
           // end of get comments
           $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 14 };
-            var picUsrId = {uid : post.uid };
-            // ******* get user information ********
+          //marker for map
+          $scope.markers = { key: post.postID, coords: {latitude : post.latitude, longitude: post.longitude }};
+
+          var picUsrId = {uid : post.uid };
+          // ******* get user information ********
             otherUsrPic.getOtherProfile(picUsrId).success(function(picdata){
               post.picture = picdata[0];
             })
