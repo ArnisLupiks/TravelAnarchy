@@ -195,12 +195,10 @@ angular.module('sample.allPosts', ['auth0'])
         // ************** Remove Log form user ***********************************
         $scope.removePost = function(post){
           var remLog = {postID: post.postID, uid: auth.profile.user_id};
-          console.log(remLog);
           posts.deleteLog(remLog).success(function(data){
             //console.log("server says: ",data);
             $location.path("/");
           });
-          console.log(post.postID);
         };
 // return to previous page
   $scope.back = function() {

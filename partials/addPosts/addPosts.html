@@ -1,5 +1,5 @@
 <div class = "postContainer">
-  <form name = "post"  ng-controller="addPostCtrl" ng-submit="submitForm()"  class="addPost" nv-file-drop="" uploader="uploader">
+  <form name = "post" ng-submit="submitForm()"  class="addPost" nv-file-drop="" uploader="uploader">
     <div class="panel panel-default add">
     <div class="panel-body">
 
@@ -7,14 +7,14 @@
             <!--* Use ID  -->
             <!-- Post heading -->
               <h4>Name of the post:</h4>
-              <input type="text" class= "form-control chopsticks" name="heading" ng-model="heading" ng-trim = "false" maxlength="30" />
+              <input type="text" class= "form-control chopsticks" ng-model="heading" ng-trim = "false" maxlength="30" />
             <!--  Post content  -->
               <h4>Post Content:</h4>
-              <textarea type="text" class="form-control chopsticks" rows="3" name="content" ng-model="content" ng-trim = "false" maxlength="350" ></textarea></p>
+              <textarea type="text" class="form-control chopsticks" rows="3" ng-model="content" ng-trim = "false" maxlength="350" ></textarea></p>
               <span>{{350 - form.content.length}} left</span>
             <!-- Selects location -->
-            <!--  <h4>Lookup location:</h4>
-              <google-places location=location class="form-control" ng-model="form.location" ></google-places> -->
+              <h4>Lookup location:</h4>
+              <google-places location=location class="form-control" ng-model="form.location" ></google-places>
             <!-- Date visited -->
               <h4>Date visited</h4>
                 <p class="input-group">

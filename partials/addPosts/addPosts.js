@@ -46,11 +46,20 @@ angular.module('sample.addPosts', [
             }
         };
     }])
+.factory('log', function($http){
+  return{
+    addLog : function(formData){
+      return $http({
+        url : 'api/addPosts.php',
+        method: 'POST',
+        data: formData
+      })
+    }
+  }
+})
 .controller('addPostCtrl',
-            function HomeController($scope, $http, FileUploader, $filter, $location, auth){
-              //shows user credentials
-              $scope.auth = auth;
-              // date pick option
+            function HomeController($scope, $http, log, FileUploader, $filter, $location, auth){
+            // date pick option
               $scope.today = function() {
                 $scope.dt = new Date();
                 console.log("today button pressed");
@@ -66,35 +75,20 @@ angular.module('sample.addPosts', [
               };
               $scope.formats = ['yyyy/MM/dd','dd-MMMM-yyyy', 'dd.MM.yyyy', 'shortDate'];
               $scope.format = $scope.formats[0];
-              //location scope is empty
-              //$scope.location = '';
               // on submit button do post and collect data
                $scope.submitForm = function() {
-                      // check if location is set or not
-                    /**  if($scope.location === ''){
-                         alert('Directive did not update the location property in parent controller.');
-                      } else {
-                         //alert('Yay. Location: ' + $scope.location);
-                      }*/
-                      var formData = {
-                      uid: auth.profile.user_id,
-                      heading: $scope.heading,
-                      content: $scope.content,
-                      //location: $scope.location,
-                      date: $scope.dt
-                    };
+                      var formData = {uid: auth.profile.user_id, heading: $scope.heading,
+                                      content: $scope.content, date: $scope.dt};
+                      log.addLog(formData).success(function(data){
+                        console.log('yeey', data);
+                        if(data === 1){
+                          console.log("you are on the ball");
+                        }else{
+                          console.log("there is errors in sql or other stuff",data);
+                        }
+                      });
+                      //  $location.path("/");
                     console.log(formData);
-                    $http({
-                        url: "api/addPosts.php",
-                        data: formData,
-                        method: 'POST',
-                        headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
-                    }).success(function(data){
-                        //if added information, it will log OK and redirect.
-                        console.log("OK", data);
-                        //redirect to main post page
-                        $location.path("/");
-                    }).error(function(err){"ERR", console.log(err)})
                 };
                 //reset form
                  $scope.master = {};
