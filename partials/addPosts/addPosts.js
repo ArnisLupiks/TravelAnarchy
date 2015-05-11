@@ -119,8 +119,8 @@ angular.module('sample.addPosts', [
                      console.info('onWhenAddingFileFailed', item, filter, options);
                  };
                  uploader.onAfterAddingFile = function(fileItem) {
+                    //adds random name to picture
                    var fileExtension = '.' + fileItem.file.name.split('.').pop();
-
                   fileItem.file.name = Math.random().toString(36).substring(7) + new Date().getTime() + fileExtension;
                      console.info('onAfterAddingFile', fileItem);
                      console.info("this is name: ",fileItem.file.name);
