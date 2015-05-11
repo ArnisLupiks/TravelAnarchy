@@ -13,7 +13,7 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 	$data = json_decode(file_get_contents("php://input"));
 	$uid = $mysqli->real_escape_string($data->uid);
 
-	$query="SELECT * FROM favoritLogs WHERE uid = '$uid'";
+	$query="SELECT * FROM favoritlogs WHERE uid = '$uid'";
 	$result = $mysqli->query($query) or die($mysqli->conn->error.__LINE__);
 	$data = array();
 

@@ -17,7 +17,7 @@ try{
     $postID = $mysqli->real_escape_string($data->postID);
       //execute
   if($usrid != null){
-        $query="INSERT INTO favoritLogs (uid,postID) VALUES ('$usrid', '$postID')";
+        $query="INSERT INTO favoritlogs (uid,postID) VALUES ('$usrid', '$postID')";
         $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
         $result = $mysqli->affected_rows;
        echo $json_response = json_encode($result);

@@ -14,7 +14,7 @@ header("Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE");
 	$uid = $mysqli->real_escape_string($data->uid);
   $postID = $mysqli->real_escape_string($data->postID);
 
-	$query="DELETE FROM favoritLogs WHERE uid = '$uid' AND postID = '$postID'";
+	$query="DELETE FROM favoritlogs WHERE uid = '$uid' AND postID = '$postID'";
 	$result = $mysqli->query($query) or die($mysqli->conn->error.__LINE__);
   $result = $mysqli->affected_rows;
    echo $json_response = json_encode($result);

@@ -58,7 +58,7 @@ angular.module('sample.addPosts', [
   }
 })
 .controller('addPostCtrl',
-            function HomeController($scope, $http, log, FileUploader, $filter, $location, auth){
+            function HomeController($scope, $http, log, FileUploader, $rootScope, $filter, $location, auth){
             // date pick option
               $scope.today = function() {
                 $scope.dt = new Date();
@@ -78,7 +78,7 @@ angular.module('sample.addPosts', [
               // on submit button do post and collect data
                $scope.submitForm = function() {
                       var formData = {uid: auth.profile.user_id, heading: $scope.heading,
-                                      content: $scope.content, date: $scope.dt};
+                                      content: $scope.content, pict: $rootScope.pict, date: $scope.dt};
                       log.addLog(formData).success(function(data){
                         $location.path("/");
                       });
@@ -96,6 +96,7 @@ angular.module('sample.addPosts', [
                   //filter utitlity function
                   $scope.customArrayFilter = function (item){
                     return (item.postHeading.indexOf('it') != -1);
+
                 };
                 //add pictures
                  var uploader = $scope.uploader = new FileUploader({
@@ -119,6 +120,8 @@ angular.module('sample.addPosts', [
                  };
                  uploader.onAfterAddingFile = function(fileItem) {
                      console.info('onAfterAddingFile', fileItem);
+                     console.info("this is name: ",fileItem.file.name);
+                     $rootScope.pict = fileItem.file.name;
                  };
                  uploader.onAfterAddingAll = function(addedFileItems) {
                      console.info('onAfterAddingAll', addedFileItems);
