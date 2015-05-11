@@ -14,6 +14,7 @@ angular.module( 'sample.login', [
       //stores information in localhost
       store.set('profile', profile);
       store.set('token', token);
+      $location.path("/");
       $scope.$root.isAuthenticated = true;
       //storing user in database
       var formData = {uid: profile.user_id, name: profile.name, username: profile.given_name,surname: profile.family_name,

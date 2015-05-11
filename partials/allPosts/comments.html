@@ -1,10 +1,10 @@
-<div class="panel panel-default comment">
+<div class="panel panel-default comment" ng-controller = "postDetailCtrl">
 <div class="panel-body">
 <h4>Add a comments here:</h4>
 <div class="col-md-12 comment">
   <div class="col-md-6">
     <form role="form" ng-submit="addComment()">
-    <textarea type="text" class="form-control chopsticks" rows="2" name="comment" ng-model="comment" ng-trim = "false" maxlength="100" ></textarea>
+    <textarea type="text" class="form-control chopsticks" rows="2" ng-model="comment" ng-trim = "false" maxlength="100" ></textarea>
   </form>
 
   </div>

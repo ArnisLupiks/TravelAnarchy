@@ -32,8 +32,15 @@ angular.module('sample.allPosts', ['auth0'])
     }
   }
 })
+.factory('favLog', function($http){
+  return{
+    addFavorit: function(favoritData){
+      return $http({ url: 'api/addToFavorit.php', method: 'POST', data: favoritData })
+    }
+  }
+})
 //displays all logs in grid view on main page
-.controller('postCtrl', function HomeController (Flash, posts,otherUsrPic, $scope, $http, $filter, $location, auth){
+.controller('postCtrl', function HomeController (Flash, posts,otherUsrPic,favLog, $scope, $http, $filter, $location, auth){
       //lists all logs
       posts.list(function(posts){
           $scope.posts = posts;
@@ -71,49 +78,39 @@ angular.module('sample.allPosts', ['auth0'])
         };
 
   // add Heart to post
-  $scope.count = function(post){
-    console.log(post.postID);
-    $scope.like = post.likes + 1;
+    $scope.count = function(post){
+      console.log(post.postID);
+      $scope.like = post.likes + 1;
     };
 
- //add favorite posts to users collection
+    //add favorite posts to users collection
     $scope.addToFavorit = function(post){
-
       var favoritData = {uid:auth.profile.user_id, postID:post.postID};
-      $scope.method = 'POST';
-      $scope.url = 'api/addToFavorit.php';
-      $http({method: $scope.method, url: $scope.url, data: favoritData})
-        .success(function(data, status){
-              //adds picture/name/surname to post object
-              var message = "<strong> "+auth.profile.name+"</strong> you have added to favorites <em>" + post.picture.username + " " + post.picture.surname + "</em> log";
-              Flash.create('success', message, 'customAlert');
-              console.log(status);
-            console.log(data);
-            //trow error if not successfully executed function
-            }).error(function(err){
-                "ERROR in getPostUPic", console.log(err)
-            });
+      favLog.addFavorit(favoritData).success(function(data){
+        var message = "<strong> "+auth.profile.name+"</strong> you have added to favorites <em>" + post.picture.username + " " + post.picture.surname + "</em> log";
+        Flash.create('success', message, 'customAlert');
+        console.log(data);
+      });
+
     };
 })
 // displays selected log from the list above
 .controller('postDetailCtrl', function HomeController (Flash, posts, otherUsrPic, addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
         $scope.auth = auth;
+        // ************* Displaying individual log details ************************
         posts.find($routeParams.postID, function(post){
           $rootScope.post = post;
           $scope.post = post;
-          //get comments
           var postID = {postID: post.postID};
-          //show and refresh list of comments
-          $scope.addData = function(){
+          $scope.addData = function(){//show and refresh list of comments
             addCom.allComments(postID).success(function(data){
               $scope.allcoms = data;
               angular.forEach($scope.allcoms ,function(allcom){
                 $scope.allcom = [];
-                //setting variable wiwth member friend id
-                var picUsrId = {uid : allcom.comUsrID };
+                var picUsrId = {uid : allcom.comUsrID };//setting variable wiwth member friend id
                 otherUsrPic.getOtherProfile(picUsrId).success(function(picdata){
                     allcom.picture = picdata[0];
-                  })
+                })
               });
             });
           };
@@ -131,9 +128,8 @@ angular.module('sample.allPosts', ['auth0'])
           });
         // *************** Add comment function **********************************
         $scope.addComment = function(){
-          var commentData = {postID: $rootScope.post.postID, uid: $rootScope.post.uid, comUsrID: auth.profile.user_id, comContent: $('textarea[name=comment]').val()};
+          var commentData = {postID: $rootScope.post.postID, uid: $rootScope.post.uid, comUsrID: auth.profile.user_id, comContent: $scope.comment};
           addCom.addComments(commentData).success(function(data){
-            //after comment is added update list in Comment page
             $scope.addData();
           });
         };
@@ -141,16 +137,13 @@ angular.module('sample.allPosts', ['auth0'])
         $scope.deleteCom = function(allcom){
           var comID = {comID: allcom.id, comUsrID: auth.profile.user_id};
           addCom.removeComment(comID).success(function(data){
-            console.log(comID);
             $scope.addData();
-            console.log("server",data);
           });
         };
         // ************** Remove Log form user ***********************************
         $scope.removePost = function(post){
           var remLog = {postID: post.postID, uid: auth.profile.user_id};
           posts.deleteLog(remLog).success(function(data){
-            //console.log("server says: ",data);
             $location.path("/");
           });
         };
