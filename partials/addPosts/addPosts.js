@@ -5,9 +5,7 @@ angular.module('sample.addPosts', [
 .directive('ngThumb', ['$window', function($window) {
         var helper = {
             support: !!($window.FileReader && $window.CanvasRenderingContext2D),
-            isFile: function(item) {
-                return angular.isObject(item) && item instanceof $window.File;
-            },
+
             isImage: function(file) {
                 var type =  '|' + file.type.slice(file.type.lastIndexOf('/') + 1) + '|';
                 return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
@@ -22,7 +20,6 @@ angular.module('sample.addPosts', [
 
                 var params = scope.$eval(attributes.ngThumb);
 
-                if (!helper.isFile(params.file)) return;
                 if (!helper.isImage(params.file)) return;
 
                 var canvas = element.find('canvas');
@@ -104,6 +101,9 @@ angular.module('sample.addPosts', [
                  });
 
                  // FILTERS
+                 uploader.onAfterAddingFile = function(fileItem) {
+
+                 };
 
                  uploader.filters.push({
                      name: 'imageFilter',
@@ -119,6 +119,9 @@ angular.module('sample.addPosts', [
                      console.info('onWhenAddingFileFailed', item, filter, options);
                  };
                  uploader.onAfterAddingFile = function(fileItem) {
+                   var fileExtension = '.' + fileItem.file.name.split('.').pop();
+
+                  fileItem.file.name = Math.random().toString(36).substring(7) + new Date().getTime() + fileExtension;
                      console.info('onAfterAddingFile', fileItem);
                      console.info("this is name: ",fileItem.file.name);
                      $rootScope.pict = fileItem.file.name;

@@ -14,46 +14,33 @@ header("Access-Control-Allow-Origin: *");
 
 
 
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["file"]["name"]);
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-if( !empty( $_FILES )) {
-    $check = getimagesize($_FILES["file"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-}
-// Check if file already exists
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
-// Check file size
-if ($_FILES["file"]["size"] > 500000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-}
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
-    } else {
-        echo "Sorry, there was an error uploading your file.";
-    }
-}
-?>
+
+        if($_FILES["file"]["error"] > 0){
+            echo "Error: " . $_FILES["file"]["error"] . "<br>";
+        } else{
+            $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+            $filename = $_FILES["file"]["name"];
+            $filetype = $_FILES["file"]["type"];
+            $filesize = $_FILES["file"]["size"];
+
+            // Verify file extension
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if(!array_key_exists($ext, $allowed)) die("Error: Please select a valid file format.");
+
+            // Verify file size - 5MB maximum
+            $maxsize = 5 * 1024 * 1024;
+            if($filesize > $maxsize) die("Error: file size is larger than the allowed limit.");
+
+            // Verify MYME type of the file
+            if(in_array($filetype, $allowed)){
+                // Check whether file exists before uploading it
+
+                    move_uploaded_file($_FILES["file"]["tmp_name"], "uploads/" . $_FILES["file"]["name"]);
+                    echo "Your file was uploaded successfully.";
+                
+            } else{
+                echo "Error: There was a problem uploading your file - please try again.";
+            }
+        }
+
+    ?>
