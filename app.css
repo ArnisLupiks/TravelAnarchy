@@ -248,8 +248,6 @@ padding-left:5px;
   }
   .poster{
     padding-bottom:20px;
-  }
-  .poster{
     position:absolute;
   }
   .navbar-default .navbar-nav .open .dropdown-menu>li>a {
@@ -313,6 +311,10 @@ padding-left:5px;
     padding-right:150px;
     padding-left:150px;
   }
+  /* individual post picture */
+  .postImage{
+    max-width: 400px;
+  }
 }
 
 /* Portrait tablet to landscape and desktop */
@@ -360,7 +362,10 @@ box-shadow: 10px 0 30px #004d39;
   text-overflow: ellipsis;
   font-size:150%;
 }
-
+/* individual post picture */
+.postImage{
+  max-width: 400px;
+}
 }
 
 /* Landscape phone to portrait tablet */
