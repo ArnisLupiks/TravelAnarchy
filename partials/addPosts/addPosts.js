@@ -55,7 +55,7 @@ angular.module('sample.addPosts', [
   }
 })
 .controller('addPostCtrl',
-            function HomeController($scope, $http, log, FileUploader, $rootScope, $filter, $location, auth){
+            function HomeController($scope, $http, log, posts,FileUploader, $rootScope, $filter, $location, auth){
             // date pick option
               $scope.today = function() {
                 $scope.dt = new Date();
@@ -149,6 +149,7 @@ angular.module('sample.addPosts', [
                  };
                  uploader.onCompleteItem = function(fileItem, response, status, headers) {
                      console.info('onCompleteItem', fileItem, response, status, headers);
+                     posts.list();
                  };
                  uploader.onCompleteAll = function() {
                      console.info('onCompleteAll');

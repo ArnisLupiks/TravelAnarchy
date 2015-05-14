@@ -88,6 +88,7 @@ var app = angular.module( 'TravelMate', [
         if (!jwtHelper.isTokenExpired(token)) {
           auth.authenticate(store.get('profile'), token);
           //if authenticated show navbar
+          $location.path('/');
           $rootScope.isAuthenticated = true;
         } else {
           $location.path('/login');

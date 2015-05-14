@@ -1,6 +1,5 @@
-angular.module( 'sample.login', [
-  'auth0'
-])
+angular.module( 'sample.login', ['auth0'])
+
 .factory('LogIn',function($http){
   return{
     addUser : function(formData){

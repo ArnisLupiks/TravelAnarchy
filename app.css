@@ -10,6 +10,7 @@
 
 
 }
+
 .angular-google-map-container { height: 400px; }
 /* panel body color for search bar */
 .panel-body {
@@ -224,41 +225,12 @@ p:first-letter{
 .listAddCont .action{
     top: 13px;
 }
-
-
-#grid[data-columns]::before {
-	content: '3 .column.size-1of3';
-
-  /* These are the classes that are going to be applied: */
-.column { float: left; }
-.size-1of3 { width: 33.333%; }
-
-@media screen and (max-width: 480px){
-	#grid[data-columns]::before {
-		content: '1 .column.size-1of1';
-	}
+/* padding col main */
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9,
+.col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+padding-right:5px;
+padding-left:5px;
 }
-
-@media screen and (min-width: 481px) and (max-width: 768px) {
-	#grid[data-columns]::before {
-		content: '2 .column.size-1of2';
-	}
-}
-@media screen and (min-width: 769px) {
-	#grid[data-columns]::before {
-		content: '3 .column.size-1of3';
-	}
-}
-
-/* Again, you’re free to use and define the classes: */
-.column { float: left; }
-.size-1of1 { width: 100%; }
-.size-1of2 { width: 50%; }
-.size-1of3 { width: 33.333%; }
-
-
-
-
 /*small picture on main content logs page */
 .col-xs-2.col-sm-6.small{
   width:80px;
@@ -273,6 +245,9 @@ p:first-letter{
   .postContainer{
     padding-top:55px;
 
+  }
+  .poster{
+    padding-bottom:20px;
   }
   .poster{
     position:absolute;
@@ -300,6 +275,10 @@ p:first-letter{
     padding-left:200px;
     background: transparent;
     border: none;
+  }
+  /* individual post picture */
+  .postImage{
+    max-width: 400px;
   }
 }
 
@@ -452,7 +431,13 @@ box-shadow: 10px 0 30px #004d39;
   .form-control.chopsticks {
   font-size:125%;
 }
-
+.col-md-6{
+  padding-left:0px;
+  padding-right:0px;
+}
+h3{
+  font-size:15px;
+}
   .maincontent{
     padding-right: 2px;
     padding-left: 2px;
@@ -462,8 +447,18 @@ box-shadow: 10px 0 30px #004d39;
     padding-right:5px;
     padding-left:5px;
   }
+  .small{
+     color: transparent;
+  }
   .postContainer{
     padding-top:55px;
+  }
+  .poster{
+    padding-left:10px;
+    font-size:10px;
+  }
+  .maincontent.text-justify.max.ng-binding{
+    font-size: 13px;
   }
   .buttonClassic{
     padding-bottom:20px;
