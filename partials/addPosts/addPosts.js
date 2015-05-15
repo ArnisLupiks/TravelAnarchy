@@ -43,7 +43,7 @@ angular.module('sample.addPosts', [
             }
         };
     }])
-.factory('log', function($http){
+.factory('logee', function($http){
   return{
     addLog : function(formData){
       return $http({
@@ -51,11 +51,36 @@ angular.module('sample.addPosts', [
         method: 'POST',
         data: formData
       })
+    },
+    addPicture : function(pictureData){
+      return $http({
+        url : 'api/addPicture.php',
+        method: 'POST',
+        data: pictureData
+      })
     }
   }
 })
+// setting unique ID
+.factory('uuid', function() {
+    var svc = {
+        new: function() {
+            function _p8(s) {
+                var p = (Math.random().toString(16)+"000000000").substr(2,8);
+                return s ? "-" + p.substr(0,4) + "-" + p.substr(4,4) : p ;
+            }
+            return _p8() + _p8(true) + _p8(true) + _p8();
+        },
+
+        empty: function() {
+          return '00000000-0000-0000-0000-000000000000';
+        }
+    };
+
+    return svc;
+})
 .controller('addPostCtrl',
-            function HomeController($scope, $http, log, FileUploader, $rootScope, $filter, $location, auth){
+            function HomeController($scope, $http,uuid, logee, FileUploader, $rootScope, $filter, $location, auth){
             // date pick option
               $scope.today = function() {
                 $scope.dt = new Date();
@@ -70,13 +95,20 @@ angular.module('sample.addPosts', [
                 formatYear: 'yy',
                 startingDay: 1
               };
+              /* uuid generated */
+              $scope.new = uuid.new();
+              $scope.nInfo = new Date();
+
+              /* tags */
+              $scope.tag = 1;
+
               $scope.formats = ['yyyy/MM/dd','dd-MMMM-yyyy', 'dd.MM.yyyy', 'shortDate'];
               $scope.format = $scope.formats[0];
               // on submit button do post and collect data
                $scope.submitForm = function() {
                       var formData = {uid: auth.profile.user_id, heading: $scope.heading,
-                                      content: $scope.content, pict: $rootScope.pict, date: $scope.dt};
-                      log.addLog(formData).success(function(data){
+                                      content: $scope.content, pict: $scope.new, date: $scope.dt};
+                      logee.addLog(formData).success(function(data){
                       });
                 };
                 //reset form
@@ -94,16 +126,26 @@ angular.module('sample.addPosts', [
                     return (item.postHeading.indexOf('it') != -1);
 
                 };
+
+              /*  $rootScope.addPic = function(){
+                  console.log('this is this pictures nameeeeeeeeeeeeeeeeeee',$rootScope.Filefile);
+
+                  var pictureData = {uid: auth.profile.user_id, uniqueID: $scope.new, picName: $rootScope.Filefile, tag: $scope.tag};
+                  logee.addPicture(pictureData).success(function(data){
+                    console.log("aaaaaaaaaaaa: ",data);
+                  });
+                }
+*/
+
                 //add pictures
                  var uploader = $scope.uploader = new FileUploader({
                      url: 'api/uploadPic.php'
                  });
-
-                 // FILTERS
-                 uploader.onAfterAddingFile = function(fileItem) {
-
-                 };
-
+/*
+                 var pictureData = {uid: auth.profile.user_id, uniqueID: $scope.new, picName: fileItem.file.name, tag: $scope.tag};
+                 log.addPicture(pictureData).success(function(data){
+               });
+*/
                  uploader.filters.push({
                      name: 'imageFilter',
                      fn: function(item /*{File|FileLikeObject}*/, options) {
@@ -123,7 +165,9 @@ angular.module('sample.addPosts', [
                   fileItem.file.name = Math.random().toString(36).substring(7) + new Date().getTime() + fileExtension;
                      console.info('onAfterAddingFile', fileItem);
                      console.info("this is name: ",fileItem.file.name);
-                     $rootScope.pict = fileItem.file.name;
+
+
+
                  };
                  uploader.onAfterAddingAll = function(addedFileItems) {
                      console.info('onAfterAddingAll', addedFileItems);
@@ -137,8 +181,16 @@ angular.module('sample.addPosts', [
                  uploader.onProgressAll = function(progress) {
                      console.info('onProgressAll', progress);
                  };
-                 uploader.onSuccessItem = function(fileItem, response, status, headers) {
+                 uploader.onSuccessItem = function(fileItem, response, log, status, headers) {
+                   $rootScope.Filefile = fileItem.file.name;
+                   console.log('this is this pictures name', fileItem.file.name);
                      console.info('onSuccessItem', fileItem, response, status, headers);
+
+                     var pictureData = {uid: auth.profile.user_id, uniqueID: $scope.new, picName: fileItem.file.name, tag: $scope.tag};
+                     logee.addPicture(pictureData).success(function(data){
+                       console.log("aaaaaaaaaaaa: ",data);
+                     });
+
                  };
                  uploader.onErrorItem = function(fileItem, response, status, headers) {
                      console.info('onErrorItem', fileItem, response, status, headers);

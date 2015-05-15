@@ -7,9 +7,7 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="css/custom.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/ngDialog-theme-default.css">
-  <link rel="stylesheet" href="css/ngDialog-theme-plain.css">
-  <link rel="stylesheet" href="css/ngDialog.css">
+
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <!-- Jquery -->
