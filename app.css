@@ -43,11 +43,11 @@
   border: 0;
   }
 /* rslide previous and next button */
-.rslides_nav.rslides2_nav{
+.rslides_nav{
   position: center;
 }
-  .rslides_nav.rslides2_nav.prev,
-  .rslides_nav.rslides2_nav.next{
+  .rslides_nav.prev,
+  .rslides_nav.next{
     border: 1px solid #006600;
      background-color: #009971;
      color: #ffffff;
@@ -72,8 +72,8 @@
       -ms-user-select:none;
       user-select:none;
   }
-  .rslides_nav.rslides2_nav.next:hover,
-  .rslides_nav.rslides2_nav.prev:hover  {
+  .rslides_nav.next:hover,
+  .rslides_nav.prev:hover  {
     background: #356094;
     border: solid 1px #2A4E77;
     text-decoration: none;

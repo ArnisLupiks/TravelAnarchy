@@ -200,11 +200,12 @@ angular.module('sample.addPosts', [
                  };
                  uploader.onCompleteItem = function(fileItem, response, status, headers) {
                      console.info('onCompleteItem', fileItem, response, status, headers);
-                     $location.path("/");
+
 
                  };
                  uploader.onCompleteAll = function() {
                      console.info('onCompleteAll');
+                     $location.path("/");
                  };
                  console.info('uploader', uploader);
         });
