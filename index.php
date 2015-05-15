@@ -25,6 +25,11 @@
     <script type="text/javascript" src="https://cdn.auth0.com/w2/auth0-angular-4.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
     <script type="text/javascript" src="js/salvattore.min.js"></script>
+    <script src="js/responsiveslides.min.js"></script>
+    <link rel="stylesheet" href="js/responsiveslides.css">
+
+    <script src="js/custom.js"></script>
+
 
     <script src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js" type="text/javascript"> </script>
     <script type="text/javascript" src="app.js"></script>

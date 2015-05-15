@@ -13,16 +13,15 @@
           <div class="col-md-6">
               <h3>{{post.postHeading}}  </h3>
           </div>
-
         </div>
         <div class="col-md-12">
-          <div class="col-md-6">
-            <span ng-bind = "post.postContent"></span><br />
-          </div>
-          <div class="col-md-6">
-            <img class = "postImage" ng-src="api/uploads/{{post.pict}}" alt="log picture" />
-          </div>
+
+            <ul class="rslides" data-slider-class-selector="rslides" data-slider-refresh-on-watch="post.pica" slider>
+              <li ng-repeat = "pi in post.pica"><img ng-src="api/uploads/{{pi.name}}" alt=""></li>
+            </ul>
+
         </div>
+        <span ng-bind = "post.postContent"></span><br />
         <div class="col-md-12">
           <div class="col-md-6">
             <ui-gmap-google-map center='map.center' zoom = 'map.zoom'>
@@ -43,7 +42,6 @@
           </div>
         </div>
         {{post.post}}
-
              <p>posted: <span am-time-ago="post.postDate"></span></p>
                <button class="btn btn-success btn-lg" ng-click="back()"><i class="fa fa-arrow-left"></i> Back to Logs</button>
                <button ng-if ="post.uid == auth.profile.user_id" class="btn btn-danger btn-lg" ng-click="removePost(post)"><i class="fa fa-trash-o"></i> Delete Log</button>

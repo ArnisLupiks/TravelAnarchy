@@ -18,6 +18,17 @@ angular.module('sample.allPosts', ['auth0'])
     }
   };
 })
+.factory('pics',function($http){
+  return{
+    getPic : function(picUID){
+      return $http({
+        url: 'api/getLogPics.php',
+        method: 'POST',
+        data: picUID
+      })
+    }
+  }
+})
 //factory to get/remove/add all comments from database
 .factory('addCom' ,function($http){
   return{
@@ -39,13 +50,49 @@ angular.module('sample.allPosts', ['auth0'])
     }
   }
 })
+.directive('slider', function() {
+  var linker = function(scope, element, attr) {
+    var selector = attr.sliderClassSelector;
+    var watchSelector = attr.sliderRefreshOnWatch;
+
+    scope.$watch(watchSelector, function() {
+        $('.'+selector).responsiveSlides({
+          auto: true,     // Boolean: Animate automatically, true or false
+          pager: false,// Boolean: Show pager, true or false
+          speed: 500, // Integer: Speed of the transition, in milliseconds
+          timeout: 4000, // Integer: Time between slide transitions, in milliseconds
+          maxwidth: 1060,
+ nav: true,             // Boolean: Show navigation, true or false
+ random: false,          // Boolean: Randomize the order of the slides, true or false
+ pause: false,           // Boolean: Pause on hover, true or false
+ pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+ prevText: "Previous",   // String: Text for the "previous" button
+ nextText: "Next",       // String: Text for the "next" button
+ maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+ navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+ manualControls: ""     // Selector: Declare custom pager navigation
+        });
+      });
+
+  };
+  return {
+    restrict: "A",
+    link: linker
+  }
+})
 //displays all logs in grid view on main page
-.controller('postCtrl', function HomeController (Flash, posts,otherUsrPic,favLog, $scope, $http, $filter, $location, auth){
+.controller('postCtrl', function HomeController (Flash,pics, posts,otherUsrPic,favLog, $scope, $http, $filter, $location, auth){
       //lists all logs
       posts.list(function(posts){
           $scope.posts = posts;
             angular.forEach($scope.posts ,function(post){
               var picUsrId = {uid : post.uid };
+              var picUID = {uniqueID: post.pict};
+              pics.getPic(picUID).success(function(data){
+                post.pics = data;
+                console.log("this is picture data: ",data);
+
+              })
               otherUsrPic.getOtherProfile(picUsrId).success(function(picdata){
                 post.picture = picdata[0];
               });
@@ -95,13 +142,21 @@ angular.module('sample.allPosts', ['auth0'])
     };
 })
 // displays selected log from the list above
-.controller('postDetailCtrl', function HomeController (Flash, posts, otherUsrPic, addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
+.controller('postDetailCtrl', function HomeController (Flash, posts,pics, otherUsrPic, addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
+
         $scope.auth = auth;
         // ************* Displaying individual log details ************************
         posts.find($routeParams.postID, function(post){
           $rootScope.post = post;
           $scope.post = post;
           var postID = {postID: post.postID};
+              var picUID = {uniqueID: post.pict};
+              pics.getPic(picUID).success(function(data){
+                post.pica = data;
+                console.log("this is picture dateeeeeeeeeeeeeeee: ",  post.pica);
+
+              })
+
           $scope.addData = function(){//show and refresh list of comments
             addCom.allComments(postID).success(function(data){
               $scope.allcoms = data;

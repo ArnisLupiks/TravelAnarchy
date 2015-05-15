@@ -1,7 +1,7 @@
 
 
 
-    <div class="mainPage" ng-controller="postCtrl" data-ng-init="init()">
+    <div class="mainPage" data-ng-init="init()">
       <div class="panel panel-default">
           <div class="panel-body">
             <div class="col-lg-6">
@@ -16,13 +16,14 @@
         <tbody>
           <div class="container-fluid">
           <div class="row-fluid">
-              <article class="col-md-4" ng-repeat ="post in posts.slice().reverse() | filter:{$: objProppostHeadingFilter} " >
+              <article class="col-md-6" ng-repeat ="post in posts.slice().reverse() | filter:{$: objProppostHeadingFilter} " >
 
                                   <div class="panel panel-default logs">
                                     <a href="#/log/{{post.postID}}" >
 
                                       <div class = "link" ng-click="openPost(post)">
-                                          <img ng-src ="api/uploads/{{post.pict}}" class= "img-responsive" />
+
+                                          <img ng-src ="api/uploads/{{post.pics[0].name}}" class= "img-responsive" />
                                           <div class="row">
                                             <div class="col-xs-2 col-sm-6 small" style ="width: 80px;">
                                                 <img class = "circular" ng-src= "{{post.picture.picture}}"alt="profile pic" />
