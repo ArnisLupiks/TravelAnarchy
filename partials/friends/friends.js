@@ -37,9 +37,6 @@ angular.module('sample.friends', ['auth0'])
     }
   }
 })
-.factory('sharedFriend' ,function(){
-  return
-})
 .factory('friendProfile',function($http){
   return{
     individualFriendProfile : function(friendID){
@@ -70,7 +67,7 @@ angular.module('sample.friends', ['auth0'])
            }
         });
 })
-.controller('allFriendsCtrl', function($scope, $location, allFriends,sharedFriend, $rootScope, auth){
+.controller('allFriendsCtrl', function($scope, $location, allFriends, $rootScope, auth){
   $scope.buddys = [];
   //declaring member details
   var myDetails = {userID: auth.profile.user_id};
@@ -88,10 +85,7 @@ angular.module('sample.friends', ['auth0'])
         });
     });
 
-    $scope.thisFriend = function(buddy){
-      sharedFriend = buddy;
-        console.log($scope.bud);
-    }
+
 })
 
 .controller('friendProfileCtrl', function($scope, friendProfile, $rootScope, $rootScope, auth){

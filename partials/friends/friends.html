@@ -2,9 +2,10 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-          <div class="col-md-12">
+
             <div ng-include src="'partials/friends/autocomplete.html'"></div>
-          </div>
+
+
           <div class="" ng-controller = "allFriendsCtrl" data-ng-init="init()">
             <table class="table table-hover" >
               <tr ng-repeat ="buddy in buddys" ng-click="thisFriend(buddy)">
@@ -24,7 +25,8 @@
               </tr>
             </table>
             </ul>
-          </div>
+      
+        </div>
       </div>
     </div>
 </div>

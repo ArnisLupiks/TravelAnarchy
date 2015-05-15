@@ -173,7 +173,7 @@ angular.module('sample.allPosts', ['auth0'])
           // end of get comments
           $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 14 };
           //marker for map
-          $scope.markers = { key: post.postID, coords: {latitude : post.latitude, longitude: post.longitude }};
+          $scope.marker = { id: post.postID, coords: {latitude : post.latitude, longitude: post.longitude }};
 
           var picUsrId = {uid : post.uid };
           // ******* get user information ********

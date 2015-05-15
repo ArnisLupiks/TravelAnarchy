@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="css/custom.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.js"></script>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,600,300,700'
+            rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <!-- Jquery -->
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -36,8 +37,8 @@
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
 
     <!-- bower components -->
-  <script  src = "bower_components/lodash/dist/lodash.min.js"></script>
-  <script src = "bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+  <script  src = "bower_components/lodash/dist/lodash.js"></script>
+  <script src = "bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
   <script src = "bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
   <script src = "bower_components/ng-file-upload/angular-file-upload.js"></script>
   <script src = "bower_components/auth0-lock/build/auth0-lock.min.js"></script>
