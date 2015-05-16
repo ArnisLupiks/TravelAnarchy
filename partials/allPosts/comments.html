@@ -12,27 +12,18 @@
     <button name="Add Friend" class = "btn btn-lg btn-success" ng-click= "addComment()">Add Comment</button>
   </div>
 </div>
-    <table class="table table-hover" >
-      <tr ng-repeat ="allcom in allcoms.slice().reverse()">
-        <div ng-click="thisFriend(buddy)">
-        <td>
-          <img class = "circular" ng-src= "{{allcom.picture.picture}}" alt="profile picture" />
-        </td>
-        <td>
-          <span ng-bind = "allcom.picture.username"></span>
-          <span ng-bind = "allcom.picture.surname"></span>
-        </td>
-        <td>
-          <span ng-bind = "allcom.comContent"></span>
-        </td>
-        <td>
-          <span>Added: <span am-time-ago="allcom.comDate"></span></span>
-        </td>
-        <td>
-          <button ng-if ="allcom.comUsrID == auth.profile.user_id" class="btn btn-danger btn-lg" ng-click="deleteCom(allcom)"><i class="fa fa-trash-o"></i> Delete</button>
-        </td>
-      </div>
-      </tr>
-    </table>
+<ul class = "list-group" ng-repeat = "allcom in allcoms.slice().reverse()">
+  <li class = "list-group-item">
+    <div ng-click="thisFriend(buddy)">
+      <img class = "circular" ng-src= "{{allcom.picture.picture}}" alt="profile picture" />
+      <span ng-bind = "allcom.picture.username"></span>
+      <span ng-bind = "allcom.picture.surname"></span>
+      <span ng-bind = "allcom.comContent"></span>
+      <span>Added: <span am-time-ago="allcom.comDate"></span></span>
+      <button ng-if ="allcom.comUsrID == auth.profile.user_id" class="btn btn-danger btn-lg" ng-click="deleteCom(allcom)"><i class="fa fa-trash-o"></i> Delete</button>
+    </div>
+  </li>
+</ul>
+  
 </div>
 </div>

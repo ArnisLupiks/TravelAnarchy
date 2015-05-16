@@ -141,8 +141,9 @@ angular.module('sample.allPosts', ['auth0'])
 
     };
 })
+
 // displays selected log from the list above
-.controller('postDetailCtrl', function HomeController (Flash, posts,pics, otherUsrPic, addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
+.controller('postDetailCtrl', function HomeController (Flash, posts,pics,otherUsrPic, addCom, $rootScope,  uiGmapGoogleMapApi, $routeParams, $scope, $http, $filter, $location, auth){
 
         $scope.auth = auth;
         // ************* Displaying individual log details ************************
@@ -156,6 +157,7 @@ angular.module('sample.allPosts', ['auth0'])
                 console.log("this is picture dateeeeeeeeeeeeeeee: ",  post.pica);
 
               })
+
 
           $scope.addData = function(){//show and refresh list of comments
             addCom.allComments(postID).success(function(data){
@@ -171,9 +173,34 @@ angular.module('sample.allPosts', ['auth0'])
           };
           $scope.addData();
           // end of get comments
-          $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 14 };
-          //marker for map
-          $scope.marker = { id: post.postID, coords: {latitude : post.latitude, longitude: post.longitude }};
+          uiGmapGoogleMapApi.then(function(maps) {
+            $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 14 };
+            //marker for map
+            $scope.coordsUpdates = 0;
+          $scope.dynamicMoveCtr = 0;
+            $scope.marker = {
+                  id: 0,
+                  coords: {latitude : post.latitude, longitude: post.longitude },
+                  options: { draggable: true },
+                  events: {
+                    dragend: function (marker, eventName, args) {
+                      $log.log('marker dragend');
+                      var lat = marker.getPosition().lat();
+                      var lon = marker.getPosition().lng();
+                      $log.log(lat);
+                      $log.log(lon);
+
+                      $scope.marker.options = {
+                        draggable: true,
+                        labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+                        labelAnchor: "100 0",
+                        labelClass: "marker-labels"
+                      };
+                    }
+                  }
+                };
+  });
+
 
           var picUsrId = {uid : post.uid };
           // ******* get user information ********

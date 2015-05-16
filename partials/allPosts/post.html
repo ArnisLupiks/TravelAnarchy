@@ -1,29 +1,33 @@
 <div class="mainPage" >
   <div class="panel panel-default logs">
-        <div class="col-md-12">
-          <div class="col-md-6">
-            <a href = "#/profile">
-              <div class = "link">
-                <span ng-bind="post.picture.name"></span><img class = "circular" ng-src= "{{post.picture.picture}}"alt="profile pic" />
-                <span ng-bind = "post.picture.username"></span>
-                <span ng-bind = "post.picture.surname"></span>
+
+
+          <div class="row">
+<div class="col-md-3">
+
+</div>
+            <div class="col-md-6">
+                <h3 class= "heading"><span ng-bind = "post.postHeading"></span> </h3>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class = "postImage">
+                <ul class="rslides" data-slider-class-selector="rslides" data-slider-refresh-on-watch="post.pica" slider>
+                  <li ng-repeat = "pi in post.pica"><img  ng-src="api/uploads/{{pi.name}}" alt=""></li>
+                </ul>
               </div>
-            </a>
+            </div>
+            <div class="col-md-6">
+              <h4 class = "content" ng-bind="post.postContent"></h4>
+            </div>
           </div>
-          <div class="col-md-6">
-              <h3>{{post.postHeading}}  </h3>
-          </div>
-        </div>
-        <div class="col-md-12">
 
-            <ul class="rslides" data-slider-class-selector="rslides" data-slider-refresh-on-watch="post.pica" slider>
-              <li ng-repeat = "pi in post.pica"><img ng-src="api/uploads/{{pi.name}}" alt=""></li>
-            </ul>
+      <hr />
 
-        </div>
-        <span ng-bind = "post.postContent"></span><br />
-        <div class="col-md-12">
-          <div class="col-md-6">
             <ui-gmap-google-map center='map.center' zoom = 'map.zoom'>
                      <ui-gmap-marker idKey="marker.id" coords="marker.coords" icon="marker.icon">
                           <ui-gmap-window show='true'>
@@ -33,14 +37,27 @@
                           </ui-gmap-window>
                         </ui-gmap-marker>
             </ui-gmap-google-map>
-          </div>
-        </div>
-        {{post.post}}
-             <p>posted: <span am-time-ago="post.postDate"></span></p>
+
+            <div class="row">
+
+
+            <div class="col-xs-6">
+              <a href = "#/profile">
+                <div class = "individualLink">
+                  <span ng-bind="post.picture.name"></span><img class = "circular" ng-src= "{{post.picture.picture}}"alt="profile pic" />
+                  <span ng-bind = "post.picture.username"></span>
+                  <span ng-bind = "post.picture.surname"></span>
+                </div>
+              </a>
+            </div>
+            <div class="col-xs-6 time">
+              <p>posted: <span am-time-ago="post.postDate"></span></p>
+            </div>
+           </div>
                <button class="btn btn-success btn-lg" ng-click="back()"><i class="fa fa-arrow-left"></i> Back to Logs</button>
                <button ng-if ="post.uid == auth.profile.user_id" class="btn btn-danger btn-lg" ng-click="removePost(post)"><i class="fa fa-trash-o"></i> Delete Log</button>
                <div class="col-md-12 comment">
-                 <div ng-include src="'partials/allPosts/comments.html'"></div>
+                  <div ng-include src="'partials/allPosts/comments.html'"></div>
                </div>
       </div>
 </div>

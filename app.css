@@ -10,6 +10,16 @@
 
 
 }
+.container-fluid{
+  padding-right:0px;
+  padding-left:0px;
+}
+.img-responsive{
+  width: 100%;
+  height: auto;
+ overflow: hidden;
+}
+
 /* image slider */
 .rslides {
   position: relative;
@@ -43,9 +53,7 @@
   border: 0;
   }
 /* rslide previous and next button */
-.rslides_nav{
-  position: center;
-}
+
   .rslides_nav.prev,
   .rslides_nav.next{
     border: 1px solid #006600;
@@ -82,8 +90,8 @@
 
   /* google maps */
   .angular-google-map-container {
-    width: 200%;
-    height: 400px;
+    max-width: 400px;
+    max-height: 300px;
 }
 
 /* fix for Twitter Bootstrap handling of responsive images */
@@ -173,9 +181,22 @@ p:first-letter{
 
 }
 */
-/* friends body */
 
+html, body, #map_canvas {
+           height: 100%;
+           width: 100%;
+           margin: 0px;
+       }
 
+       #map_canvas {
+           position: relative;
+       }
+/* postImage */
+
+.postImage{
+  max-height: 600px;
+}
+/* end */
 /* -- Heart color --*/
 .fa.fa-heart.fa-2x.red{
   color:#cc0000;
@@ -352,6 +373,39 @@ padding-left:5px;
 /* XLarge Desktop */
 
 @media (min-width:1200px){
+  /* log panel */
+
+  .heading{
+    text-align: center;
+  }
+  .individualLink{
+    margin-top:10px;
+    padding-left:20px;
+  }
+  .col-xs-6.time{
+    margin-top:50px;
+  }
+  .content{
+    text-align: justify;
+      padding-left: 10px;
+      padding-right: 20px;
+  }
+  .panel-heading{
+    font-weight: bold;
+  }
+  /* main image */
+  .mainPic{
+    height: 300px;
+    max-width: 450px;
+
+    overflow: hidden;
+  }
+  /* author profile picture*/
+  .col-xs-2.col-sm-5.small{
+    width: 80px;
+    padding-left: 20px;
+    padding-top: 2px;
+  }
   .postContainer{
     padding-top:55px;
 
@@ -372,7 +426,8 @@ padding-left:5px;
   }
   /* main content style */
   .maincontent.text-justify.max{
-    width: 525px;
+    padding-left: 10px;
+    width: 355px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -386,15 +441,47 @@ padding-left:5px;
   }
   /* individual post picture */
   .postImage{
-    max-width: 400px;
+    padding-left:20px;
+    max-height: 400px;
+    max-width:auto;
+
+      overflow: hidden;
   }
 }
 
 /* Large desktop */
 
 @media (min-width: 980px) and (max-width: 1199px){
+  /* log panel */
 
+  .heading{
+    text-align: center;
+  }
+  .individualLink{
+    margin-top:10px;
+    padding-left:20px;
+  }
+  .col-xs-6.time{
+    margin-top:50px;
+  }
+  .content{
+    text-align: justify;
+      padding-left: 10px;
+      padding-right: 20px;
+  }
+  /* main image */
+  .mainPic{
+    height: 230px;
+    max-width: 450px;
 
+    overflow: hidden;
+  }
+  /* author profile picture*/
+  .col-xs-2.col-sm-5.small{
+    width: 80px;
+    padding-left: 20px;
+    padding-top: 2px;
+  }
   .postContainer{
     padding-top:55px;
     padding-right:50px;
@@ -411,7 +498,8 @@ padding-left:5px;
   }
   /* main content style */
   .maincontent.text-justify.max{
-    width: 430px;
+    padding-left: 10px;
+    width: 298px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -423,12 +511,57 @@ padding-left:5px;
   }
   /* individual post picture */
   .postImage{
-    max-width: 400px;
+    padding-left:20px;
+    max-height: 400px;
+    max-width:auto;
+
+      overflow: hidden;
   }
 }
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
+  /* log panel */
+  .panel.panel-default.logs, .container, .row{
+    padding-left:0px;
+    padding-right:0px;
+    margin-right:0px;
+    margin-left:0px;
+  }
+  .heading{
+    text-align: center;
+  }
+  .individualLink{
+    margin-top:10px;
+    padding-left:20px;
+  }
+  .col-xs-6.time{
+    margin-top:50px;
+  }
+.postImage{
+  height: 510px;
+  max-width: 710px;
+
+  overflow: hidden;
+}
+  .content{
+    text-align: justify;
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+
+  .mainPic{
+    height: 510px;
+    max-width: 710px;
+
+    overflow: hidden;
+  }
+  /* author profile picture*/
+  .col-xs-2.col-sm-5.small{
+    width: 80px;
+    padding-left: 20px;
+    padding-top: 2px;
+  }
 .col-md-6, .container{
   /* font size in add post texarea/ input */
   .form-control.chopsticks {
@@ -444,6 +577,7 @@ padding-left:5px;
 
   margin-top:10px;
   margin-bottom: 0px;
+  font-weight: bold;
 }
 .postContainer{
   padding-top:55px;
@@ -465,7 +599,8 @@ box-shadow: 10px 0 30px #004d39;
 }*/
 /* main content style */
 .maincontent.text-justify.max{
-  padding-left:10px;
+  padding-top:10px;
+  padding-left:20px;
   width: 670px;
   white-space: nowrap;
   overflow: hidden;
@@ -473,20 +608,55 @@ box-shadow: 10px 0 30px #004d39;
   font-size:150%;
 }
 /* individual post picture */
-.postImage{
-  max-width: 400px;
-}
+
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
+  /* log panel */
+  .panel.panel-default.logs, .container, .row{
+    padding-left:0px;
+    padding-right:0px;
+    margin-right:0px;
+    margin-left:0px;
+  }
+  .heading{
+    text-align: center;
+  }
+  .individualLink{
+    margin-top:10px;
+    padding-left:20px;
+  }
+  .col-xs-6.time{
+    margin-top:50px;
+  }
+
+  .content{
+    text-align: justify;
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+  /*main picture*/
+  .mainPic{
+    max-height: 600px;
+    max-width: 650px;
+
+    overflow: hidden;
+  }
+  /* author profile picture*/
+  .col-xs-2.col-sm-5.small{
+    width: 80px;
+    padding-left: 20px;
+    padding-top: 2px;
+  }
+
   /* font size in add post texarea/ input */
   .form-control.chopsticks {
   font-size:125%;
 }
   .col-md-6, .container{
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 0px;
+    padding-left: 0px;
 
     marging-right: 0px;
     marging-left:0px;
@@ -497,10 +667,10 @@ box-shadow: 10px 0 30px #004d39;
     padding-left:5px;
   }
   .panel-heading{
+    padding-top:10px;
     margin-top:10px;
+    font-weight: bold;
     margin-bottom: 0px;
-
-    padding-top:2px;
     padding-bottom:2px;
     padding-right: 5px;
     padding-left:5px;
@@ -517,6 +687,7 @@ box-shadow: 10px 0 30px #004d39;
     padding-top:55px;
 
   }
+
   .buttonClassic{
     padding-bottom:20px;
   }
@@ -542,6 +713,70 @@ box-shadow: 10px 0 30px #004d39;
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+  /* log panel */
+  .panel.panel-default.logs, .container, .row{
+    padding-left:0px;
+    padding-right:0px;
+    margin-right:0px;
+    margin-left:0px;
+  }
+  .heading{
+    text-align: center;
+  }
+  .individualLink{
+    padding-left:20px;
+  }
+  .col-xs-6.time{
+    margin-top:50px;
+  }
+
+  .content{
+    text-align: justify;
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+  /* image in Log */
+  .postImage{
+    max-height: 310px;
+    max-width: auto;
+    margin-left:20px;
+    margin-right:20px;
+    overflow: hidden;
+  }
+
+  /*main picture*/
+  .mainPic{
+    max-height: 310px;
+    max-width: 400px;
+
+    overflow: hidden;
+  }
+  /* heading */
+  .heading{
+    font-weight: bold;
+    font-size:18px;
+  }
+  /* author profile picture*/
+  .col-xs-2.col-sm-5.small{
+    width: 80px;
+    padding-left: 20px;
+    padding-top: 2px;
+  }
+  .panel-heading{
+    padding-top:10px;
+    margin-top:10px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    padding-bottom:2px;
+    padding-right: 0px;
+    padding-left:5px;
+  }
+  /* google maps */
+  .angular-google-map-container {
+    max-width: 400px;
+    max-height: 200px;
+}
+
   /* font size in add post texarea/ input */
   .form-control.chopsticks {
   font-size:125%;
@@ -550,9 +785,7 @@ box-shadow: 10px 0 30px #004d39;
   padding-left:0px;
   padding-right:0px;
 }
-h3{
-  font-size:15px;
-}
+
   .maincontent{
     padding-right: 2px;
     padding-left: 2px;
