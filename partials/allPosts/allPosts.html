@@ -1,6 +1,3 @@
-
-
-
     <div class="mainPage" data-ng-init="init()">
       <div class="panel panel-default">
           <div class="panel-body">
@@ -17,7 +14,6 @@
           <div class="container-fluid">
           <div class="row-fluid">
               <article class="col-md-4" ng-repeat ="post in posts.slice().reverse() | filter:{$: objProppostHeadingFilter} " >
-
                                   <div class="panel panel-default logs">
                                     <a href="#/log/{{post.postID}}" >
 
@@ -33,31 +29,21 @@
                                                 <h5 class = "panel-heading" ng-bind = "post.postHeading"></h5>
                                             </div>
                                           </div>
-
                                             <p class = "maincontent text-justify max" ng-bind = "post.postContent"></p>
-                                            <!--  <ui-gmap-google-map center='{latitude : "ng-bind: post.latitude", longitude:"ng-bind: post.logitude"}' zoom='map.zoom'></ui-gmap-google-map> -->
-                                            <!-- image view -->
-                                            <!--<div class="poster">
-                                              posted by: {{post.picture.username}} {{post.picture.surname}}
-                                            </div>-->
                                         </div>
                                     </a>
                                         <div class="btn-group btn-group-justified" role="group" aria-label="...">
-
                                           <div class="btn-group" role="group">
-                                            <button type="button"  ng-click = "addToFavorit(post)" class="btn btn-default hvr-icon-push"><i class="fa fa-star fa-2x yellow"></i> <span class = "small">Add to Favorite</span></button>
+                                            <span ng-bind = "post.like"></span><button type="button"  ng-click = "addToFavorit(post)" class="btn btn-default hvr-icon-push"><i class="fa fa-star fa-2x yellow"></i> <span class = "small">Add to Favourite</span></button>
                                           </div>
                                           <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-heart fa-2x red"></i> <span class = "small">Love it!</span></button>
+                                            <button type="button" class="btn btn-default" ng-click= "addLike(post)"><i class="fa fa-heart fa-2x red"></i> <span class = "small">Love it!</span></button>
                                           </div>
                                           <div class="btn-group" role="group">
                                             <button type="button" class="btn btn-default">  <i class="fa fa-comment fa-2x"></i> <span class = "small">Comments</span></button>
                                           </div>
                                         </div>
-
                                 </div>
-
-
               </article>
             </div>
           </div>

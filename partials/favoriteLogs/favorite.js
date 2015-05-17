@@ -1,23 +1,6 @@
 angular.module('sample.favorLogs',['auth0'])
 //controller
-.factory('favorit',function($http){
-  return{
-    list: function(callback){
-      $http.get('api/getPosts.php').success(callback)
-    },
-    find: function(postID, callback){
-      $http.get('api/getPosts.php').success(function(data){
-        var post = data.filter(function(entry){
-          return entry.postID === postID;
-        })[0];
-        callback(post);
-      });
-    },
-    deleteLog : function(remLog){
-      return $http({ url: 'api/removeLog.php', method: 'POST', data: remLog})
-    }
-  };
-})
+
 
 .factory('favorit', function($http){
   return{
@@ -32,7 +15,7 @@ angular.module('sample.favorLogs',['auth0'])
     }
   }
 })
-.controller('favoriteCtrl', function ($scope, Flash, favorit, otherUsrPic, $http, $filter, $route, $location, auth, ngDialog){
+.controller('favoriteCtrl', function ($scope, Flash,pics, favorit, otherUsrPic, $http, $filter, $route, $location, auth, ngDialog){
   //set get method for posts
   var Usr ={uid:auth.profile.user_id};
   $scope.addData = function(){
@@ -44,7 +27,12 @@ angular.module('sample.favorLogs',['auth0'])
             favorit.getFavoriteLogs(postID).success(function(data){
                   favorite.logs = data[0];
                   $scope.logs = data;
+
                     angular.forEach($scope.logs, function(log){
+                      var picUID = {uniqueID: log.pict};
+                      pics.getPic(picUID).success(function(data){
+                        log.pics = data;
+                      });
                       var picUsrId = {uid: log.uid};
                       otherUsrPic.getOtherProfile(picUsrId).success(function(picdata){
                             log.picture = picdata[0];

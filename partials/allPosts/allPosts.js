@@ -18,17 +18,7 @@ angular.module('sample.allPosts', ['auth0'])
     }
   };
 })
-.factory('pics',function($http){
-  return{
-    getPic : function(picUID){
-      return $http({
-        url: 'api/getLogPics.php',
-        method: 'POST',
-        data: picUID
-      })
-    }
-  }
-})
+
 //factory to get/remove/add all comments from database
 .factory('addCom' ,function($http){
   return{
@@ -50,6 +40,8 @@ angular.module('sample.allPosts', ['auth0'])
     }
   }
 })
+
+
 .directive('slider', function() {
   var linker = function(scope, element, attr) {
     var selector = attr.sliderClassSelector;
@@ -81,23 +73,31 @@ angular.module('sample.allPosts', ['auth0'])
   }
 })
 //displays all logs in grid view on main page
-.controller('postCtrl', function (Flash,pics, posts,otherUsrPic,favLog, $scope, $http, $filter, $location, auth){
+.controller('postCtrl', function (Flash,pics,like, posts,otherUsrPic,favLog, $scope, $http, $filter, $location, auth){
       //lists all logs
       posts.list(function(posts){
           $scope.posts = posts;
             angular.forEach($scope.posts ,function(post){
               var picUsrId = {uid : post.uid };
               var picUID = {uniqueID: post.pict};
+        
               pics.getPic(picUID).success(function(data){
                 post.pics = data;
-                console.log("this is picture data: ",data);
 
-              })
+              });
+
+
               otherUsrPic.getOtherProfile(picUsrId).success(function(picdata){
                 post.picture = picdata[0];
               });
             });
       });
+      $scope.addLike = function(post){
+        var favorData = {uid: auth.profile.user_id, postID: post.postID};
+        like.addLiky(favorData).success(function(data){
+          console.log("this is data from liky: ",data);
+        })
+      }
       //optional -- order by date
         var orderBy = $filter('orderBy');
         $scope.order = function(predicate, reverse){
@@ -156,9 +156,7 @@ angular.module('sample.allPosts', ['auth0'])
                 post.pica = data;
                 console.log("this is picture dateeeeeeeeeeeeeeee: ",  post.pica);
 
-              })
-
-
+              });
           $scope.addData = function(){//show and refresh list of comments
             addCom.allComments(postID).success(function(data){
               $scope.allcoms = data;
@@ -173,10 +171,7 @@ angular.module('sample.allPosts', ['auth0'])
           };
           $scope.addData();
           // end of get comments
-
             //marker for map
-
-
                 uiGmapGoogleMapApi.then(function(maps) {
                   $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 17 };
 
@@ -201,10 +196,7 @@ angular.module('sample.allPosts', ['auth0'])
                           }
                         }
                       };
-  });
-
-
-
+                  });
           var picUsrId = {uid : post.uid };
           // ******* get user information ********
             otherUsrPic.getOtherProfile(picUsrId).success(function(picdata){

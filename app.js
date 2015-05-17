@@ -63,6 +63,11 @@ var app = angular.module( 'TravelMate', [
       pageTitle: 'About' ,
       requiresLogin: true
     })
+    .when( '/contact', {
+      templateUrl: 'partials/contact/contact.html',
+      pageTitle: 'Contact' ,
+      requiresLogin: true
+    })
     .when( '/message', {
       controller: 'messageCtrl',
       templateUrl: 'partials/messages/messages.html',
@@ -119,4 +124,25 @@ app.factory('otherUsrPic',function($http){
       })
     }
 }
+})
+.factory('pics',function($http){
+  return{
+    getPic : function(picUID){
+      return $http({
+        url: 'api/getLogPics.php',
+        method: 'POST',
+        data: picUID
+      })
+    }
+  }
+})
+.factory('like', function($http){
+  return{
+    addLiky: function(favorData){
+      return $http({ url: 'api/addLike.php', method:'POST', data: favorData})
+    },
+    allLikes: function(likesData){
+      return $http({url: 'api/allLikes.php', methods: 'POST', data: likesData})
+    }
+  }
 });

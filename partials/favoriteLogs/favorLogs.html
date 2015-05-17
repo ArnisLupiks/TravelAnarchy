@@ -15,7 +15,7 @@
           <article class="col-md-6" ng-repeat ="favorite in favorites.slice().reverse() | filter:{$: objProppostHeadingFilter} " >
 
             <div class="panel panel-default logs">
-              <a href="#/log/{{post.postID}}" >
+              <a href="#/log/{{favorite.logs.postID}}" >
 
                 <div class = "link" ng-click="openPost(post)">
                     <div class="mainPic">
