@@ -173,14 +173,12 @@ angular.module('sample.allPosts', ['auth0'])
           };
           $scope.addData();
           // end of get comments
-          uiGmapGoogleMapApi.then(function(maps) {
-            $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 14 };
+
             //marker for map
-            $scope.coordsUpdates = 0;
-          $scope.dynamicMoveCtr = 0;
+          
             $scope.marker = {
                   id: 0,
-                  coords: {latitude : post.latitude, longitude: post.longitude },
+                  coords: {latitude : 44.2126995, longitude: -100.2471641 },
                   options: { draggable: true },
                   events: {
                     dragend: function (marker, eventName, args) {
@@ -199,7 +197,10 @@ angular.module('sample.allPosts', ['auth0'])
                     }
                   }
                 };
+                uiGmapGoogleMapApi.then(function(maps) {
+                  $scope.map = {center: { latitude: 44.2126995, longitude: -100.2471641 }, zoom: 14 };
   });
+
 
 
           var picUsrId = {uid : post.uid };
@@ -229,6 +230,8 @@ angular.module('sample.allPosts', ['auth0'])
             $location.path("/");
           });
         };
+
+
 // return to previous page
   $scope.back = function() {
     window.history.back();

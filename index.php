@@ -46,6 +46,17 @@
       <!-- bower components -->
     <script  src = "bower_components/lodash/dist/lodash.js"></script>
     <script src = "bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src = "bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+    <script src="bower_components/ngmap/app/scripts/app.js"></script>
+  <script src="bower_components/ngmap/app/scripts/directives/map_controller.js"></script>
+  <script src="bower_components/ngmap/app/scripts/directives/map.js"></script>
+  <script src="bower_components/ngmap/app/scripts/directives/marker.js"></script>
+
+  <script src="bower_components/ngmap/app/scripts/directives/shape.js"></script>
+  <script src="bower_components/ngmap/app/scripts/services/geo_coder.js"></script>
+  <script src="bower_components/ngmap/app/scripts/services/navigator_geolocation.js"></script>
+  <script src="bower_components/ngmap/app/scripts/services/attr2_options.js"></script>
+
 
     <script src = "bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
     <script src = "bower_components/ng-file-upload/angular-file-upload.js"></script>

@@ -87,22 +87,17 @@
     text-decoration: none;
 }
   /* end */
-
+  [ng\:cloak], [ng-cloak], .ng-cloak {
+      display: none;
+  }
   /* google maps */
   .angular-google-map-container {
     max-width: 400px;
-    max-height: 300px;
+    height: 350px;
 }
 
 /* fix for Twitter Bootstrap handling of responsive images */
-.angular-google-map img {
-    max-width: none;
-}
 
-.angular-google-map {
-    top: 80px;
-
-}
 
 .shrink {
     font-size: 8;
@@ -368,6 +363,7 @@ padding-left:5px;
   margin-top:7px;
   margin-left:22px;
 }
+
 
 
 /* XLarge Desktop */
