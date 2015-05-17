@@ -1,5 +1,24 @@
 angular.module('sample.favorLogs',['auth0'])
 //controller
+.factory('favorit',function($http){
+  return{
+    list: function(callback){
+      $http.get('api/getPosts.php').success(callback)
+    },
+    find: function(postID, callback){
+      $http.get('api/getPosts.php').success(function(data){
+        var post = data.filter(function(entry){
+          return entry.postID === postID;
+        })[0];
+        callback(post);
+      });
+    },
+    deleteLog : function(remLog){
+      return $http({ url: 'api/removeLog.php', method: 'POST', data: remLog})
+    }
+  };
+})
+
 .factory('favorit', function($http){
   return{
     getFavorites : function(Usr){

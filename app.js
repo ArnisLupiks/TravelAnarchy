@@ -1,5 +1,5 @@
 var app = angular.module( 'TravelMate', [
-  'auth0','ngRoute','sample.allPosts','sample.addPosts','sample.profile','ngMap',
+  'auth0','ngRoute','sample.allPosts','sample.addPosts','sample.profile',
   'sample.auth','sample.login','sample.newMessage','sample.messages', 'sample.friends','angularMoment','ngDialog',
   'sample.favorLogs','flash','uiGmapgoogle-maps', 'angular-storage', 'ui.bootstrap',  'angular-jwt',  'angularFileUpload'
 ])

@@ -92,10 +92,34 @@
   }
   /* google maps */
   .angular-google-map-container {
+    padding-left:20px;
+
     max-width: 400px;
     height: 350px;
 }
+.maps{
+  padding-left:10px;
+}
+.file {
+  color:#08233e;
+  font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font-size:70%;
+  padding:14px;
 
+  background-color:rgba(0,153,113, 0.8);
+  border:1px solid #007a5a;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px;
+  border-bottom:1px solid #9f9f9f;
+  -moz-box-shadow:inset 0 1px 0 rgba(0,153,113, 0.8);
+  -webkit-box-shadow:inset 0 1px 0 rgba(0,153,113, 0.8);
+  box-shadow:inset 0 1px 0 rgba(0,153,113, 0.8);
+  cursor:pointer;
+ }
+ .file:hover {
+  background-color:rgba(0,91,67, 0.8);
+ }
 /* fix for Twitter Bootstrap handling of responsive images */
 
 

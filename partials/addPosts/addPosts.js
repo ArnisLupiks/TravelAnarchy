@@ -1,5 +1,5 @@
 angular.module('sample.addPosts', [
-  'auth0',
+  'auth0','OtdDirectives'
 
 ])
 .directive('ngThumb', ['$window', function($window) {
@@ -71,16 +71,18 @@ angular.module('sample.addPosts', [
             }
             return _p8() + _p8(true) + _p8(true) + _p8();
         },
-
         empty: function() {
           return '00000000-0000-0000-0000-000000000000';
         }
     };
-
     return svc;
 })
 .controller('addPostCtrl',
-            function HomeController($scope, $http,uuid, logee, FileUploader, $rootScope, $filter, $location, auth){
+            function HomeController($scope, $http,uuid, logee,FileUploader, $rootScope, $filter, $location, auth){
+
+            //end geolocation
+            //location scope is empty
+              $scope.location = '';
             // date pick option
               $scope.today = function() {
                 $scope.dt = new Date();
@@ -107,6 +109,7 @@ angular.module('sample.addPosts', [
               // on submit button do post and collect data
                $scope.submitForm = function() {
                       var formData = {uid: auth.profile.user_id, heading: $scope.heading,
+                                      latitude: $scope.location.latitude, longitude: $scope.location.longitude,
                                       content: $scope.content, pict: $scope.new, date: $scope.dt};
                       logee.addLog(formData).success(function(data){
                       });
@@ -209,3 +212,21 @@ angular.module('sample.addPosts', [
                  };
                  console.info('uploader', uploader);
         });
+        angular.module('OtdDirectives', []).
+                    directive('googlePlaces', function(){
+                        return {
+                            restrict:'E',
+                            replace:true,
+                            // transclude:true,
+                            scope: {location:'='},
+                            template: '<input id="google_places_ac" name="google_places_ac" type="text" class="input-block-level"/>',
+                            link: function($scope, elm, attrs){
+                                var autocomplete = new google.maps.places.Autocomplete($("#google_places_ac")[0], {});
+                                google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                                    var place = autocomplete.getPlace();
+                                    $scope.location = {latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng()};
+                                    $scope.$apply();
+                                });
+                            }
+                        }
+                    });

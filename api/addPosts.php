@@ -16,6 +16,8 @@ try{
     $usrid = $mysqli->real_escape_string($data->uid);
     $heading = $mysqli->real_escape_string($data->heading);
     $content = $mysqli->real_escape_string($data->content);
+    $latitude = $mysqli->real_escape_string($data->latitude);
+    $longitude = $mysqli->real_escape_string($data->longitude);
     $pict = $mysqli->real_escape_string($data->pict);
 
     //$location = mysql_real_escape_string($data->location);
@@ -23,7 +25,7 @@ try{
     //execute
   if($usrid != null){
         echo $usrid;
-        $query="INSERT INTO posts (uid,postHeading,postContent,pict,date) VALUES ('$usrid', '$heading', '$content','$pict', '$date')";
+        $query="INSERT INTO posts (uid,postHeading,postContent,latitude,longitude,pict,date) VALUES ('$usrid', '$heading', '$content','$latitude','$longitude','$pict', '$date')";
         $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
         $result = $mysqli->affected_rows;
        echo $json_response = json_encode($result);

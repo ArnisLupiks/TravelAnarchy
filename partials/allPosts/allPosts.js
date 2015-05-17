@@ -62,15 +62,15 @@ angular.module('sample.allPosts', ['auth0'])
           speed: 500, // Integer: Speed of the transition, in milliseconds
           timeout: 4000, // Integer: Time between slide transitions, in milliseconds
           maxwidth: 1060,
- nav: true,             // Boolean: Show navigation, true or false
- random: false,          // Boolean: Randomize the order of the slides, true or false
- pause: false,           // Boolean: Pause on hover, true or false
- pauseControls: true,    // Boolean: Pause when hovering controls, true or false
- prevText: "Previous",   // String: Text for the "previous" button
- nextText: "Next",       // String: Text for the "next" button
- maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
- navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
- manualControls: ""     // Selector: Declare custom pager navigation
+         nav: false,             // Boolean: Show navigation, true or false
+         random: false,          // Boolean: Randomize the order of the slides, true or false
+         pause: false,           // Boolean: Pause on hover, true or false
+         pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+         prevText: "Previous",   // String: Text for the "previous" button
+         nextText: "Next",       // String: Text for the "next" button
+         maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+         navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+         manualControls: ""     // Selector: Declare custom pager navigation
         });
       });
 
@@ -81,7 +81,7 @@ angular.module('sample.allPosts', ['auth0'])
   }
 })
 //displays all logs in grid view on main page
-.controller('postCtrl', function HomeController (Flash,pics, posts,otherUsrPic,favLog, $scope, $http, $filter, $location, auth){
+.controller('postCtrl', function (Flash,pics, posts,otherUsrPic,favLog, $scope, $http, $filter, $location, auth){
       //lists all logs
       posts.list(function(posts){
           $scope.posts = posts;
@@ -175,30 +175,32 @@ angular.module('sample.allPosts', ['auth0'])
           // end of get comments
 
             //marker for map
-          
-            $scope.marker = {
-                  id: 0,
-                  coords: {latitude : 44.2126995, longitude: -100.2471641 },
-                  options: { draggable: true },
-                  events: {
-                    dragend: function (marker, eventName, args) {
-                      $log.log('marker dragend');
-                      var lat = marker.getPosition().lat();
-                      var lon = marker.getPosition().lng();
-                      $log.log(lat);
-                      $log.log(lon);
 
-                      $scope.marker.options = {
-                        draggable: true,
-                        labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
-                        labelAnchor: "100 0",
-                        labelClass: "marker-labels"
-                      };
-                    }
-                  }
-                };
+
                 uiGmapGoogleMapApi.then(function(maps) {
-                  $scope.map = {center: { latitude: 44.2126995, longitude: -100.2471641 }, zoom: 14 };
+                  $scope.map = {center: { latitude: post.latitude, longitude: post.longitude }, zoom: 17 };
+
+                  $scope.marker = {
+                        id: 0,
+                        coords: {latitude : post.latitude, longitude: post.longitude },
+                        options: { draggable: true },
+                        events: {
+                          dragend: function (marker, eventName, args) {
+                            console.log('marker dragend');
+                            var lat = marker.getPosition().lat();
+                            var lon = marker.getPosition().lng();
+                            console.log(lat);
+                            console.log(lon);
+
+                            $scope.marker.options = {
+                              draggable: true,
+                              labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+                              labelAnchor: "100 0",
+                              labelClass: "marker-labels"
+                            };
+                          }
+                        }
+                      };
   });
 
 

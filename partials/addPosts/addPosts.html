@@ -14,7 +14,7 @@
               <span>{{350 - form.content.length}} left</span>
             <!-- Selects location -->
               <h4>Lookup location:</h4>
-              <google-places location=location class="form-control" ng-model="form.location" ></google-places>
+                <google-places location=location class="form-control" ng-model="location" ng-required="true"></google-places>
             <!-- Date visited -->
               <h4>Date visited</h4>
                 <p class="input-group">
@@ -23,15 +23,13 @@
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
                 </p>
-              <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button> <br />
+              <button type="button" class="btn btn-success" ng-click="today()">Today</button> <br />
 
 
         <!-- ****************************** picture select ************************************************-->
-
-
           <h3>Select files</h3>
           <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
-          <input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
+          <input type="file" class="file" nv-file-select="" uploader="uploader" multiple  /><br/>
           <p>Amount of pictures uploding: {{ uploader.queue.length }}</p>
             <table class="table">
               <thead>

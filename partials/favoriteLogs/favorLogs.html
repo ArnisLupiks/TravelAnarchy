@@ -14,39 +14,50 @@
       <div class "col-md-9">
           <article class="col-md-6" ng-repeat ="favorite in favorites.slice().reverse() | filter:{$: objProppostHeadingFilter} " >
 
-                              <div class="panel panel-default logs">
+            <div class="panel panel-default logs">
+              <a href="#/log/{{post.postID}}" >
 
-                              <div class = "" ng-click="openPopup(post)">
+                <div class = "link" ng-click="openPost(post)">
+                    <div class="mainPic">
+                    <img ng-src ="api/uploads/{{favorite.logs.pics[0].name}}" class= "img-responsive" />
+                  </div>
+                    <div class="row">
+                      <div class="col-xs-2 col-sm-5 small">
+                          <img class = "circular" ng-src= "{{favorite.logs.picture.picture}}"alt="profile pic" />
+                      </div>
+                      <div class="col-sm-push-6">
+                          <h5 class = "panel-heading" ng-bind = "favorite.logs.postHeading"></h5>
+                      </div>
+                    </div>
 
-                                      <img src ="img/1.jpg" class= "img-responsive" />
-                                    <div class="row">
+                      <p class = "maincontent text-justify max" ng-bind = "favorite.logs.postContent"></p>
+                      <!--  <ui-gmap-google-map center='{latitude : "ng-bind: post.latitude", longitude:"ng-bind: post.logitude"}' zoom='map.zoom'></ui-gmap-google-map> -->
+                      <!-- image view -->
+                      <!--<div class="poster">
+                        posted by: {{post.picture.username}} {{post.picture.surname}}
+                      </div>-->
+                  </div>
+              </a>
+                  <div class="btn-group btn-group-justified" role="group" aria-label="...">
 
-                                    <div class="col-xs-2 col-sm-6" style ="width: 80px;">
-                                      <img class = "circular" ng-src= "{{favorite.logs.picture.picture}}"alt="profile pic" />
-                                    </div>
-                                    <div class="col-sm-push-6">
-                                      <h3 class = "panel-heading" ng-bind = "favorite.logs.postHeading"></h3>
 
-                                    </div>
-                                  </div>
-                                    <p class = "maincontent text-justify" ng-bind = "favorite.logs.postContent"></p>
-                                    <!--  <ui-gmap-google-map center='{latitude : "ng-bind: post.latitude", longitude:"ng-bind: post.logitude"}' zoom='map.zoom'></ui-gmap-google-map> -->
-                                    <!-- image view -->
-                                    <span>posted by: <span ng-bind = "favorite.logs.picture.username"></span> <span ng-bind = "favorite.logs.picture.surname"></span></span>
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-default"><i class="fa fa-heart fa-2x red"></i> <span class = "small">Love it!</span></button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-default">  <i class="fa fa-comment fa-2x"></i> <span class = "small">Comments</span></button>
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-default" ng-click = "removeFavorit(favorite)"><i class="fa fa-minus-circle fa-2x remove"></i> Remove</button>
+                    </div>
+                  </div>
 
-                                  </div>
-                                      <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                        <div class="btn-group" role="group">
-                                          <button type="button"  ng-click = "addToFavorit(post)" class="btn btn-default"><i class="fa fa-heart fa-2x red"></i> Give a heart</button>
-                                        </div>
-                                        <div class="btn-group" role="group">
-                                          <button type="button" class="btn btn-default"><i class="fa fa-comment fa-2x"></i> Comments</button>
-                                        </div>
-                                        <div class="btn-group" role="group">
-                                          <button type="button" class="btn btn-default" ng-click = "removeFavorit(favorite)"><i class="fa fa-minus-circle fa-2x remove"></i> Remove</button>
-                                        </div>
-                                      </div>
-                            </div>
+          </div>
+
+
+
+
+
           </article>
       </div>
     </tbody>
