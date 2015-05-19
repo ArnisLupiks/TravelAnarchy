@@ -12,18 +12,30 @@
     <button name="Add Friend" class = "btn btn-lg btn-success" ng-click= "addComment()">Add Comment</button>
   </div>
 </div>
-<ul class = "list-group" ng-repeat = "allcom in allcoms.slice().reverse()">
+</div>
+<div class="col-md-12 comment">
+
+<comment class = "list-group" ng-repeat = "allcom in allcoms.slice().reverse()">
   <li class = "list-group-item">
-    <div ng-click="thisFriend(buddy)">
-      <img class = "circular" ng-src= "{{allcom.picture.picture}}" alt="profile picture" />
-      <span ng-bind = "allcom.picture.username"></span>
-      <span ng-bind = "allcom.picture.surname"></span>
-      <span ng-bind = "allcom.comContent"></span>
+
+    <div class = "row">
+      <div class="col-sm-3">
+        <img class = "circular" ng-src= "{{allcom.picture.picture}}" alt="profile picture" />
+        <span ng-bind = "allcom.picture.username"></span>
+        <span ng-bind = "allcom.picture.surname"></span>
+      </div>
+    <div class="col-md-6">
+      <span ng-bind = "allcom.comContent"></span><br />
+    </div>
+    <div class="col-sm-3">
       <span>Added: <span am-time-ago="allcom.comDate"></span></span>
       <button ng-if ="allcom.comUsrID == auth.profile.user_id" class="btn btn-danger btn-lg" ng-click="deleteCom(allcom)"><i class="fa fa-trash-o"></i> Delete</button>
+
+    </div>
     </div>
   </li>
-</ul>
-  
+</comment>
+</div>
+
 </div>
 </div>
