@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2015 at 10:07 PM
+-- Generation Time: May 17, 2015 at 07:52 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -31,22 +31,18 @@ CREATE TABLE IF NOT EXISTS `favoritlogs` (
   `uid` varchar(50) NOT NULL,
   `postID` int(11) NOT NULL,
   `addedToFavorites` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `favoritlogs`
 --
 
 INSERT INTO `favoritlogs` (`id`, `uid`, `postID`, `addedToFavorites`) VALUES
-(3, 'facebook|10153152164689814', 105, '2015-04-27 17:32:14'),
-(4, 'facebook|10153152164689814', 101, '2015-04-27 17:35:18'),
-(5, 'facebook|10153152164689814', 101, '2015-04-27 17:35:18'),
-(6, 'facebook|10153152164689814', 101, '2015-04-27 17:35:18'),
-(7, 'facebook|10153152164689814', 101, '2015-04-27 17:35:19'),
-(8, 'facebook|10153152164689814', 101, '2015-04-27 17:35:19'),
-(9, 'facebook|10153152164689814', 101, '2015-04-27 17:35:19'),
-(11, 'facebook|10153152164689814', 106, '2015-04-27 18:41:44'),
-(12, 'facebook|10203794948335436', 217, '2015-05-12 14:12:01');
+(22, 'google-oauth2|102019974996451281003', 306, '2015-05-17 16:29:38'),
+(23, 'google-oauth2|102019974996451281003', 305, '2015-05-17 16:29:38'),
+(24, 'google-oauth2|102019974996451281003', 306, '2015-05-17 18:28:25'),
+(25, 'google-oauth2|102019974996451281003', 305, '2015-05-17 18:41:33'),
+(26, 'google-oauth2|102019974996451281003', 305, '2015-05-17 18:41:42');
 
 -- --------------------------------------------------------
 
@@ -72,6 +68,28 @@ INSERT INTO `friends` (`id`, `userID`, `friendID`, `when`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `likes`
+--
+
+CREATE TABLE IF NOT EXISTS `likes` (
+`id` int(11) NOT NULL,
+  `uid` varchar(50) NOT NULL,
+  `postID` int(10) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `uid`, `postID`, `date`) VALUES
+(1, 'google-oauth2|102019974996451281003', 306, '2015-05-17 17:58:37'),
+(2, 'google-oauth2|102019974996451281003', 306, '2015-05-17 18:28:27'),
+(3, 'google-oauth2|102019974996451281003', 305, '2015-05-17 18:41:45');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `logcomments`
 --
 
@@ -82,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `logcomments` (
   `comUsrID` varchar(50) NOT NULL,
   `comContent` varchar(100) NOT NULL,
   `comDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `logcomments`
@@ -95,7 +113,38 @@ INSERT INTO `logcomments` (`id`, `postID`, `uid`, `comUsrID`, `comContent`, `com
 (41, 102, 'facebook|10153152164689814', 'google-oauth2|102019974996451281003', 'There there.. nothing special here!!! ', '2015-05-10 00:01:42'),
 (42, 105, 'google-oauth2|102019974996451281003', 'facebook|10203794948335436', 'no way', '2015-05-10 00:24:50'),
 (43, 107, 'google-oauth2|102019974996451281003', 'google-oauth2|102019974996451281003', 'Here there plonker!', '2015-05-10 11:30:40'),
-(44, 106, 'google-oauth2|102019974996451281003', 'google-oauth2|102019974996451281003', 'This is new comment here', '2015-05-10 18:14:10');
+(44, 106, 'google-oauth2|102019974996451281003', 'google-oauth2|102019974996451281003', 'This is new comment here', '2015-05-10 18:14:10'),
+(45, 270, 'google-oauth2|102019974996451281003', 'google-oauth2|102019974996451281003', 'this is :)))', '2015-05-15 20:44:43'),
+(46, 271, 'google-oauth2|102019974996451281003', 'google-oauth2|102019974996451281003', 'This is new\n', '2015-05-15 23:47:03'),
+(47, 305, 'google-oauth2|102019974996451281003', 'google-oauth2|102019974996451281003', 'this is new', '2015-05-17 16:55:48'),
+(48, 306, 'google-oauth2|102019974996451281003', 'google-oauth2|102019974996451281003', 'this is comment', '2015-05-17 19:34:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logpictures`
+--
+
+CREATE TABLE IF NOT EXISTS `logpictures` (
+`id` int(11) NOT NULL,
+  `uid` varchar(50) NOT NULL,
+  `uniqueID` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `tag` int(5) NOT NULL,
+  `uploadedOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `logpictures`
+--
+
+INSERT INTO `logpictures` (`id`, `uid`, `uniqueID`, `name`, `tag`, `uploadedOn`) VALUES
+(67, 'google-oauth2|102019974996451281003', 'a730dae2-056b-f022-c3f9-196a4c7b93f0', 'dj0a9u7syvi1431876999902.jpg', 1, '2015-05-17 15:36:41'),
+(68, 'google-oauth2|102019974996451281003', 'e84afc94-1b97-053e-64ca-94e992632686', 'cn6850fi5291431877046196.jpg', 1, '2015-05-17 15:37:27'),
+(69, 'google-oauth2|102019974996451281003', '456f2ae2-5648-2889-d60a-c862cc08670f', 'b8e1wpwg66r1431878427499.jpg', 1, '2015-05-17 16:00:31'),
+(70, 'google-oauth2|102019974996451281003', '456f2ae2-5648-2889-d60a-c862cc08670f', 'n6wmem9ggb91431878427500.jpg', 1, '2015-05-17 16:00:31'),
+(71, 'google-oauth2|102019974996451281003', '456f2ae2-5648-2889-d60a-c862cc08670f', 't6rnjct05291431878427501.jpg', 1, '2015-05-17 16:00:31'),
+(72, 'google-oauth2|102019974996451281003', 'f9e7ca66-960d-ba44-4c56-18107a3c47a3', 'cmafncanhfr1431878736114.jpg', 1, '2015-05-17 16:05:37');
 
 -- --------------------------------------------------------
 
@@ -109,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `senderUid` varchar(50) NOT NULL,
   `mess` varchar(500) DEFAULT NULL,
   `postedOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `messages`
@@ -124,11 +173,9 @@ INSERT INTO `messages` (`ID`, `receiverUid`, `senderUid`, `mess`, `postedOn`) VA
 (7, 'facebook|10153152164689814', 'facebook|10203794948335436', 'Hey Chen!! How are ye?', '2015-03-19 18:46:20'),
 (8, '', 'google-oauth2|102019974996451281003', 'This is my message to you', '2015-03-22 15:51:59'),
 (9, 'facebook|10203794948335436', 'google-oauth2|102019974996451281003', 'This is my message to you', '2015-03-22 15:52:38'),
-(10, 'google-oauth2|102019974996451281003', 'google-oauth2|102019974996451281003', 'This is mesasge to you', '2015-03-22 15:53:19'),
 (11, 'facebook|10153152164689814', 'google-oauth2|102019974996451281003', 'hey there', '2015-05-08 19:23:53'),
 (12, '', 'google-oauth2|102019974996451281003', 'here your message', '2015-05-10 15:12:10'),
 (13, 'facebook|10203794948335436', 'google-oauth2|102019974996451281003', 'This is message to you', '2015-05-10 15:12:43'),
-(14, 'google-oauth2|102019974996451281003', 'google-oauth2|102019974996451281003', 'This is message to you', '2015-05-10 15:13:36'),
 (15, 'facebook|10203794948335436', 'google-oauth2|102019974996451281003', 'Hey there. Want to go for a hike to Glendalough next weekend?', '2015-05-12 14:04:17');
 
 -- --------------------------------------------------------
@@ -188,18 +235,14 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `pict` varchar(100) NOT NULL,
   `date` date DEFAULT NULL,
   `postDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=227 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=307 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`postID`, `uid`, `postHeading`, `postContent`, `latitude`, `longitude`, `pict`, `date`, `postDate`) VALUES
-(211, 'google-oauth2|102019974996451281003', 'Here we are', 'Just look on this view... Time to get there Friends', NULL, NULL, 'vdatj3sdcxr1431395040119.jpg', '0000-00-00', '2015-05-12 01:44:01'),
-(212, 'google-oauth2|102019974996451281003', '!!!!! Don''t miss it guys !!!!', 'The weather is awesome, get out from house for some summer weather out here on the beach on Bulls Island', NULL, NULL, 'wsc4j5ah5mi1431395076208.jpg', '0000-00-00', '2015-05-12 01:45:43'),
-(217, 'facebook|10203794948335436', 'Fun Stuff at Glendalough', 'Having great weekend of walks around a Glendalough lakes, 2 days and counting!!!!', '53.2734', '7.778320310000026', 'rxqa3qy3nmi1431399023713.jpg', '2015-05-12', '2015-05-12 02:51:41'),
-(218, 'facebook|10203794948335436', '', '', NULL, NULL, '9vf94sa714i1431636387897.jpg', '0000-00-00', '2015-05-14 20:46:31'),
-(219, 'facebook|10203794948335436', '', '', NULL, NULL, 'lwp0221emi1431638454817.jpg', '0000-00-00', '2015-05-14 21:20:56');
+(305, 'google-oauth2|102019974996451281003', '. It was popularised in the 19', '. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '53.362208', '-6.233187', '456f2ae2-5648-2889-d60a-c862cc08670f', '2015-05-17', '2015-05-17 16:00:31');
 
 -- --------------------------------------------------------
 
@@ -225,7 +268,8 @@ INSERT INTO `users` (`uid`, `name`, `username`, `surname`, `email`, `picture`, `
 ('facebook|10153152164689814', 'Chen Sagi', 'Chen', 'Sagi', 'sagichen86@gmail.com', 0x68747470733a2f2f666263646e2d70726f66696c652d612e616b616d616968642e6e65742f6870726f66696c652d616b2d786661312f762f74312e302d312f63382e302e35302e35302f7035307835302f313436313836335f31303135323030333633383835343831345f313032343333353337355f6e2e6a70673f6f683d3334643330613066343365643161353136313566353139393765383730376663266f653d3535424233303345265f5f6764615f5f3d313433343034323232365f6339643462363034666661653566323963353666376164306630653430616333, '2015-03-17 19:43:22'),
 ('facebook|10203794948335436', 'Arnis Lupiks', 'Arnis', 'Lupiks', 'dodnaudu@gmail.com', 0x68747470733a2f2f666263646e2d70726f66696c652d612e616b616d616968642e6e65742f6870726f66696c652d616b2d617368322f762f74312e302d312f63312e302e35302e35302f7035307835302f3533333335355f333239363635363039363531345f313433343533373739345f6e2e6a70673f6f683d3332373337666363376636646162366465396430653262386438343436653764266f653d3535444443413538265f5f6764615f5f3d313434333634373730335f3565643562313664343734653339303139623638323030366466663465636332, '2015-05-07 16:39:33'),
 ('google-oauth2|102019974996451281003', 'Arnis mcArnis', 'Arnis', 'mcArnis', 'dodnaudu@gmail.com', 0x68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f2d74595066665351652d58342f41414141414141414141492f41414141414141414155412f673664596d596252714c382f70686f746f2e6a7067, '2015-03-22 16:26:59'),
-('google-oauth2|109614850275952251746', 'Arnis Lupiks', 'Arnis', 'Lupiks', 'arnislupiks@gmail.com', 0x68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f2d5864554971644d6b4357412f41414141414141414141492f41414141414141414141412f343235327273636276354d2f70686f746f2e6a7067, '2015-03-23 10:35:27');
+('google-oauth2|109614850275952251746', 'Arnis Lupiks', 'Arnis', 'Lupiks', 'arnislupiks@gmail.com', 0x68747470733a2f2f6c68332e676f6f676c6575736572636f6e74656e742e636f6d2f2d5864554971644d6b4357412f41414141414141414141492f41414141414141414141412f343235327273636276354d2f70686f746f2e6a7067, '2015-03-23 10:35:27'),
+('twitter|2566023950', 'Arnis Lupiks', '', '', '', 0x68747470733a2f2f7062732e7477696d672e636f6d2f70726f66696c655f696d616765732f3438343832333539343433343639353136382f62494837355f58385f6e6f726d616c2e6a706567, '2015-05-14 22:26:36');
 
 --
 -- Indexes for dumped tables
@@ -244,9 +288,21 @@ ALTER TABLE `friends`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `logcomments`
 --
 ALTER TABLE `logcomments`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `logpictures`
+--
+ALTER TABLE `logpictures`
  ADD PRIMARY KEY (`id`);
 
 --
@@ -275,27 +331,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `favoritlogs`
 --
 ALTER TABLE `favoritlogs`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `logcomments`
 --
 ALTER TABLE `logcomments`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
+--
+-- AUTO_INCREMENT for table `logpictures`
+--
+ALTER TABLE `logpictures`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-MODIFY `ID` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `ID` int(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=227;
+MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=307;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

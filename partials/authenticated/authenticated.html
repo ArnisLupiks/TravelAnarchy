@@ -2,30 +2,30 @@
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation" >
 			<div class="container">
         <div class = "navbar-header">
-  				<a href ="#/" class="navbar-brand"><img ng-src="img/TravelMateIconThis.png" alt="icon" style = "width: 150px;"/></a>
-  				<button type="button" class = "navbar-toggle" data-toggle = "collapse" data-target = ".navbar-collapse">
+  				<a href ="#/" class="navbar-brand"><img ng-src="img/TravelMateIconThis.png" alt="icon" class="travelIcon"/></a>
+  				<button type="button" class = "navbar-toggle" data-ng-init="isCollapsed = true" data-ng-click="isCollapsed = !isCollapsed">
             <span class="sr-only">Toggle navigation</span>
             <span class = "icon-bar"></span>
   					<span class = "icon-bar"></span>
   					<span class = "icon-bar"></span>
   				</button>
         </div>
-				<div class = "collapse navbar-collapse navHeaderCollapse">
+				<div class = "collapse navbar-collapse navHeaderCollapse" data-ng-class="{collapse: isCollapsed}">
 					<ul class = "nav navbar-nav navbar-right">
             <li class="dropdown">
               <a class ="dropdown-toggle" data-toggle = "dropdown"><i class="fa fa-bullhorn"></i> Logs <b class = "caret"></b></a>
-                <ul class = "dropdown-menu">
-                  <li><a href = "#addPosts"><i class="fa fa-bullhorn"></i> Add Log</a></li>
-                  <li><a href = "#/"><i class="fa fa-bullhorn"></i> All Logs</a></li>
-                  <li><a href="#favoritlogs"><i class="fa fa-star"></i> Favourite Logs</a></li>
+                <ul class = "dropdown-menu ">
+                  <li ng-click="isCollapsed=!isCollapsed"><a href = "#addPosts"><i class="fa fa-bullhorn"></i> Add Log</a></li>
+                  <li ng-click="isCollapsed=!isCollapsed"><a href = "#/"><i class="fa fa-bullhorn"></i> All Logs</a></li>
+                  <li ng-click="isCollapsed=!isCollapsed"><a href="#favoritlogs"><i class="fa fa-star"></i> Favourite Logs</a></li>
                 </ul>
             </li>
-              <li><a href ="#friends"><i class="fa fa-users"></i> Friends</a></li>
+              <li ng-click="isCollapsed=!isCollapsed"><a href ="#friends"><i class="fa fa-users"></i> Friends</a></li>
               <li class="dropdown">
                   <a class ="dropdown-toggle" data-toggle = "dropdown"><i class="fa fa-inbox"></i> Messages <b class = "caret"></b></a>
                   <ul class = "dropdown-menu">
-                    <li><a href="#newMessage">New Message</a></li>
-                    <li><a href="#message">Messages</a></li>
+                    <li ng-click="isCollapsed=!isCollapsed"><a href="#newMessage">New Message</a></li>
+                    <li ng-click="isCollapsed=!isCollapsed"><a href="#message">Messages</a></li>
                   </ul>
               </li>
               <li class="dropdown dropdown-inverse ">
@@ -33,10 +33,10 @@
                   <img class = "circular"  ng-src="{{auth.profile.picture}}" alt="picture" ></img>
                   </a>
                   <ul class = "dropdown-menu dropdown-menu-inverse">
-                    <li><a href="#about"><i class="fa fa-info"></i> About</a></li>
-                    <li><a href="#contact"><i class="fa fa-envelope"></i> Contact</a></li>
-                    <li><a href="#profile"><i class="fa fa-user"></i> Profile</a></li>
-                    <li><a ng-click="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
+                    <li ng-click="isCollapsed=!isCollapsed"><a href="#about"><i class="fa fa-info"></i> About</a></li>
+                    <li ng-click="isCollapsed=!isCollapsed"><a href="#contact"><i class="fa fa-envelope"></i> Contact</a></li>
+                    <li ng-click="isCollapsed=!isCollapsed"><a href="#profile"><i class="fa fa-user"></i> Profile</a></li>
+                    <li ng-click="isCollapsed=!isCollapsed"><a ng-click="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
                   </ul>
               </li>
 					</ul>
