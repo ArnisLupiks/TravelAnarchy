@@ -17,7 +17,25 @@ angular.module('sample.allPosts', ['auth0'])
       return $http({ url: 'api/removeLog.php', method: 'POST', data: remLog})
     }
   };
-})
+}).directive('imgPreload', ['$rootScope', function($rootScope) {
+    return {
+      restrict: 'A',
+      scope: {
+        ngSrc: '@'
+      },
+      link: function(scope, element, attrs) {
+        element.on('load', function() {
+          element.addClass('in');
+        }).on('error', function() {
+          //
+        });
+
+        scope.$watch('ngSrc', function(newVal) {
+          element.removeClass('in');
+        });
+      }
+    };
+}])
 
 //factory to get/remove/add all comments from database
 .factory('addCom' ,function($http){
@@ -201,17 +219,17 @@ angular.module('sample.allPosts', ['auth0'])
                         options: { draggable: true },
                         events: {
                           dragend: function (marker, eventName, args) {
-                            console.log('marker dragend');
+                            //console.log('marker dragend');
                             var lat = marker.getPosition().lat();
                             var lon = marker.getPosition().lng();
-                            console.log(lat);
-                            console.log(lon);
+                          //  console.log(lat);
+                          //  console.log(lon);
 
                             $scope.marker.options = {
                               draggable: true,
-                              labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
-                              labelAnchor: "100 0",
-                              labelClass: "marker-labels"
+                            //  labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+                            //  labelAnchor: "100 0",
+//labelClass: "marker-labels"
                             };
                           }
                         }

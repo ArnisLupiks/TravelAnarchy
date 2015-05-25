@@ -1,5 +1,5 @@
 var app = angular.module( 'TravelMate', [
-  'auth0','ngRoute','sample.allPosts','sample.addPosts','sample.profile',
+  'auth0','ngRoute','sample.allPosts','sample.addPosts','sample.profile', 'afkl.lazyImage',
   'sample.auth','sample.login','sample.newMessage','sample.messages', 'sample.friends','angularMoment','ngDialog',
   'sample.favorLogs','flash','uiGmapgoogle-maps', 'geolocation', 'angular-storage', 'ui.bootstrap',  'angular-jwt',  'angularFileUpload'
 ])
@@ -135,6 +135,20 @@ app.factory('otherUsrPic',function($http){
       })
     }
   }
+})
+.directive('lazy', function($timeout) {
+  return {
+    restrict: 'C',
+    link: function (scope, elm) {
+      $timeout(function() {
+        $(elm).lazyload({
+          effect: 'fadeIn',
+          effectspeed: 500,
+          'skip_invisible': false
+        });
+      }, 0);
+    }
+  };
 })
 .factory('like', function($http){
   return{
