@@ -68,6 +68,8 @@
     <script src = "bower_components/angular-flash-alert/dist/angular-flash.min.js"></script>
     <script src = "bower_components/moment/moment.js"></script>
     <script src = "bower_components/angular-moment/angular-moment.js"></script>
+
+    <script src = "bower_components/angularjs-geolocation/src/geolocation.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.2.3/js/ngDialog.min.js"></script>
 
       <!-- App partials &****************************************-->

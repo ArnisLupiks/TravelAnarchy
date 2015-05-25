@@ -78,7 +78,36 @@ angular.module('sample.addPosts', [
     return svc;
 })
 .controller('addPostCtrl',
-            function HomeController($scope, $http,uuid, logee,FileUploader, $rootScope, $filter, $location, auth){
+            function HomeController($scope, geolocation,uiGmapGoogleMapApi,$http,uuid, logee,FileUploader, $rootScope, $filter, $location, auth){
+
+              geolocation.getLocation().then(function(data){
+                console.log(data.coords);
+                uiGmapGoogleMapApi.then(function(maps) {
+                  $scope.map = {center: { latitude: data.coords.latitude, longitude: data.coords.longitude }, zoom: 17 };
+
+                  $scope.marker = {
+                        id: 0,
+                        coords: {latitude : data.coords.latitude, longitude: data.coords.longitude },
+                        options: { draggable: true },
+                        events: {
+                          dragend: function (marker, eventName, args) {
+                            console.log('marker dragend');
+                            var lat = marker.getPosition().lat();
+                            var lon = marker.getPosition().lng();
+                            console.log(lat);
+                            console.log(lon);
+
+                            $scope.marker.options = {
+                              draggable: true,
+                              labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+                              labelAnchor: "100 0",
+                              labelClass: "marker-labels"
+                            };
+                          }
+                        }
+                      };
+                  });
+              });
 
             //end geolocation
             //location scope is empty

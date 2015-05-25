@@ -75,7 +75,7 @@ angular.module('sample.allPosts', ['auth0'])
 //displays all logs in grid view on main page
 .controller('postCtrl', function (Flash,pics,like, $interval,posts,otherUsrPic,favLog, $scope, $http, $filter, $location, auth){
       //lists all logs
-      $scope.refresfLogs = function(){
+      /*  $scope.refresfLogs = function(){ */
       posts.list(function(posts){
           $scope.posts = posts;
             angular.forEach($scope.posts ,function(post){
@@ -93,14 +93,14 @@ angular.module('sample.allPosts', ['auth0'])
               });
             });
       });
-    };
+      /*  };
       //set interval for reloding logs
         $interval(function(){
           $scope.refresfLogs();
          }.bind(this), 10000);
          $scope.refresfLogs();
 
-
+*/
       $scope.addLike = function(post){
         var favorData = {uid: auth.profile.user_id, postID: post.postID};
         like.addLiky(favorData).success(function(data){
