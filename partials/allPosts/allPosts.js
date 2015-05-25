@@ -72,10 +72,16 @@ angular.module('sample.allPosts', ['auth0'])
     link: linker
   }
 })
+.controller('thisController', function($scope){
+  $scope.$on('LOAD' , function(){$scope.loading =true});
+  $scope.$on('UNLOAD' , function(){$scope.loading =false});
+})
 //displays all logs in grid view on main page
 .controller('postCtrl', function (Flash,pics,like, $interval,posts,otherUsrPic,favLog, $scope, $http, $filter, $location, auth){
       //lists all logs
       /*  $scope.refresfLogs = function(){ */
+      $scope.$emit('LOAD')
+
       posts.list(function(posts){
           $scope.posts = posts;
             angular.forEach($scope.posts ,function(post){
@@ -84,6 +90,7 @@ angular.module('sample.allPosts', ['auth0'])
 
               pics.getPic(picUID).success(function(data){
                 post.pics = data;
+                $scope.$emit('UNLOAD')
 
               });
 

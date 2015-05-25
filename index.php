@@ -15,7 +15,8 @@
 
 
   </head>
-  <body>
+  <body ng-controller = "thisController">
+    
     <div ng-include="'partials/authenticated/authenticated.html'" ng-show="isAuthenticated"></div>
     <div flash-message="2000" ></div>
     <div class="container" ng-view></div>
