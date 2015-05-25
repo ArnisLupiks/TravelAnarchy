@@ -78,29 +78,26 @@ angular.module('sample.addPosts', [
     return svc;
 })
 .controller('addPostCtrl',
-            function HomeController($scope, geolocation,uiGmapGoogleMapApi,$http,uuid, logee,FileUploader, $rootScope, $filter, $location, auth){
+            function HomeController($scope, geolocation,$interval,uiGmapGoogleMapApi,$http,uuid, logee,FileUploader, $rootScope, $filter, $location, auth){
 
               geolocation.getLocation().then(function(data){
                 console.log(data.coords);
+                $scope.lat = data.coords.latitude;
+                $scope.lon = data.coords.longitude;
                 uiGmapGoogleMapApi.then(function(maps) {
                   $scope.map = {center: { latitude: data.coords.latitude, longitude: data.coords.longitude }, zoom: 17 };
-
-                  $scope.marker = {
-                        id: 0,
-                        coords: {latitude : data.coords.latitude, longitude: data.coords.longitude },
+                  $scope.marker = { id: 0, coords: {latitude : data.coords.latitude, longitude: data.coords.longitude },
                         options: { draggable: true },
                         events: {
                           dragend: function (marker, eventName, args) {
-                            console.log('marker dragend');
-                            var lat = marker.getPosition().lat();
-                            var lon = marker.getPosition().lng();
-                            console.log(lat);
-                            console.log(lon);
-
+                          //  console.log('marker dragend');
+                            $scope.lat = marker.getPosition().lat();
+                            $scope.lon = marker.getPosition().lng();
+                          //  console.log($scope.lat); console.log($scope.lon);
                             $scope.marker.options = {
                               draggable: true,
-                              labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
-                              labelAnchor: "100 0",
+                              //labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+                              //labelAnchor: "100 0",
                               labelClass: "marker-labels"
                             };
                           }
@@ -108,7 +105,6 @@ angular.module('sample.addPosts', [
                       };
                   });
               });
-
             //end geolocation
             //location scope is empty
               $scope.location = '';
@@ -138,16 +134,17 @@ angular.module('sample.addPosts', [
               // on submit button do post and collect data
                $scope.submitForm = function() {
                       var formData = {uid: auth.profile.user_id, heading: $scope.heading,
-                                      latitude: $scope.location.latitude, longitude: $scope.location.longitude,
+                                      latitude: $scope.lat, longitude: $scope.lon,
                                       content: $scope.content, pict: $scope.new, date: $scope.dt};
                       logee.addLog(formData).success(function(data){
                       });
                 };
                 //reset form
-                 $scope.master = {};
                  $scope.maste = "";
                  $scope.reset = function() {
-                     $scope.form = angular.copy($scope.master);
+                     $scope.heading = angular.copy($scope.master);
+                     $scope.content = angular.copy($scope.master);
+
                      $scope.dt = angular.copy($scope.master);
                      console.log("reset has been pressed");
                 };

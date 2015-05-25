@@ -5,11 +5,11 @@
             <!--* Use ID  -->
             <!-- Post heading -->
               <h4>Name of the post:</h4>
-              <input type="text" class= "form-control chopsticks" ng-model="heading" ng-trim = "false" maxlength="30" /> </p>
+              <input type="text" class= "form-control chopsticks" ng-model="heading" ng-trim = "false" maxlength="30" ng-required="true"/> </p>
               <span>{{30 - heading.length}} left</span>
             <!--  Post content  -->
               <h4>Post Content:</h4>
-              <textarea type="text" class="form-control chopsticks" rows="3" ng-model="content" ng-trim = "false" maxlength="350" ></textarea></p>
+              <textarea type="text" class="form-control chopsticks" rows="3" ng-model="content" ng-trim = "false" maxlength="350" ng-required="true" ></textarea></p>
               <span>{{350 - content.length}} left</span>
             <!-- Selects location -->
               <h4>Lookup location:</h4>
@@ -18,11 +18,11 @@
                     <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
                     </ui-gmap-marker>
                 </ui-gmap-google-map>
-            
+
             <!-- Date visited -->
               <h4>Date visited</h4>
                 <p class="input-group">
-                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                  <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" ng-required="true" />
                   <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                   </span>
@@ -33,8 +33,8 @@
         <!-- ****************************** picture select ************************************************-->
           <h4>Select pictures</h4>
           <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
-          <input type="file" class="file" nv-file-select="" uploader="uploader" multiple  /><br/>
-          <p>Amount of pictures uploding: {{ uploader.queue.length }}</p>
+          <input type="file"  nv-file-select=""  uploader="uploader" multiple ng-model = "pictu" ng-required="true" /><br/>
+          <p>Amount of pictures selected: {{ uploader.queue.length }}</p>
             <table class="table">
               <thead>
                 <tr>
@@ -43,18 +43,18 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="item in uploader.queue">
+                <tr ng-repeat="item in uploader.queue"   >
                   <td>
                     <!-- Image preview -->
                     <!--auto height-->
                     <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
                     <!--auto width-->
-                    <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                    <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }" ></div>
                     <!--fixed width and height -->
                     <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
                   </td>
                   <td nowrap>
-                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()" >
                       <span class="glyphicon glyphicon-trash"></span> Remove
                     </button>
                     </td>
@@ -70,7 +70,7 @@
               </div>
             </div>
       <div class = "buttonClassic">
-        <button type="button" class="btn btn-success btn-s" ng-click="submitForm();uploader.uploadAll()">
+        <button type="button" class="btn btn-success btn-s" ng-click="submitForm();uploader.uploadAll()" ng-disabled ="!(!!heading && !!content && !!dt )">
             <span class="glyphicon glyphicon-upload"></span> Upload all
         </button>
         <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue();reset()">
