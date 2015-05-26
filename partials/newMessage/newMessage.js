@@ -10,7 +10,7 @@ angular.module('sample.newMessage', ['auth0'])
   .success(function(data, status){
         $scope.status = status;
         $scope.users = data;
-        console.log($scope.users);
+        //console.log($scope.users);
         angular.forEach($scope.users ,function(user){
           //get user id
           var picUsrId = {uid : user.uid };
@@ -33,7 +33,7 @@ angular.module('sample.newMessage', ['auth0'])
       //setting receiver scope infromation
        $rootScope.selectedUsers = "";
          $scope.$watch('selectedUsers', function(newValue, oldValue) {
-           console.log('newMessageCtrl.watch.list:', newValue);
+          // console.log('newMessageCtrl.watch.list:', newValue);
            if(newValue !== oldValue){
              $rootScope.selectedUsers = newValue;
            }
@@ -41,7 +41,7 @@ angular.module('sample.newMessage', ['auth0'])
          //SELECTS MESSAGE FROM USER
          $rootScope.mess = "";
            $scope.$watch('mess', function(newValue, oldValue) {
-             console.log('newMessageCtrl.watch.list:', newValue);
+            // console.log('newMessageCtrl.watch.list:', newValue);
              if(newValue !== oldValue){
                $rootScope.mess = newValue;
              }

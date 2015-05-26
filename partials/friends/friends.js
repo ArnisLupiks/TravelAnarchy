@@ -67,7 +67,7 @@ angular.module('sample.friends', ['auth0'])
            }
         });
 })
-.controller('allFriendsCtrl', function($scope, $location, allFriends, $rootScope, auth){
+.controller('allFriendsCtrl', function($scope, $location,friendProfile, allFriends, $rootScope, auth){
   $scope.buddys = [];
   //declaring member details
   var myDetails = {userID: auth.profile.user_id};
@@ -85,12 +85,18 @@ angular.module('sample.friends', ['auth0'])
         });
     });
 
-
+ $scope.thisFriend = function(buddy){
+   console.log("hey there. you just prewssed me" , buddy);
+   $location.path('/friendProfile');
+   var friendID = {uid: buddy.friendID};
+   friendProfile.individualFriendProfile(friendID).success(function(data){
+     $scope.bud = data;
+     console.log("this is friends data: ", data[0].name)
+   });
+ };
 })
 
 .controller('friendProfileCtrl', function($scope, friendProfile, $rootScope, $rootScope, auth){
-  friendProfile.individualFriendProfile(friendID).success(function(data){
-    $scope.bud = data;
-  });
+
   console.log("this is this",$rootScope.selectedUsers);
 });

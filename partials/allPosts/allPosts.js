@@ -99,6 +99,11 @@ angular.module('sample.allPosts', ['auth0'])
       //lists all logs
       /*  $scope.refresfLogs = function(){ */
       $scope.$emit('LOAD')
+      $scope.images = [
+        {
+            ratio: '2-1'
+        }
+      ];
 
       posts.list(function(posts){
           $scope.posts = posts;

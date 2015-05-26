@@ -16,7 +16,7 @@ angular.module('sample.messages', ['auth0'])
     success(function(data, status) {
       $scope.status = status;
       $scope.messages = data;
-      console.log("hehehehe: ", $scope.messages);
+      //console.log("hehehehe: ", $scope.messages);
       //add to each post user profile information
       angular.forEach($scope.messages ,function(message){
         //get user id
@@ -40,7 +40,7 @@ angular.module('sample.messages', ['auth0'])
 }
 $scope.refresh();
   $scope.removeMessage = function(message){
-    console.log("was clicked delete");
+    //console.log("was clicked delete");
     var rmMess = {receiverUid: auth.profile.user_id, mesID : message.ID};
     mess.removeMessages(rmMess).success(function(data){
         var message = "<strong> "+auth.profile.name+"</strong> you have deleted message";

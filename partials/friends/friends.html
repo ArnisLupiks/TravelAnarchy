@@ -8,7 +8,7 @@
 
           <div class="friendsbody" ng-controller = "allFriendsCtrl" data-ng-init="init()">
             <table class="table table-hover" >
-              <tr ng-repeat ="buddy in buddys" ng-click="thisFriend(buddy)">
+              <tr ng-repeat ="buddy in buddys">
                 <div ng-click="thisFriend(buddy)">
                 <td>
                   <img class = "circular" ng-src= "{{buddy.picture.picture}}" alt="profile picture" />

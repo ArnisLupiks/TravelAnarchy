@@ -1,4 +1,4 @@
-<div class="mainPage" ng-controller = "friendProfileCtrl">
+<div class="mainPage">
 
     <div class="panel panel-default">
         <div class="panel-body">
@@ -6,15 +6,14 @@
               <tr>
                 <div ng-click="thisFriend(buddy)">
                 <td>
-                  <img ng-src= "{{buddy.picture.picture}}" alt="profile picture" />
-
+                  <img ng-src= "{{bud.picture}}" alt="profile picture" />
                 </td>
                 <td>
-                  <span ng-bind = "bud.picture.username"></span>
-                  <span ng-bind = "bud.picture.surname"></span>
+                  <span ng-bind = "bud[0].username"></span>
+                  <span ng-bind = "bud.surname"></span>
                 </td>
                 <td>
-                  <span>Friends since: <span am-time-ago="buddy.when"></span></span>
+                  <span>Friends since: <span am-time-ago="bud.when"></span></span>
                 </td>
               </div>
               </tr>

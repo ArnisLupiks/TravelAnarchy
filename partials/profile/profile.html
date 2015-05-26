@@ -1,16 +1,16 @@
-<div class="mainPage" ng-controller="profileCtrl">
+<div class="mainPage">
   <div class="panel panel-default">
     <div class="panel-body">
       <div class = "col-md-10">
         <div class="col-md-6">
-          <h3><span ng-bind = "user_profile.username"></span>, your profile:</h3>
-                    <h3>
-                    <span ng-bind = "user_profile.username"></span>
-                    <span ng-bind = "user_profile.surname"></span>
-                  </h3>
-                  <h3>
-                    <span ng-bind = "user_profile.email"></span>
-                  </h3>
+          <h3><span ng-bind = "user_profile.username"></span>, your profile information:</h3>
+                    <h4>
+                    <b>Name: </b> <span ng-bind = "user_profile.username"></span>
+                     <span ng-bind = "user_profile.surname"></span>
+                  </h4>
+                  <h4>
+                    <b>email:</b> <span ng-bind = "user_profile.email"></span>
+                  </h4>
                   </div>
                     <div class = "col-md-6">
                       <img class = "profilePicture" ng-src= "{{user_profile.picture}}"></img>
